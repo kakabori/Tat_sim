@@ -1,0 +1,15 @@
+###############################################################################
+## any comments can go here, as long as they start with ## (double pound)
+## lines starting with # (single pound) execute Tcl commands (e.g. set ...)
+##
+## model definition starts with component name, number of atoms per group,
+## and the list of all atoms
+###############################################################################
+## backbones only, 53-57
+###############################################################################
+R53 9 N_53 CA_53 C_53
+Q54 9 N_54 CA_54 C_54
+R55 9 N_55 CA_55 C_55
+R56 9 N_56 CA_56 C_56
+R57 9 N_57 CA_57 C_57
+

@@ -1,0 +1,15 @@
+###############################################################################
+## any comments can go here, as long as they start with ## (double pound)
+## lines starting with # (single pound) execute Tcl commands (e.g. set ...)
+##
+## model definition starts with component name, number of atoms per group,
+## and the list of all atoms
+###############################################################################
+## All the gunidinium groups in Tat.
+###############################################################################
+Guanidinium49 9 NE_49 HE_49 CZ_49 NH1_49 HH11_49 HH12_49 NH2_49 HH21_49 HH22_49 
+Guanidinium52 9 NE_52 HE_52 CZ_52 NH1_52 HH11_52 HH12_52 NH2_52 HH21_52 HH22_52 
+Guanidinium53 9 NE_53 HE_53 CZ_53 NH1_53 HH11_53 HH12_53 NH2_53 HH21_53 HH22_53 
+Guanidinium55 9 NE_55 HE_55 CZ_55 NH1_55 HH11_55 HH12_55 NH2_55 HH21_55 HH22_55 
+Guanidinium56 9 NE_56 HE_56 CZ_56 NH1_56 HH11_56 HH12_56 NH2_56 HH21_56 HH22_56 
+Guanidinium57 9 NE_57 HE_57 CZ_57 NH1_57 HH11_57 HH12_57 NH2_57 HH21_57 HH22_57
