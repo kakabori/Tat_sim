@@ -1,0 +1,232 @@
+Manual for Simulation to Experiment (SIMtoEXP) Software
+       created by Norbert Kuèerka in consultation with John Nagle (October 24, 2011 update)
+
+
+################
+I. Introduction
+################
+
+The goal of this project is to provide software to facilitate comparison of simulations with experimental x-ray and neutron scattering data. It has the following features:
+
+1) Input number density profiles from simulations in a standard format.
+
+2) Calculate the electron density profile (EDP) and its F(q) transform and the neutron scattering length density profile (NSLDP) and its F(q) transform. These four functions are displayed graphically and can be exported.
+
+3) Input experimental F(q) transforms for graphical comparison with the simulations. Also, input EDP and NSLDP from experimental determinations and compare graphically with the simulations.
+
+4) Allow the lipid molecule to be parsed into different component groups and calculate the component volumes following Petrache et al. BJ 72, 2237-2242 (1997). Calculate and display the volume probability profiles (VPP).
+
+After installation, described in Section II, the new user should follow the demonstration in Section III that uses data files supplied in the program package. Section IV explains how to create data files for new simulations and Section V reveals some useful tips and tricks.
+
+
+################
+II. Installation
+################
+
+1. Copy the SIMtoEXP.tgz package and unpack it, or download the SIMtoEXP directory that is ready for use. Extract the files and proceed to the <bin> directory. These files can be accessed at the following site:
+ftp://ftp.norbbi.com/
+username: u49582806-SIMtoEXP
+password: SIMtoEXP
+
+2. Program runs from executable file SIMtoEXP.exe (./SIMtoEXP on unix machines) and requires to have also ‘tcl’ directory. Note that only windows version is provided as a stand-alone package, while other two executables require X-windows framework and Tcl/Tk v8.4 with Blt extension to be installed (e.g. through MacPorts or Fink on Mac OS, and yum on Linux distros).
+
+3. Upon startup a main window appears that contains three parts:
+
+i) A graph with tabs that allow one to switch between the graphs of electron density, neutron scattering length density, x-ray and neutron form factors, and number and volume probability distributions,
+
+ii) entries for the calculation of Fourier transforms (form factors), and for the scaling procedure,
+
+iii) information on up to 10 different component groups that the program can handle.
+
+
+################
+III. Graphical User Interface (GUI): A demonstration
+################
+
+1. Load a simulation file: GUI-->File-->OpenSIM-->test/DOPC67p5.sim
+On the GUI, click on Electron Densities or Neutron SL Densities tabs for the corresponding graphs.
+Read the values of the electron density and the neutron scattering length density in the water region and enter these values on the GUI in the ED_wat and NSLD_wat boxes, respectively.
+
+2. Calculate F(q) transforms:
+On the left hand side of the GUI, click on Fourier Transform button. The F(q)’s can now be seen in the X-ray FFs and Neutron FFs tabs. The adjacent checkbox allows one to symmetrize the simulation (if not done apriori) and calculate the corresponding F(q)’s (effectively using a cosine part of transform only).
+
+3. Load experimental scattering form factors F(q): GUI-->File-->OpenEXPx-->SAM1 to SAM5
+This loads various x-ray data (e.g., from unilamellar vesicles (test/DOPCexpXulv.xff) and/or oriented data (test/DOPCexpXori.xff)) in the X-ray FFs window, and GUI-->File-->OpenEXPn-->SAM1 to SAM5 loads various neutron data (e.g., from unilamellar vesicles (test/DOPCexpNulv.nff )) in the neutron FFs window. Each set of data is scaled independently to provide the best fit to the simulation. 
+
+4. The scaling factors for the experimental data are shown in the GUI. If desired, the scaling factors may be changed manually, followed by the enter key. The CHI^2 boxes report the sum of mean square deviations divided by the number of experimental points. To return to the best fitted scale factor click the ‘scale’ button.
+
+5. Load an experimentally determined profile: GUI-->File-->OpenEDP-->test/DOPC30edp.edp
+This compares a different EDP to the loaded simulation, while GUI-->File-->OpenNSLD-->DOPC30nsld.nsld compares a different NSLD profile to the same simulation.
+
+6. Load a space filling volumetric model: GUI-->File-->OpenCMP-->test/DOPC_SDP.cmp
+The Group column in the GUI gives a shorthand description for the particular choice of parsing into component groups that is used in the SDP model. Other parsings may be considered by creating different *.cmp files.
+The number densities for these component groups can be seen using the Number Densities tab. The contributions of each group to the electron density and neutron scattering length density can also be seen in their respective graphs. The nAtom column gives the total number of atoms/lipid in all the groups of that type (except for water), the ‘nAtom/gr’ column gives the number of atoms in each individual group type, and the ‘ngr’ column is the number of groups/lipid (except for water). The NumEl/gr gives the number of electrons and NeutSL/gr gives the neutron scattering length per group type.
+
+7. Calculate the component volumes:
+On the bottom left hand side of the GUI, left click on Calculate Volumes. Volumes in cubic Angstroms will appear in the ‘Volume/gr’ column. Click on ‘Volume Probabilities’ to see the VP profiles for the components. Deviations of the total probability from unity appear in graph as the black line and the GUI shows ‘rms’ number which is sqrt(sum((total-1)^2)/(Npoint-Ncomp)).
+
+8. Combine volume probabilities of various components:
+Open Analysis window (GUI-->Tools-->Analysis). Combine existing volume probabilities by entering their names (case sensitive; e.g. CH, CH2, CH3) into the column on left hand side, and click on ‘Combine Components’ button (or hit Enter with the cursor in one of the lines). A new distribution ‘combine’ appears in the graph of Volume Probabilities.
+
+9. Calculate the Gibb’s dividing surface:
+The Gibb’s dividing surface can be calculated for the combined distribution by providing the range of evaluation (e.g. -25 to -5) and the distribution’s direction of the increase (i.e. +1 is for a distribution increasing from 0 to 1 (current example in the range -25 to -5) while -1 is for a distribution decreasing from 1 to 0 (current example in the range 5 to 25)). Note that the distribution must take values from 0 to 1 (or 1 to 0) for the meaningful evaluation. Also note that Z values (of the entire simulation) must be ordered in ascending order, which can be manipulated by Zdirection if needed (see the Tips and Tricks below).
+
+10. Define scattering lengths: GUI-->Tools-->Scattering Lengths
+This allows user to input number of electrons and/or neutron scattering lengths for each atom type. It is also possible to define new atom types here. Note, that the number of electrons for each atom type is calculated automatically when using the atomic form factor correction, as well as it is automatically scaled by atomic partial charges when that option is chosen.
+
+11. Define parameters for atomic form factor correction: GUI-->Tools-->Atomic Form Factors
+This allows user toc input parameters for the calculation of atomic form factor correction for the x-ray Fourier transform; the default input parameters are from International Tables for Crystallography, Vol 6 (2006), Chapter 6.  http://xrpp.iucr.org/Cb/ch6o1v0001/. Note the two checkboxes that allow to turn on and off the use of atomic form factor correction and partial charges correction globally. If you do not supply partial charges in the .sim file, the default charges are used whether the partial charges box is checked or not. (The default choices for the parameters can be altered in init.tcl. The current default parameters for united atoms CH2, CH and CH3 were devised from reasonable combinations of the individual atoms.)
+
+12. Export various data files: GUI-->Tools-->Export
+Extensions are xff=x-ray form factors, nff=neutron form factors, edp=electron density profiles , nsld=neutron scattering length density profiles, otp=output parameters of volumetric fit, vpp=volume probability profiles, sim=number densities.
+
+13. Print out various graphs: GUI-->File-->Print
+This exports various graphs into the postscript file out.ps.
+
+14. Manipulate the axis: GUI-->Axis
+‘show more x/y’ expands x/y axis by 10% on each end,
+‘show all’ sets the axis automatically to show all the data points.
+
+15. Locate the crosshairs on the GUI and left click. The top right of the GUI gives x and y values.
+
+16. You can zoom by locating the crosshairs, hold down the Ctrl key, drag the mouse to outline a dashed zoom box and then left click. To unzoom, Ctrl right click.
+
+17. Left clicking on the graph elements in the legend to the right of the GUI toggles them. Right clicking reorders which curve appears ‘on top’ in the display. Ctrl+Left click removes the curve from the graph.
+
+18. Access help files: GUI-->Help
+
+19. For additional examples, the current test directory contains:
+
+i) Three DOPC_x.cmp files, where x=H2, HB or SDP corresponding to different space filling models with different grouping of the atoms in DOPC.
+
+ii) Two constant area (A=67.5 and 72.4 A2) CHARMM27 simulation files, DOPC67p5.sim and DOPC72p4.sim provided by Sachs, Perlmutter and Feller.
+
+iii) One neutron F(q) data file and two X-ray F(q) data files as named in item 3 above.
+
+iv) One model electron density profile, DOPC30edp.edp and one model neutron scattering length density profile, DOPC30nsld.nsld obtained from experimental data using the SDP modeling program (Kucerka et al., BJ 95, 2356-2367 (2008)).
+
+
+################
+IV. Setup for a new simulation; creating the *.sim and *.cmp files
+################
+
+################
+A. *.sim file
+################
+
+1. The *.sim file contains the number density profiles of all the atoms (up to 999), including the three atoms in water. The first column of this file contains the values of the z locations of the discrete bins into which the atoms may fall. The bin size should be chosen commensurate with the statistics of the simulation. A good long simulation with lots of statistically independent snapshots should have sufficient statistics that the bin size can be chosen to be about 0.2 A and still provide smooth profiles.
+
+2. This file may begin with comments (##) that help the user/creator to remember details of the simulation from which the data were taken. Such a header may contain also commands (#) to set some parameters, which is however obsolete and done through the GUI.
+
+3. The first row after optional ## comments and # commands shows the name you give to each atom. It is required for automatically computing the ED and NSLD that the name of each atom begins with its (case insensitive) atomic type, C,N,O,P,H for common atoms, D for deuterium, and for united atoms T = CH3, M = CH2, B=CH, W = H2O and V = D2O. Other atoms/groups may be defined by the user (up to 6 additional atoms) in the “GUI-->Tools-->Scatt. Lengths” window. Such a definition should comprise an identifier, number of electrons (nEL) and neutron scattering length density (NSLD). The naming conventions for atoms that are used in the test/*.sim and test/*.cmp files are recommended, but not required. The end of each name identifies the two chains (c1 and c2) or the headgroup (h). The first number gives the ‘distance’ from the lipid backbone and different hydrogens have letters like a, b or c. For example, h16bc2 is the ‘second’ hydrogen (b) bonded to the 16th carbon in the sn-2 chain (c2). The file dopc_schematic.txt gives a diagram for this particular naming convention.
+
+4. SIMtoEXP includes atomic form factor correction in the calculation of x-ray form factors; the parameters for the most used atoms is provided in “GUI-->Tools-->Atomic Form Factors” window. User must provide similar parameters for all additionally defined atoms. If not known, it is required that number of electrons is entered as c parameter in Atomic Form Factors window. 
+
+5. SIMtoEXP also allows the user to include partial charges correction in the calculation of x-ray form factors; any row located further down and starting with the word “partial” gives the partial charge for each atom underneath the atomic name. The actual number of electrons and atomic form factors are then corrected by factor (nEL+partialCharge)/nEL (i.e. partialCharge=0 means no correction).
+
+6. Either spaces or tabs can separate the entries in each row, although spaces are preferred for a different program. Also, empty lines throughout the files are ignored by the program.
+
+7. The number density data in the *.sim file should be normalized as follows. The bin step size times the area of the simulation snapshot being analyzed defines a volume Vslab. Count the number N of atoms of a particular type within the slab at position z (histograms), divide by Vslab, and enter the resulting ND(z) in the *.sim file. For example, the test/*.sim files give the ND of water in the bulk water region to be about 0.0335 corresponding to a water volume of 29.824 A3.
+Note: if your water model density does not match experiment you may (and should) consider scaling the number densities of the water atoms in your *.sim file to agree with the experimental values.
+
+8. For good statistics, many simulations should be averaged. For constant surface pressure simulations, Vslab will be different for different snapshots because total A will be different, but step size must be the same. For non-periodic boundary conditions, the analysis box should be drawn within any boundaries that may intrude, which means that it should be well inside the simulation box to avoid any edge effects while comprising all atoms of the bilayer.
+
+9. Corrections to center the bilayer and remove undulations, if necessary, should be made before creating a *.sim file.
+
+################
+B. *.cmp file
+################
+
+1. The component groups are defined in *.cmp files and this file also includes other information about how the program interprets the *.sim file, as well as allowing comments at the beginning.
+
+2. The first column (after optional comments) of the *.cmp table provides a name for each component group. The second column is the number of ‘primitive’ atoms in each group (corresponding to the ‘nAt/group’ column on the GUI). The list of all atoms then follows in the *.cmp table. Same names of the atoms in the *.sim file must be used in the *.cmp file that groups the atoms into components.
+
+3. Opening the *.cmp file in the GUI shows the component group names in the first GUI column and the program supplies numbers for the next five columns. The numbers in boxes with white background may be overwritten to allow the user to change the normalization factor, i.e. the number of primitive atoms per group nAt/group. Note, that the numbers of electrons and neutron scattering lengths are calculated based on inputs from “Scattering Lengths” window. Further, numbers of electrons are obtained automatically from “Atomic Form Factors” window when using atomic form factor correction.
+
+
+################
+V. Tips and Tricks
+################
+
+1. The Z axis of simulated profile can be shifted and flipped for the off-centre simulations or those whose Z values are arranged in descending order. This can be done by providing ‘Zcentre’ (central Z) and ‘Zdirection’ (direction of Z) in the *.sim file:
+“# set Zcentre 0.0” where 0 is a default value
+“# set Zdirection +1” where +1 corresponds to the default, ascending order.
+Alternatively, this input information appears also in the (GUI-->Tools-->)Simulation Specifics window.
+Note that Zdirection may also be used to rescale the Z axis, e.g. transforming units between Angstroems and nm.
+
+2. The program can handle either number densities (default) or histograms. For the histogram option, additional simulation specific parameters need to be provided in the *.sim file:
+“# set norm 0” indicates that the *.sim file contains not-normalized number histograms,
+“# set area 67.5” gives the average area/lipid at which the simulation was performed, and
+“# set Nlip 288” gives the number of lipids in the simulation.
+Alternatively, this input information appears also in the (GUI-->Tools-->)Simulation Specifics window. Area value should be the average area in a fixed surface tension simulation, but it should be recognized that this does not give exactly the same results as averaging the number densities.
+Note, that this option is offered as a convenience in case area was not recorded for each snapshot in the simulation, while the use of number densities is a preferred option.
+
+3. Right click of the Calculate Volumes button shows number densities grouped according to *.cmp file and as entered from the *.sim file (not normalized per number of group’s primitive atoms).
+ 
+4. Incomplete and/or overloaded space filling volumetric model can be loaded into SIMtoEXP software (i.e., model that does not comprise all of the atoms and/or uses some atoms in several component groups). However, such a model cannot be used to calculate component volumes, and is useful only for displaying partial distributions of atoms/groups. The warning messages will pop up for such models.
+
+5. In the frame with all the scaling information (bottom left), click on the ‘scale’ button to (re) scale all the loaded experimental files at once, or click on any of the ‘SAM#’ text to (re) scale only that particular datum.
+
+6. ‘Alt-arrow’ combination moves graph scales in the direction of the arrow.
+
+7. Various components of space filling models are color coded for easy association between the table and distribution curves.
+
+8. Experimental form factors loaded for the comparison with simulated form factors are color coded. Note that color codes for X-ray samples and neutron samples may differ and are independent of each other.
+
+9. Margins delimiter can be used to restrict calculation (Fourier transform, and volume determination) to a specific z range marked by the two blue vertical lines. The position of lower margin can be controlled by ‘Ctrl-arrow’ (left or right), and key combination ‘Shift-Ctrl-arrow’ controls the position of higher limit margin.
+
+10. The software currently uses atomic number to assign the number of electrons and does account also for partial charges. Nevertheless, this option is not really necessary. While partial charges are important in running an MD simulation, the EDP is hardly affected by approximating them with atomic number charges because the net local charge is the same in both cases. For example, the charge on the phosphate PO4 is the same even though the partial charges on the phosphorous and the oxygens differ from the atomic number charges. Moreover, such a difference affects Angstrom level resolution in the EDP which only affects data at higher q values than are observable experimentally because of the smearing of the ED by the intrinsic disorder in fluid phase bilayers.
+
+
+################
+VI. Definitions
+################
+
+FF - scattering form factors
+nAtom - number of atoms in a component (part of model definition)
+nAt/group - number of primitive atoms per group
+ngr - number of groups in a component
+NumEl/gr - number of electrons per group
+NeutSL/gr - neutron scattering length per group
+Volume/gr - volume in cubic Angstrom per group
+SDP - scattering density profile
+ND - number density
+ED - electron density
+NSLD - neutron scattering length density
+VP - volume probability
+
+
+################
+VII. Test case
+################
+
+Following is some output from one of the /test examples (DOPC_SDP.cmp and DOPC67p5.sim):
+The Calculate Volumes results are:
+Group		Volume[A^3] fix
+CholCH3	81.351	(free)
+PCN		86.267	(free)
+CG		149.98	(free)
+CH2		27.791	(free)
+CH		22.072	(free)
+CH3		54.270	(free)
+WATER		29.824	(free)
+rms = 0.003099
+
+
+################
+VIII. Further notes
+################
+
+The volumetric part of SIMtoEXP will give poor results when (i) two defined components have very similar distributions (this was noted by Petrache et al. BJ 72, 2237-2242 (1997), where the total volume of phosphate and choline could be obtained robustly, but the individual volumes could not) and (ii) when, more generally, the distribution functions of one component is a nearly linear combination of several others. Case (ii) has occurred when analyzing a mixture (courtesy of Venable and Pastor).
+
+
+Acknowledgement:
+
+We thank Jonathan Sachs, Jason Perlmutter and Scott Feller for providing CHARMM27 simulations for DOPC used during the development of SIMtoEXP software. Other simulators (in alphabetical order) that provided their simulations to include as test files:
+Anthony Braun / Jonathan Sachs
+Bryan Holland / Bruno Tomberli
+
+
+For the future:
+1. Compare two simulations on GUI instead of having to export files to another graphic editor.
+2. Many additional experimental data files should be made available to users.

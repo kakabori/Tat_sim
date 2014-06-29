@@ -1,0 +1,16 @@
+files
+
+# data files 
+dopc.dat 
+tat2_0.dat
+tat4_0.dat 
+
+# gnuplot script . Simply run gnuplot dopc.gp , you will get the fitted plot. Gnuplot has a inbuilt function to do linear regression 
+dopc.gp
+tat2.gp
+tat4.gp
+
+# fitted plot 
+dopc.eps
+tat2_0.eps
+tat4_0.eps

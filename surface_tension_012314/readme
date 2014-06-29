@@ -1,0 +1,5 @@
+files:
+dopc.dat  : area - surface tension data of pure dopc  
+tat2_0.dat : area - surface tension data of dopc + 2 tats , tats are 1.8 nm away 
+tat4_0.dat :  area - surface tension data of dopc + 4 tats  , tats are 1.8 nm away 
+surf.eps   : summary of suface tension. I use linear regression from gnuplot to get the error bar 

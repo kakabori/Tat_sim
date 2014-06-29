@@ -1,0 +1,15 @@
+CPP = g++
+CPPFLAGS = -O2 -Wall -I/opt/local/include
+CPPLINK = -L/opt/local/lib -ltcl -ltk -lBLT
+OBJ =	analaysis.o fourier.o volumes.o scaling.o output.o input.o SIMtoEXP.o
+
+
+SIMtoEXP:	$(OBJ) SIMtoEXP.h
+		$(CPP) $(OBJ) $(CPPFLAGS) $(CPPLINK) -o ../$@.mac
+
+
+clean: 
+	rm -f *.o core *~ a.out
+
+%.o:	%.cpp
+	$(CPP) -c $(CPPFLAGS) $<

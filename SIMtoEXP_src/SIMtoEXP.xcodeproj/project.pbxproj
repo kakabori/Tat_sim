@@ -1,0 +1,306 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 44;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		081B12701456439100ED7705 /* analysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 081B125F1456439100ED7705 /* analysis.cpp */; };
+		081B12711456439100ED7705 /* SIMtoEXP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 081B12611456439100ED7705 /* SIMtoEXP.cpp */; };
+		081B12721456439100ED7705 /* input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 081B12631456439100ED7705 /* input.cpp */; };
+		081B12731456439100ED7705 /* fourier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 081B12661456439100ED7705 /* fourier.cpp */; };
+		081B12741456439100ED7705 /* volumes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 081B12671456439100ED7705 /* volumes.cpp */; };
+		081B12751456439100ED7705 /* scaling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 081B12691456439100ED7705 /* scaling.cpp */; };
+		081B12761456439100ED7705 /* output.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 081B126A1456439100ED7705 /* output.cpp */; };
+		08C68653104B14FB00D432DD /* libBLT.2.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 08C68650104B14FB00D432DD /* libBLT.2.4.dylib */; };
+		08C68654104B14FB00D432DD /* libtcl8.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 08C68651104B14FB00D432DD /* libtcl8.4.dylib */; };
+		08C68655104B14FB00D432DD /* libtk8.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 08C68652104B14FB00D432DD /* libtk8.4.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8DD76F690486A84900D96B5E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		081B1256145642DF00ED7705 /* Manual.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Manual.txt; path = ../tcl/Manual.txt; sourceTree = SOURCE_ROOT; };
+		081B1257145642DF00ED7705 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ReadMe.txt; path = ../tcl/ReadMe.txt; sourceTree = SOURCE_ROOT; };
+		081B1258145642DF00ED7705 /* SIMtoEXP.tcl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SIMtoEXP.tcl; path = ../tcl/SIMtoEXP.tcl; sourceTree = SOURCE_ROOT; };
+		081B1259145642DF00ED7705 /* init.tcl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = init.tcl; path = ../tcl/init.tcl; sourceTree = SOURCE_ROOT; };
+		081B125A145642DF00ED7705 /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = License.txt; path = ../tcl/License.txt; sourceTree = SOURCE_ROOT; };
+		081B125B145642DF00ED7705 /* About.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = About.txt; path = ../tcl/About.txt; sourceTree = SOURCE_ROOT; };
+		081B125C145642DF00ED7705 /* License.blt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = License.blt; path = ../tcl/License.blt; sourceTree = SOURCE_ROOT; };
+		081B125D145642DF00ED7705 /* License.tcl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = License.tcl; path = ../tcl/License.tcl; sourceTree = SOURCE_ROOT; };
+		081B125E145642DF00ED7705 /* License.tk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = License.tk; path = ../tcl/License.tk; sourceTree = SOURCE_ROOT; };
+		081B125F1456439100ED7705 /* analysis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = analysis.cpp; sourceTree = "<group>"; };
+		081B12601456439100ED7705 /* analysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = analysis.h; sourceTree = "<group>"; };
+		081B12611456439100ED7705 /* SIMtoEXP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SIMtoEXP.cpp; sourceTree = "<group>"; };
+		081B12621456439100ED7705 /* SIMtoEXP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIMtoEXP.h; sourceTree = "<group>"; };
+		081B12631456439100ED7705 /* input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = input.cpp; sourceTree = "<group>"; };
+		081B12641456439100ED7705 /* input.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input.h; sourceTree = "<group>"; };
+		081B12651456439100ED7705 /* fourier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fourier.h; sourceTree = "<group>"; };
+		081B12661456439100ED7705 /* fourier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fourier.cpp; sourceTree = "<group>"; };
+		081B12671456439100ED7705 /* volumes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = volumes.cpp; sourceTree = "<group>"; };
+		081B12681456439100ED7705 /* nrutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nrutil.h; sourceTree = "<group>"; };
+		081B12691456439100ED7705 /* scaling.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scaling.cpp; sourceTree = "<group>"; };
+		081B126A1456439100ED7705 /* output.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = output.cpp; sourceTree = "<group>"; };
+		081B126B1456439100ED7705 /* scaling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scaling.h; sourceTree = "<group>"; };
+		081B126C1456439100ED7705 /* volumes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = volumes.h; sourceTree = "<group>"; };
+		081B126D1456439100ED7705 /* output.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = output.h; sourceTree = "<group>"; };
+		081B126E1456439100ED7705 /* nrtypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nrtypes.h; sourceTree = "<group>"; };
+		081B126F1456439100ED7705 /* nr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nr.h; sourceTree = "<group>"; };
+		08C68650104B14FB00D432DD /* libBLT.2.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libBLT.2.4.dylib; path = /opt/local/lib/libBLT.2.4.dylib; sourceTree = "<absolute>"; };
+		08C68651104B14FB00D432DD /* libtcl8.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtcl8.4.dylib; path = /opt/local/lib/libtcl8.4.dylib; sourceTree = "<absolute>"; };
+		08C68652104B14FB00D432DD /* libtk8.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtk8.4.dylib; path = /opt/local/lib/libtk8.4.dylib; sourceTree = "<absolute>"; };
+		08DB5CDB0FDDFBF400CA85E0 /* SIMtoEXP */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SIMtoEXP; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DD76F660486A84900D96B5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08C68653104B14FB00D432DD /* libBLT.2.4.dylib in Frameworks */,
+				08C68654104B14FB00D432DD /* libtcl8.4.dylib in Frameworks */,
+				08C68655104B14FB00D432DD /* libtk8.4.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* ULVs */ = {
+			isa = PBXGroup;
+			children = (
+				08C68650104B14FB00D432DD /* libBLT.2.4.dylib */,
+				08C68651104B14FB00D432DD /* libtcl8.4.dylib */,
+				08C68652104B14FB00D432DD /* libtk8.4.dylib */,
+				08FB7795FE84155DC02AAC07 /* Source */,
+				C6859E8C029090F304C91782 /* TclTk */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = ULVs;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				081B125F1456439100ED7705 /* analysis.cpp */,
+				081B12601456439100ED7705 /* analysis.h */,
+				081B12611456439100ED7705 /* SIMtoEXP.cpp */,
+				081B12621456439100ED7705 /* SIMtoEXP.h */,
+				081B12631456439100ED7705 /* input.cpp */,
+				081B12641456439100ED7705 /* input.h */,
+				081B12651456439100ED7705 /* fourier.h */,
+				081B12661456439100ED7705 /* fourier.cpp */,
+				081B12671456439100ED7705 /* volumes.cpp */,
+				081B12681456439100ED7705 /* nrutil.h */,
+				081B12691456439100ED7705 /* scaling.cpp */,
+				081B126A1456439100ED7705 /* output.cpp */,
+				081B126B1456439100ED7705 /* scaling.h */,
+				081B126C1456439100ED7705 /* volumes.h */,
+				081B126D1456439100ED7705 /* output.h */,
+				081B126E1456439100ED7705 /* nrtypes.h */,
+				081B126F1456439100ED7705 /* nr.h */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				08DB5CDB0FDDFBF400CA85E0 /* SIMtoEXP */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6859E8C029090F304C91782 /* TclTk */ = {
+			isa = PBXGroup;
+			children = (
+				081B1256145642DF00ED7705 /* Manual.txt */,
+				081B1257145642DF00ED7705 /* ReadMe.txt */,
+				081B1258145642DF00ED7705 /* SIMtoEXP.tcl */,
+				081B1259145642DF00ED7705 /* init.tcl */,
+				081B125A145642DF00ED7705 /* License.txt */,
+				081B125B145642DF00ED7705 /* About.txt */,
+				081B125C145642DF00ED7705 /* License.blt */,
+				081B125D145642DF00ED7705 /* License.tcl */,
+				081B125E145642DF00ED7705 /* License.tk */,
+			);
+			name = TclTk;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8DD76F620486A84900D96B5E /* SIMtoEXP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "SIMtoEXP" */;
+			buildPhases = (
+				8DD76F640486A84900D96B5E /* Sources */,
+				8DD76F660486A84900D96B5E /* Frameworks */,
+				8DD76F690486A84900D96B5E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SIMtoEXP;
+			productInstallPath = "$(HOME)/bin";
+			productName = ULVs;
+			productReference = 08DB5CDB0FDDFBF400CA85E0 /* SIMtoEXP */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "SIMtoEXP" */;
+			compatibilityVersion = "Xcode 3.0";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 08FB7794FE84155DC02AAC07 /* ULVs */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8DD76F620486A84900D96B5E /* SIMtoEXP */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DD76F640486A84900D96B5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				081B12701456439100ED7705 /* analysis.cpp in Sources */,
+				081B12711456439100ED7705 /* SIMtoEXP.cpp in Sources */,
+				081B12721456439100ED7705 /* input.cpp in Sources */,
+				081B12731456439100ED7705 /* fourier.cpp in Sources */,
+				081B12741456439100ED7705 /* volumes.cpp in Sources */,
+				081B12751456439100ED7705 /* scaling.cpp in Sources */,
+				081B12761456439100ED7705 /* output.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB923208733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/../../";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"_GLIBCXX_DEBUG=1",
+					"_GLIBCXX_DEBUG_PEDANTIC=1",
+				);
+				HEADER_SEARCH_PATHS = "";
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../lib\"",
+					/opt/local/lib,
+				);
+				PRODUCT_NAME = AbsScaling;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		1DEB923308733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/../../";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = NO;
+				DEPLOYMENT_POSTPROCESSING = NO;
+				DSTROOT = "/tmp/$(PROJECT_NAME).dst";
+				EXECUTABLE_EXTENSION = "";
+				GCC_MODEL_TUNING = G5;
+				HEADER_SEARCH_PATHS = /opt/local/include;
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = /opt/local/lib;
+				PRODUCT_NAME = SIMtoEXP;
+			};
+			name = Release;
+		};
+		1DEB923608733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/../";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				PRODUCT_NAME = "";
+			};
+			name = Debug;
+		};
+		1DEB923708733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = i386;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/../";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)";
+				DEPLOYMENT_LOCATION = YES;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				DSTROOT = "/tmp/$(PROJECT_NAME).dst";
+				EXECUTABLE_EXTENSION = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				OBJROOT = "$(SYMROOT)";
+				PREBINDING = NO;
+				PRODUCT_NAME = SIMtoEXP;
+				SYMROOT = build;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "SIMtoEXP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923208733DC60010E9CD /* Debug */,
+				1DEB923308733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "SIMtoEXP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923608733DC60010E9CD /* Debug */,
+				1DEB923708733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

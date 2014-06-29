@@ -1,0 +1,11 @@
+explain the column meaning:
+
+Frame : each snapshot
+==========
+tat(nm) : z position of the geometric center of tat 
+Pclose(nm): phosphates that within 0.9 nm of the geometric ceter of tat in 2D and on the Tat side . The average z position of those phosphates. 
+Num : number of phosphates in Pclose
+PFar(nm): phosphates that within 0.9 nm of the geometric ceter of tat in 2D and on the opposite of the Tat side . The average z position of those phosphates. 
+Num : number of phosphates in PFar
+===========
+repeat above for the next tat.... 
