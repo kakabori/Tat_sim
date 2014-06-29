@@ -1,0 +1,33 @@
+In Windows, open this file with Notepad++.
+Some useful Origin 8 scripts are recorded here
+
+===================
+reverse_columns.ogs
+Useful for dealing with sim files. Use this to symmetrize an EDP
+===================
+// It is assumed that we are dealing with consecutive columns and rows
+// Each row starts from row 1 and ends at row $(nrow).
+nrow = 70; // number of rows
+ncol = 8; // number of columns
+first_col = 2; // the first column
+loop (ii, 2, first_col+$(ncol)-1) {
+  loop (jj, 1, $(nrow)) {
+    cell($(jj),$(ii)+$(ncol)) = (cell($(nrow)+1-$(jj),$(ii)) + cell($(jj),$(ii))) / 2
+  }
+};
+
+====================
+normalized_by_e-.ogs
+Useful for dealing with sim files. Use this to normalize EDP by number of
+electons included in each component group. r is the Lipid:Tat ratio.
+====================
+r = 32; // DOPC/Tat ratio
+wcol(2) /= 49; // Ch
+wcol(3) /= 48; // Ph
+wcol(4) /= 67; // CG
+wcol(5) /= (838/r); // Tat
+wcol(6) /= (186/r); // ARG+
+wcol(7) /= (18/r); // LYS+
+wcol(8) /= (504/r); // ARG
+wcol(9) /= (140/r); // LYS
+

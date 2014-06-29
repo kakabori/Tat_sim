@@ -1,0 +1,30 @@
+System:
+	lipid/Tat  at 310 k 
+	Force field is Slipids force field for DOPC and amber force field for Tat. 
+	Both force fields are all-atom fields similar to charmm but claim to have better agreement in form factors than charmm.
+	--:--      :  128 DOPC lipids, pure dopc bilayer 
+	62:1       :  128 DOPC , 2 Tats, one Tat on each side of bilayer, 16 CL
+	28:1       :  128 DOPC , 4 Tats, two Tats on each side of bilayer, 32 CL
+	16:1       :  haven't got data yet. 
+
+
+File contents:
+	
+	======= sim files with proper header =======	
+	dopc.kiyo.sim
+	dopc-tat2.kiyo.sim
+	dopc-tat4.kiyo.sim  
+	
+	======= form factor I calculated =========
+	dopc.xff
+	dopc-tat2.xff
+	dopc-tat4.xff
+
+	======= headers in sim files are obtained from the names in Model.txt =====
+	dopcModel.txt
+	hivTatModel.txt
+
+Comments
+	1. I included CL density in the sim file. I don't know if it is a proper way to do. You can take the last colum (which corresponds to CL ) in sim file out to see if it affects form factors. 
+	2. The Tat model I choose has charged ends ( that's normally the case for experiments  ). Please check if your Tat in experiment has charged ends too. 
+	

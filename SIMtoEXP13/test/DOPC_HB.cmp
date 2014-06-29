@@ -1,0 +1,9 @@
+#################################################################################
+##
+## HB model [Wiener et al., BJ 55 (1989) 315-325] is defined as follows:
+##
+PC	24	ph op1h op2h op3h op4h c4h h4ah h4bh c5h h5ah h5bh nh c6h h6ah h6bh h6ch c7h h7ah h7bh h7ch c8h h8ah h8bh h8ch
+CG	14	c1c1 o1c1 o1h c1h h1ah h1bh c1c2 o1c2 o2h c2h h2ah c3h h3ah h3bh
+CH2like	2.875	c2c1 h2ac1 h2bc1 c3c1 h3ac1 h3bc1 c4c1 h4ac1 h4bc1 c5c1 h5ac1 h5bc1 c6c1 h6ac1 h6bc1 c7c1 h7ac1 h7bc1 c8c1 h8ac1 h8bc1 c11c1 h11ac1 h11bc1 c12c1 h12ac1 h12bc1 c13c1 h13ac1 h13bc1 c14c1 h14ac1 h14bc1 c15c1 h15ac1 h15bc1 c16c1 h16ac1 h16bc1 c17c1 h17ac1 h17bc1 c2c2 h2ac2 h2bc2 c3c2 h3ac2 h3bc2 c4c2 h4ac2 h4bc2 c5c2 h5ac2 h5bc2 c6c2 h6ac2 h6bc2 c7c2 h7ac2 h7bc2 c8c2 h8ac2 h8bc2 c11c2 h11ac2 h11bc2 c12c2 h12ac2 h12bc2 c13c2 h13ac2 h13bc2 c14c2 h14ac2 h14bc2 c15c2 h15ac2 h15bc2 c16c2 h16ac2 h16bc2 c17c2 h17ac2 h17bc2 c9c1 c10c1 h9ac1 h10ac1 c9c2 c10c2 h9ac2 h10ac2
+CH3	4	c18c1 h18ac1 h18bc1 h18cc1 c18c2 h18ac2 h18bc2 h18cc2
+WATER	3	oh2water d1water d2water

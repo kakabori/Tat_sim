@@ -1,0 +1,6 @@
+Sim files for 2-Tat and 4-Tat systems with Tat constained at 0.5 nm away from bilayer center. 
+Name convention is the same as before. 
+dopc-tat[2 or 4]  --> 2 or 4 tat syste
+    -a70   --> area per lipid at 70 
+	-6     --> 0.5 away from bilayer center
+	.kiyo.sim

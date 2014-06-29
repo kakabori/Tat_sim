@@ -1,0 +1,3443 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 72 295 540 500
+%%Pages: 0
+%%Creator: (BLT 2.4 Graph)
+%%CreationDate: (Thu Feb  7 15:45:52 2013)
+%%Title: (out.ps)
+%%DocumentData: Clean7Bit
+%%Orientation: Portrait
+%%DocumentNeededResources: font Helvetica Courier
+%%EndComments
+
+
+% including file "Z:/home/kiyo/Link to My Documents/SIMtoEXP12NK/lib/blt2.4/bltGraph.pro"
+
+%%BeginProlog
+%
+% PostScript prolog file of the BLT graph widget.
+%
+% Copyright 1989-1992 Regents of the University of California.
+% Permission to use, copy, modify, and distribute this
+% software and its documentation for any purpose and without
+% fee is hereby granted, provided that the above copyright
+% notice appear in all copies.  The University of California
+% makes no representations about the suitability of this
+% software for any purpose.  It is provided "as is" without
+% express or implied warranty.
+%
+% Copyright 1991-1997 Bell Labs Innovations for Lucent Technologies.
+%
+% Permission to use, copy, modify, and distribute this software and its
+% documentation for any purpose and without fee is hereby granted, provided
+% that the above copyright notice appear in all copies and that both that the
+% copyright notice and warranty disclaimer appear in supporting documentation,
+% and that the names of Lucent Technologies any of their entities not be used
+% in advertising or publicity pertaining to distribution of the software
+% without specific, written prior permission.
+%
+% Lucent Technologies disclaims all warranties with regard to this software,
+% including all implied warranties of merchantability and fitness.  In no event
+% shall Lucent Technologies be liable for any special, indirect or
+% consequential damages or any damages whatsoever resulting from loss of use,
+% data or profits, whether in an action of contract, negligence or other
+% tortuous action, arising out of or in connection with the use or performance
+% of this software.
+%
+
+200 dict begin
+
+/BaseRatio 1.3467736870885982 def	% Ratio triangle base / symbol size
+/BgColorProc 0 def			% Background color routine (symbols)
+/DrawSymbolProc 0 def			% Routine to draw symbol outline/fill
+/StippleProc 0 def			% Stipple routine (bar segments)
+/DashesProc 0 def			% Dashes routine (line segments)
+  
+% Define the array ISOLatin1Encoding (which specifies how characters are 
+% encoded for ISO-8859-1 fonts), if it isn't already present (Postscript 
+% level 2 is supposed to define it, but level 1 doesn't). 
+ 
+systemdict /ISOLatin1Encoding known not { 
+  /ISOLatin1Encoding [ 
+    /space /space /space /space /space /space /space /space 
+    /space /space /space /space /space /space /space /space 
+    /space /space /space /space /space /space /space /space 
+    /space /space /space /space /space /space /space /space 
+    /space /exclam /quotedbl /numbersign /dollar /percent /ampersand 
+    /quoteright 
+    /parenleft /parenright /asterisk /plus /comma /minus /period /slash 
+    /zero /one /two /three /four /five /six /seven 
+    /eight /nine /colon /semicolon /less /equal /greater /question 
+    /at /A /B /C /D /E /F /G 
+    /H /I /J /K /L /M /N /O 
+    /P /Q /R /S /T /U /V /W 
+    /X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore 
+    /quoteleft /a /b /c /d /e /f /g 
+    /h /i /j /k /l /m /n /o 
+    /p /q /r /s /t /u /v /w 
+    /x /y /z /braceleft /bar /braceright /asciitilde /space 
+    /space /space /space /space /space /space /space /space 
+    /space /space /space /space /space /space /space /space 
+    /dotlessi /grave /acute /circumflex /tilde /macron /breve /dotaccent 
+    /dieresis /space /ring /cedilla /space /hungarumlaut /ogonek /caron 
+    /space /exclamdown /cent /sterling /currency /yen /brokenbar /section 
+    /dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen 
+    /registered /macron 
+    /degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph 
+    /periodcentered 
+    /cedillar /onesuperior /ordmasculine /guillemotright /onequarter 
+    /onehalf /threequarters /questiondown 
+    /Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla 
+    /Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex 
+    /Idieresis 
+    /Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply 
+    /Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn 
+    /germandbls 
+    /agrave /aacute /acircumflex /atilde /adieresis /aring /ae /ccedilla 
+    /egrave /eacute /ecircumflex /edieresis /igrave /iacute /icircumflex 
+    /idieresis 
+    /eth /ntilde /ograve /oacute /ocircumflex /otilde /odieresis /divide 
+    /oslash /ugrave /uacute /ucircumflex /udieresis /yacute /thorn 
+    /ydieresis 
+  ] def 
+} if 
+
+% font ISOEncode font 
+% This procedure changes the encoding of a font from the default 
+% Postscript encoding to ISOLatin1.  It is typically invoked just 
+% before invoking "setfont".  The body of this procedure comes from 
+% Section 5.6.1 of the Postscript book. 
+
+/ISOEncode { 
+  dup length dict
+  begin 
+    {1 index /FID ne {def} {pop pop} ifelse} forall 
+    /Encoding ISOLatin1Encoding def 
+    currentdict 
+  end 
+
+  % I'm not sure why it's necessary to use "definefont" on this new 
+  % font, but it seems to be important; just use the name "Temporary" 
+  % for the font. 
+
+  /Temporary exch definefont 
+} bind def 
+
+/Stroke {
+  gsave
+    stroke
+  grestore
+} def
+
+/Fill {
+  gsave
+    fill
+  grestore
+} def
+
+/SetFont { 	
+  % Stack: pointSize fontName
+  findfont exch scalefont ISOEncode setfont
+} def
+
+/Box {
+  % Stack: x y width height
+  newpath
+  exch 4 2 roll moveto
+  dup 0 rlineto
+  exch 0 exch rlineto
+  neg 0 rlineto
+  closepath
+} def
+
+/SetFgColor {
+  % Stack: red green blue
+  CL 0 eq { 
+    pop pop pop 0 0 0 
+  } if
+  setrgbcolor
+  CL 1 eq { 
+    currentgray setgray 
+  } if
+} def
+
+/SetBgColor {
+  % Stack: red green blue
+  CL 0 eq { 
+    pop pop pop 1 1 1 
+  } if
+  setrgbcolor
+  CL 1 eq { 
+    currentgray setgray 
+  } if
+} def
+
+% The next two definitions are taken from "$tk_library/prolog.ps"
+
+% desiredSize EvenPixels closestSize
+%
+% The procedure below is used for stippling.  Given the optimal size
+% of a dot in a stipple pattern in the current user coordinate system,
+% compute the closest size that is an exact multiple of the device's
+% pixel size.  This allows stipple patterns to be displayed without
+% aliasing effects.
+
+/EvenPixels {
+  % Compute exact number of device pixels per stipple dot.
+  dup 0 matrix currentmatrix dtransform
+  dup mul exch dup mul add sqrt
+
+  % Round to an integer, make sure the number is at least 1, and compute
+  % user coord distance corresponding to this.
+  dup round dup 1 lt {pop 1} if
+  exch div mul
+} bind def
+
+% width height string filled StippleFill --
+%
+% Given a path and other graphics information already set up, this
+% procedure will fill the current path in a stippled fashion.  "String"
+% contains a proper image description of the stipple pattern and
+% "width" and "height" give its dimensions.  If "filled" is true then
+% it means that the area to be stippled is gotten by filling the
+% current path (e.g. the interior of a polygon); if it's false, the
+% area is gotten by stroking the current path (e.g. a wide line).
+% Each stipple dot is assumed to be about one unit across in the
+% current user coordinate system.
+
+% width height string StippleFill --
+%
+% Given a path already set up and a clipping region generated from
+% it, this procedure will fill the clipping region with a stipple
+% pattern.  "String" contains a proper image description of the
+% stipple pattern and "width" and "height" give its dimensions.  Each
+% stipple dot is assumed to be about one unit across in the current
+% user coordinate system.  This procedure trashes the graphics state.
+
+/StippleFill {
+    % The following code is needed to work around a NeWSprint bug.
+
+    /tmpstip 1 index def
+
+    % Change the scaling so that one user unit in user coordinates
+    % corresponds to the size of one stipple dot.
+    1 EvenPixels dup scale
+
+    % Compute the bounding box occupied by the path (which is now
+    % the clipping region), and round the lower coordinates down
+    % to the nearest starting point for the stipple pattern.  Be
+    % careful about negative numbers, since the rounding works
+    % differently on them.
+
+    pathbbox
+    4 2 roll
+    5 index div dup 0 lt {1 sub} if cvi 5 index mul 4 1 roll
+    6 index div dup 0 lt {1 sub} if cvi 6 index mul 3 2 roll
+
+    % Stack now: width height string y1 y2 x1 x2
+    % Below is a doubly-nested for loop to iterate across this area
+    % in units of the stipple pattern size, going up columns then
+    % across rows, blasting out a stipple-pattern-sized rectangle at
+    % each position
+
+    6 index exch {
+	2 index 5 index 3 index {
+	    % Stack now: width height string y1 y2 x y
+
+	    gsave
+	    1 index exch translate
+	    5 index 5 index true matrix tmpstip imagemask
+	    grestore
+	} for
+	pop
+    } for
+    pop pop pop pop pop
+} bind def
+
+
+/LS {	% Stack: x1 y1 x2 y2
+  newpath 4 2 roll moveto lineto stroke
+} def
+
+/EndText {
+  %Stack :
+  grestore
+} def
+
+/BeginText {
+  %Stack :  w h theta centerX centerY
+  gsave
+    % Translate the origin to the center of bounding box and rotate
+    translate neg rotate
+    % Translate back to the origin of the text region
+    -0.5 mul exch -0.5 mul exch translate
+} def
+
+/DrawAdjText {
+  %Stack : str strWidth x y
+  moveto				% Go to the text position
+  exch dup dup 4 2 roll
+
+  % Adjust character widths to get desired overall string width
+  % adjust X = (desired width - real width)/#chars
+
+  stringwidth pop sub exch
+  length div
+  0 3 -1 roll
+
+  % Flip back the scale so that the string is not drawn in reverse
+
+  gsave
+    1 -1 scale
+    ashow
+  grestore
+} def
+
+/DrawBitmap {
+  % Stack: ?bgColorProc? boolean centerX centerY width height theta imageStr
+  gsave
+    6 -2 roll translate			% Translate to center of bounding box
+    4 1 roll neg rotate			% Rotate by theta
+    
+    % Find upperleft corner of bounding box
+    
+    2 copy -.5 mul exch -.5 mul exch translate
+    2 copy scale			% Make pixel unit scale
+    newpath
+    0 0 moveto 0 1 lineto 1 1 lineto 1 0 lineto
+    closepath
+    
+    % Fill rectangle with background color
+    
+    4 -1 roll { 
+      gsave 
+	4 -1 roll exec fill 
+      grestore 
+    } if
+    
+    % Paint the image string into the unit rectangle
+    
+    2 copy true 3 -1 roll 0 0 5 -1 roll 0 0 6 array astore 5 -1 roll
+    imagemask
+  grestore
+} def
+
+% Symbols:
+
+% Skinny-cross
+/Sc {
+  % Stack: x y symbolSize
+  gsave
+    3 -2 roll translate 45 rotate
+    0 0 3 -1 roll Sp
+  grestore
+} def
+
+% Skinny-plus
+/Sp {
+  % Stack: x y symbolSize
+  gsave
+    3 -2 roll translate
+    2 idiv
+    dup 2 copy
+    newpath neg 0 moveto 0 lineto
+    DrawSymbolProc
+    newpath neg 0 exch moveto 0 exch lineto
+    DrawSymbolProc
+  grestore
+} def
+
+% Cross
+/Cr {
+  % Stack: x y symbolSize
+  gsave
+    3 -2 roll translate 45 rotate
+    0 0 3 -1 roll Pl
+  grestore
+} def
+
+% Plus
+/Pl {
+  % Stack: x y symbolSize
+  gsave
+    3 -2 roll translate
+    dup 2 idiv
+    exch 6 idiv
+
+    %
+    %          2   3		The plus/cross symbol is a
+    %				closed polygon of 12 points.
+    %      0   1   4    5	The diagram to the left
+    %           x,y		represents the positions of
+    %     11  10   7    6	the points which are computed
+    %				below.
+    %          9   8
+    %
+
+    newpath
+    2 copy exch neg exch neg moveto dup neg dup lineto
+    2 copy neg exch neg lineto 2 copy exch neg lineto
+    dup dup neg lineto 2 copy neg lineto 2 copy lineto
+    dup dup lineto 2 copy exch lineto 2 copy neg exch lineto
+    dup dup neg exch lineto exch neg exch lineto
+    closepath
+    DrawSymbolProc
+  grestore
+} def
+
+% Circle
+/Ci {
+  % Stack: x y symbolSize
+  gsave
+    3 copy pop
+    moveto newpath
+    2 div 0 360 arc
+    closepath DrawSymbolProc
+  grestore
+} def
+
+% Square
+/Sq {
+  % Stack: x y symbolSize
+  gsave
+    dup dup 2 div dup
+    6 -1 roll exch sub exch
+    5 -1 roll exch sub 4 -2 roll Box
+    DrawSymbolProc
+  grestore
+} def
+
+% Line
+/Li {
+  % Stack: x y symbolSize
+  gsave
+    3 1 roll exch 3 -1 roll 2 div 3 copy
+    newpath
+    sub exch moveto add exch lineto
+    stroke
+  grestore
+} def
+
+% Diamond
+/Di {
+  % Stack: x y symbolSize
+  gsave
+    3 1 roll translate 45 rotate 0 0 3 -1 roll Sq
+  grestore
+} def
+    
+% Triangle
+/Tr {
+  % Stack: x y symbolSize
+  gsave
+    3 -2 roll translate
+    BaseRatio mul 0.5 mul		% Calculate 1/2 base
+    dup 0 exch 30 cos mul		% h1 = height above center point
+    neg					% b2 0 -h1
+    newpath moveto			% point 1;  b2
+    dup 30 sin 30 cos div mul		% h2 = height below center point
+    2 copy lineto			% point 2;  b2 h2
+    exch neg exch lineto		% 
+    closepath
+    DrawSymbolProc
+  grestore
+} def
+
+% Arrow
+/Ar {
+  % Stack: x y symbolSize
+  gsave
+    3 -2 roll translate
+    BaseRatio mul 0.5 mul		% Calculate 1/2 base
+    dup 0 exch 30 cos mul		% h1 = height above center point
+					% b2 0 h1
+    newpath moveto			% point 1;  b2
+    dup 30 sin 30 cos div mul		% h2 = height below center point
+    neg					% -h2 b2
+    2 copy lineto			% point 2;  b2 h2
+    exch neg exch lineto		% 
+    closepath
+    DrawSymbolProc
+  grestore
+} def
+
+% Bitmap
+/Bm {
+  % Stack: x y symbolSize
+  gsave
+    3 1 roll translate pop DrawSymbolProc
+  grestore
+} def
+
+%%EndProlog
+
+%%BeginSetup
+gsave					% Save the graphics state
+
+% Default line/text style parameters
+
+1 setlinewidth				% width
+1 setlinejoin				% join
+0 setlinecap				% cap
+[] 0 setdash				% dashes
+
+/CL 0 def				% Set color level mode
+0 0 0 setrgbcolor			% color
+
+% Transform coordinate system to use X11 coordinates
+
+% 1. Flip y-axis over by reversing the scale,
+% 2. Translate the origin to the other side of the page,
+%    making the origin the upper left corner
+0.75 -0.750656 scale
+0 -1056 translate
+
+% User defined page layout
+
+% Set color level
+/CL 2 def
+
+% Set origin
+96 391 translate
+
+
+% Setting graph scale factor
+ 0.774194 0.774194 scale
+
+%%EndSetup
+
+11 /Helvetica SetFont
+27 6 719 319 Box
+
+1 1 1 SetBgColor
+Fill
+gsave clip
+
+
+% Element "xftpExp0"
+
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  1 0 0 SetBgColor
+  Fill
+  1 0 0 SetFgColor
+  stroke
+} def
+
+188.532 177.194 3 Ci
+189.279 178.956 3 Ci
+190.027 181.972 3 Ci
+190.774 183.471 3 Ci
+191.529 185.465 3 Ci
+192.277 186.789 3 Ci
+193.024 188.258 3 Ci
+193.771 193.675 3 Ci
+194.519 198.682 3 Ci
+195.274 201.114 3 Ci
+196.021 202.825 3 Ci
+196.769 204.499 3 Ci
+197.516 204.629 3 Ci
+198.263 207.418 3 Ci
+199.011 211.217 3 Ci
+199.758 214.745 3 Ci
+200.513 214.419 3 Ci
+201.261 215.876 3 Ci
+202.008 216.665 3 Ci
+202.755 220.913 3 Ci
+203.503 227.121 3 Ci
+204.25 226.823 3 Ci
+204.998 228.117 3 Ci
+205.745 229.86 3 Ci
+206.493 233.731 3 Ci
+207.24 234.643 3 Ci
+207.995 234.135 3 Ci
+208.742 236.768 3 Ci
+209.49 242.456 3 Ci
+210.237 245.075 3 Ci
+210.985 244.635 3 Ci
+211.732 246.377 3 Ci
+212.48 250.124 3 Ci
+213.227 248.65 3 Ci
+213.975 251.211 3 Ci
+214.722 254.665 3 Ci
+215.47 256.155 3 Ci
+216.217 259.538 3 Ci
+216.965 262.491 3 Ci
+217.712 262.552 3 Ci
+218.459 263.104 3 Ci
+219.207 265.308 3 Ci
+219.954 266.863 3 Ci
+220.702 267.15 3 Ci
+221.449 268.43 3 Ci
+222.197 268.806 3 Ci
+222.944 268.733 3 Ci
+223.692 274.196 3 Ci
+224.439 279.52 3 Ci
+225.187 280.003 3 Ci
+225.934 280.79 3 Ci
+226.682 286.799 3 Ci
+227.429 299.464 3 Ci
+228.177 300.221 3 Ci
+228.924 298.599 3 Ci
+229.664 285.902 3 Ci
+230.412 280.152 3 Ci
+231.159 283.467 3 Ci
+231.907 287.358 3 Ci
+232.654 282.227 3 Ci
+233.402 278.876 3 Ci
+234.149 277.486 3 Ci
+234.897 277.467 3 Ci
+235.644 282.452 3 Ci
+236.392 280.626 3 Ci
+237.132 274.145 3 Ci
+237.879 268.746 3 Ci
+238.627 266.696 3 Ci
+239.374 264.297 3 Ci
+240.122 259.353 3 Ci
+240.869 255.451 3 Ci
+241.617 257.58 3 Ci
+242.357 258.184 3 Ci
+243.104 254.916 3 Ci
+243.852 253.468 3 Ci
+244.599 250.961 3 Ci
+245.347 249.654 3 Ci
+246.094 248.477 3 Ci
+246.842 247.894 3 Ci
+247.582 246.132 3 Ci
+248.329 245.412 3 Ci
+249.077 244.633 3 Ci
+249.824 243.492 3 Ci
+250.572 241.294 3 Ci
+251.312 240.437 3 Ci
+252.06 237.61 3 Ci
+252.807 234.882 3 Ci
+253.555 233.216 3 Ci
+254.302 232.71 3 Ci
+255.042 232.71 3 Ci
+255.79 231.312 3 Ci
+256.537 232.385 3 Ci
+257.285 230.225 3 Ci
+258.025 230.575 3 Ci
+258.772 230.969 3 Ci
+259.52 229.345 3 Ci
+260.267 227.65 3 Ci
+261.008 227.503 3 Ci
+261.755 228.526 3 Ci
+262.503 227.695 3 Ci
+263.25 226.894 3 Ci
+263.99 225.719 3 Ci
+264.738 225.344 3 Ci
+265.485 223.82 3 Ci
+266.233 224.699 3 Ci
+266.973 226.535 3 Ci
+267.72 226.756 3 Ci
+268.468 225.613 3 Ci
+269.208 225.814 3 Ci
+269.956 226.046 3 Ci
+270.703 225.917 3 Ci
+271.451 225.383 3 Ci
+272.191 225.1 3 Ci
+272.938 223.734 3 Ci
+273.686 223.994 3 Ci
+274.426 224.628 3 Ci
+275.174 222.919 3 Ci
+275.921 222.593 3 Ci
+276.661 223.129 3 Ci
+277.409 223.078 3 Ci
+278.156 223.016 3 Ci
+278.897 225.16 3 Ci
+279.644 226.823 3 Ci
+280.384 226.91 3 Ci
+281.132 226.353 3 Ci
+281.879 225.94 3 Ci
+282.619 226.12 3 Ci
+283.367 227.595 3 Ci
+284.114 228.041 3 Ci
+284.855 227.265 3 Ci
+285.602 227.215 3 Ci
+286.342 227.529 3 Ci
+287.09 228.352 3 Ci
+287.83 228.662 3 Ci
+288.578 227.973 3 Ci
+289.325 227.519 3 Ci
+290.065 228.657 3 Ci
+290.813 227.844 3 Ci
+291.56 227.628 3 Ci
+292.301 229.569 3 Ci
+293.048 229.86 3 Ci
+293.788 229.397 3 Ci
+294.536 230.095 3 Ci
+295.276 229.102 3 Ci
+296.024 228.785 3 Ci
+296.764 230.291 3 Ci
+297.511 230.218 3 Ci
+298.259 231.556 3 Ci
+298.999 231.201 3 Ci
+299.747 230.302 3 Ci
+300.487 229.985 3 Ci
+301.234 230.479 3 Ci
+301.975 231.281 3 Ci
+302.722 230.529 3 Ci
+303.462 231.818 3 Ci
+304.21 234.092 3 Ci
+304.95 234.136 3 Ci
+305.698 232.921 3 Ci
+306.438 231.444 3 Ci
+307.185 232.527 3 Ci
+307.926 233.706 3 Ci
+308.673 233.765 3 Ci
+309.413 234.907 3 Ci
+310.161 236.025 3 Ci
+310.901 236.137 3 Ci
+311.641 236.447 3 Ci
+312.389 236.514 3 Ci
+313.129 237.014 3 Ci
+313.877 237.35 3 Ci
+314.617 238.757 3 Ci
+315.364 239.717 3 Ci
+316.105 241.427 3 Ci
+316.852 242.561 3 Ci
+317.592 241.272 3 Ci
+318.34 241.441 3 Ci
+319.08 244.479 3 Ci
+319.82 246.582 3 Ci
+320.568 248.02 3 Ci
+321.308 246.64 3 Ci
+322.056 246.975 3 Ci
+322.796 248.316 3 Ci
+323.536 249.604 3 Ci
+324.284 250.643 3 Ci
+325.024 251.616 3 Ci
+325.771 252.446 3 Ci
+326.512 254.351 3 Ci
+327.252 253.503 3 Ci
+327.999 255.624 3 Ci
+328.74 259.137 3 Ci
+329.48 264.203 3 Ci
+330.227 263.155 3 Ci
+330.968 259.87 3 Ci
+331.708 260.133 3 Ci
+332.455 262.762 3 Ci
+333.196 261.202 3 Ci
+333.936 264.76 3 Ci
+334.683 268.789 3 Ci
+335.424 269.034 3 Ci
+336.171 270.506 3 Ci
+336.912 273.063 3 Ci
+337.652 272.228 3 Ci
+338.399 269.318 3 Ci
+339.14 273.702 3 Ci
+339.88 283.74 3 Ci
+340.62 278.237 3 Ci
+341.368 276.203 3 Ci
+342.108 273.909 3 Ci
+342.848 274.013 3 Ci
+343.596 275.164 3 Ci
+344.336 269.337 3 Ci
+345.076 270.476 3 Ci
+345.816 272.924 3 Ci
+346.564 275.815 3 Ci
+347.304 283.478 3 Ci
+348.044 281.965 3 Ci
+348.785 295.327 3 Ci
+349.532 292.317 3 Ci
+350.272 298.991 3 Ci
+351.013 300.063 3 Ci
+351.753 280.126 3 Ci
+352.501 276.592 3 Ci
+353.241 271.289 3 Ci
+353.981 271.163 3 Ci
+354.721 271.793 3 Ci
+355.469 273.325 3 Ci
+356.209 276.092 3 Ci
+356.949 269.845 3 Ci
+357.69 270.269 3 Ci
+358.43 267.044 3 Ci
+359.177 267.659 3 Ci
+359.918 273.605 3 Ci
+360.658 272.479 3 Ci
+361.398 270.308 3 Ci
+362.139 267.393 3 Ci
+362.879 266.705 3 Ci
+363.626 267.042 3 Ci
+364.367 265.104 3 Ci
+365.107 262.895 3 Ci
+365.847 264.143 3 Ci
+366.587 264.413 3 Ci
+367.328 263.481 3 Ci
+368.075 261.569 3 Ci
+368.815 260.5 3 Ci
+369.556 261.951 3 Ci
+370.296 260.106 3 Ci
+371.036 258.832 3 Ci
+371.777 259.651 3 Ci
+372.517 259.229 3 Ci
+373.257 258.981 3 Ci
+373.997 258.094 3 Ci
+374.745 255.261 3 Ci
+375.485 253.522 3 Ci
+376.225 255.863 3 Ci
+376.966 255.954 3 Ci
+377.706 254.383 3 Ci
+378.446 253.481 3 Ci
+379.187 251.623 3 Ci
+379.927 249.04 3 Ci
+380.667 249.491 3 Ci
+381.407 250.404 3 Ci
+382.148 251.641 3 Ci
+382.888 251.49 3 Ci
+383.628 247.53 3 Ci
+384.369 246.245 3 Ci
+385.116 246.494 3 Ci
+385.849 244.767 3 Ci
+386.597 243.789 3 Ci
+387.337 242.638 3 Ci
+388.077 243.382 3 Ci
+388.817 244.648 3 Ci
+389.558 245.771 3 Ci
+390.298 246.856 3 Ci
+391.038 247.464 3 Ci
+391.778 247.169 3 Ci
+392.519 246.055 3 Ci
+393.259 243.666 3 Ci
+393.999 241.739 3 Ci
+394.74 242.444 3 Ci
+395.473 242.322 3 Ci
+396.22 241.58 3 Ci
+396.96 240.836 3 Ci
+397.694 240.088 3 Ci
+398.434 241.039 3 Ci
+399.174 242.295 3 Ci
+399.914 241.82 3 Ci
+400.655 240.178 3 Ci
+401.395 239.23 3 Ci
+402.135 239.835 3 Ci
+402.876 241.258 3 Ci
+403.616 241.288 3 Ci
+404.356 241.45 3 Ci
+405.096 241.692 3 Ci
+405.837 239.748 3 Ci
+406.577 237.971 3 Ci
+407.317 237.751 3 Ci
+408.05 237.913 3 Ci
+408.791 239.273 3 Ci
+409.531 237.749 3 Ci
+410.271 241.231 3 Ci
+411.011 247.131 3 Ci
+411.752 242.746 3 Ci
+412.492 240.56 3 Ci
+413.232 241.761 3 Ci
+413.965 243.022 3 Ci
+414.706 241.551 3 Ci
+415.446 240.91 3 Ci
+416.186 239.692 3 Ci
+416.926 243.266 3 Ci
+417.667 244.616 3 Ci
+418.4 243.897 3 Ci
+419.14 245.778 3 Ci
+419.88 244.374 3 Ci
+420.621 243.908 3 Ci
+421.361 243.201 3 Ci
+422.094 244.378 3 Ci
+422.834 247.433 3 Ci
+423.575 247.205 3 Ci
+424.315 250 3 Ci
+425.048 251.019 3 Ci
+425.788 252.007 3 Ci
+426.529 251.638 3 Ci
+427.269 251.93 3 Ci
+428.009 253.537 3 Ci
+428.742 252.341 3 Ci
+429.482 252.164 3 Ci
+430.223 253.058 3 Ci
+430.963 253.206 3 Ci
+431.696 253.448 3 Ci
+432.436 253.259 3 Ci
+433.177 253.694 3 Ci
+433.917 254.606 3 Ci
+434.65 251.81 3 Ci
+435.39 253.42 3 Ci
+436.131 254.639 3 Ci
+436.864 254.806 3 Ci
+437.604 256.308 3 Ci
+438.344 257.302 3 Ci
+439.077 255.229 3 Ci
+439.818 256.16 3 Ci
+440.558 257.369 3 Ci
+441.291 256.022 3 Ci
+442.031 254.716 3 Ci
+442.772 257.798 3 Ci
+443.505 257.207 3 Ci
+444.245 255.788 3 Ci
+444.985 260.08 3 Ci
+445.718 262.186 3 Ci
+446.459 258.786 3 Ci
+447.199 261.813 3 Ci
+447.932 263.32 3 Ci
+448.672 268.259 3 Ci
+449.413 268.116 3 Ci
+450.146 267.029 3 Ci
+450.886 266.153 3 Ci
+451.619 268.623 3 Ci
+452.359 266.161 3 Ci
+453.1 262.329 3 Ci
+453.833 265.739 3 Ci
+454.573 264.402 3 Ci
+455.306 258.342 3 Ci
+456.046 263.83 3 Ci
+456.779 269.079 3 Ci
+457.52 272.24 3 Ci
+458.253 271.441 3 Ci
+458.993 269.27 3 Ci
+459.726 271.87 3 Ci
+460.466 283.188 3 Ci
+461.207 283.694 3 Ci
+461.94 276.448 3 Ci
+462.68 273.5 3 Ci
+463.413 273.648 3 Ci
+464.153 272.931 3 Ci
+464.887 272.835 3 Ci
+465.627 274.151 3 Ci
+466.36 272.094 3 Ci
+467.1 269.968 3 Ci
+467.833 270.172 3 Ci
+468.574 276.081 3 Ci
+469.307 297.899 3 Ci
+470.04 285.21 3 Ci
+470.78 284.52 3 Ci
+471.513 276.126 3 Ci
+472.253 275.234 3 Ci
+472.987 273.642 3 Ci
+473.727 280.456 3 Ci
+474.46 284.949 3 Ci
+475.2 284.253 3 Ci
+475.933 281.072 3 Ci
+476.666 278.716 3 Ci
+477.407 279.567 3 Ci
+478.14 274.155 3 Ci
+478.88 276.004 3 Ci
+479.613 272.495 3 Ci
+480.346 276.941 3 Ci
+481.086 285.824 3 Ci
+481.82 278.07 3 Ci
+482.56 276.141 3 Ci
+483.293 276.995 3 Ci
+484.026 287.278 3 Ci
+484.766 296.318 3 Ci
+485.499 280.336 3 Ci
+486.233 270.997 3 Ci
+486.973 271.116 3 Ci
+487.706 280.383 3 Ci
+488.439 297.343 3 Ci
+489.179 283.753 3 Ci
+489.912 297.69 3 Ci
+490.645 304.601 3 Ci
+491.386 292.875 3 Ci
+492.119 283.293 3 Ci
+492.852 287.575 3 Ci
+493.592 300.611 3 Ci
+494.325 298.091 3 Ci
+495.058 295.898 3 Ci
+495.791 302.004 3 Ci
+496.532 297.391 3 Ci
+497.265 280.373 3 Ci
+497.998 284.738 3 Ci
+498.738 278.618 3 Ci
+499.471 296.048 3 Ci
+500.204 293.496 3 Ci
+500.937 274.66 3 Ci
+501.671 279.27 3 Ci
+502.411 289.106 3 Ci
+503.144 294.994 3 Ci
+503.877 293.238 3 Ci
+504.61 278.608 3 Ci
+505.35 272.07 3 Ci
+506.084 286.912 3 Ci
+506.817 307.153 3 Ci
+507.55 301.728 3 Ci
+508.283 298.771 3 Ci
+509.016 308.702 3 Ci
+509.756 310.989 3 Ci
+510.489 275.318 3 Ci
+511.222 279.05 3 Ci
+511.955 300.52 3 Ci
+512.689 303.822 3 Ci
+513.422 299.374 3 Ci
+514.155 295.543 3 Ci
+514.895 297.226 3 Ci
+515.628 298.237 3 Ci
+516.361 272.185 3 Ci
+517.094 290.745 3 Ci
+517.827 297.259 3 Ci
+518.56 282.957 3 Ci
+519.294 283.569 3 Ci
+520.027 280.407 3 Ci
+520.76 276.337 3 Ci
+521.493 284.2 3 Ci
+522.233 306.026 3 Ci
+522.966 307.019 3 Ci
+523.699 312.83 3 Ci
+524.432 304.707 3 Ci
+525.166 301.25 3 Ci
+525.899 298.105 3 Ci
+526.632 302.86 3 Ci
+527.365 299.768 3 Ci
+528.098 292.288 3 Ci
+528.831 300.502 3 Ci
+529.564 308.716 3 Ci
+530.297 314.009 3 Ci
+531.03 312.373 3 Ci
+531.763 307.046 3 Ci
+532.496 306.648 3 Ci
+533.23 299.883 3 Ci
+533.963 279.013 3 Ci
+534.696 273.826 3 Ci
+535.429 276.442 3 Ci
+536.162 275.048 3 Ci
+536.895 279.747 3 Ci
+537.628 303.488 3 Ci
+538.361 308.344 3 Ci
+539.094 282.399 3 Ci
+539.82 277.531 3 Ci
+540.553 277.623 3 Ci
+541.286 277.974 3 Ci
+542.019 269.965 3 Ci
+542.753 270.282 3 Ci
+543.486 272.137 3 Ci
+544.219 271.667 3 Ci
+544.952 270.293 3 Ci
+545.685 266.393 3 Ci
+546.411 264.988 3 Ci
+547.144 264.926 3 Ci
+547.877 272.019 3 Ci
+548.61 295.421 3 Ci
+549.343 282.363 3 Ci
+550.076 270.127 3 Ci
+550.809 278.357 3 Ci
+551.535 297.884 3 Ci
+552.268 298.565 3 Ci
+553.001 283.564 3 Ci
+553.735 306.042 3 Ci
+554.468 304.595 3 Ci
+555.194 281.678 3 Ci
+555.927 276.677 3 Ci
+556.66 267.728 3 Ci
+557.393 265.872 3 Ci
+558.126 273.526 3 Ci
+558.852 278.964 3 Ci
+559.585 280.801 3 Ci
+560.318 302.668 3 Ci
+561.051 308.341 3 Ci
+561.777 310.362 3 Ci
+562.51 307.864 3 Ci
+563.243 300.222 3 Ci
+563.976 277.249 3 Ci
+564.702 308.443 3 Ci
+565.435 309.162 3 Ci
+566.168 275.742 3 Ci
+566.894 267.957 3 Ci
+567.627 266.164 3 Ci
+568.361 265.37 3 Ci
+569.094 266.454 3 Ci
+569.819 276.862 3 Ci
+570.553 284.175 3 Ci
+571.286 304.6 3 Ci
+572.012 306.536 3 Ci
+572.745 270.146 3 Ci
+573.471 270.944 3 Ci
+574.204 296.238 3 Ci
+574.937 303.539 3 Ci
+575.663 303.043 3 Ci
+576.396 297.779 3 Ci
+577.129 288.809 3 Ci
+577.855 275.455 3 Ci
+578.588 275.865 3 Ci
+579.314 305.336 3 Ci
+580.047 279.052 3 Ci
+580.773 271.007 3 Ci
+581.506 272.604 3 Ci
+582.239 270 3 Ci
+582.965 267.749 3 Ci
+583.698 268.236 3 Ci
+584.424 272.726 3 Ci
+585.157 301.965 3 Ci
+585.883 310.847 3 Ci
+586.616 282.072 3 Ci
+587.342 284.603 3 Ci
+588.075 301.349 3 Ci
+588.801 296.547 3 Ci
+589.534 298.807 3 Ci
+590.26 308.477 3 Ci
+590.993 306.777 3 Ci
+591.719 308.426 3 Ci
+592.452 306.515 3 Ci
+593.178 283.925 3 Ci
+593.911 274.951 3 Ci
+594.637 300.165 3 Ci
+595.37 272.978 3 Ci
+596.096 270.602 3 Ci
+596.822 269.767 3 Ci
+597.555 267.808 3 Ci
+598.281 270.486 3 Ci
+599.014 274.087 3 Ci
+599.74 279.085 3 Ci
+600.473 298.609 3 Ci
+601.199 278.912 3 Ci
+601.925 277.777 3 Ci
+602.658 284.536 3 Ci
+603.384 274.874 3 Ci
+604.11 286.356 3 Ci
+604.843 284.756 3 Ci
+605.569 297.167 3 Ci
+606.302 286.702 3 Ci
+607.028 280.628 3 Ci
+607.753 279.115 3 Ci
+608.487 268.996 3 Ci
+609.212 268.42 3 Ci
+609.938 264.416 3 Ci
+610.671 276.731 3 Ci
+611.397 284.694 3 Ci
+612.123 312.942 3 Ci
+612.849 313.363 3 Ci
+613.582 293.904 3 Ci
+614.308 267.087 3 Ci
+615.034 267.855 3 Ci
+615.767 299.985 3 Ci
+616.493 305.121 3 Ci
+617.219 309.317 3 Ci
+617.945 309.953 3 Ci
+618.671 297.51 3 Ci
+619.404 303.117 3 Ci
+620.13 313.246 3 Ci
+620.856 287.688 3 Ci
+621.582 293.341 3 Ci
+622.315 264.32 3 Ci
+623.041 286.022 3 Ci
+623.767 309.692 3 Ci
+624.492 301.861 3 Ci
+625.218 273.055 3 Ci
+625.944 268.202 3 Ci
+626.677 273.53 3 Ci
+627.403 306.821 3 Ci
+628.129 304.072 3 Ci
+628.855 294.304 3 Ci
+629.581 311.175 3 Ci
+630.307 319.794 3 Ci
+631.033 312.656 3 Ci
+631.759 301.865 3 Ci
+632.485 308.497 3 Ci
+633.218 311.972 3 Ci
+633.944 316.419 3 Ci
+634.669 294.216 3 Ci
+635.395 275.408 3 Ci
+636.121 277.37 3 Ci
+636.847 302.732 3 Ci
+637.573 310.276 3 Ci
+638.299 279.898 3 Ci
+639.025 283.972 3 Ci
+639.751 301.125 3 Ci
+640.477 313.179 3 Ci
+641.203 314.392 3 Ci
+641.929 278.842 3 Ci
+642.654 295.738 3 Ci
+643.38 311.571 3 Ci
+644.106 310.45 3 Ci
+644.832 313.49 3 Ci
+645.558 315.79 3 Ci
+646.284 313.022 3 Ci
+647.01 311.567 3 Ci
+647.736 304.347 3 Ci
+648.462 280.862 3 Ci
+649.188 277.451 3 Ci
+649.914 303.532 3 Ci
+650.639 302.093 3 Ci
+651.365 305.405 3 Ci
+652.091 318.187 3 Ci
+652.817 316.377 3 Ci
+653.536 314.266 3 Ci
+654.262 315.658 3 Ci
+654.988 273.834 3 Ci
+655.714 275.079 3 Ci
+656.439 317.215 3 Ci
+657.165 309.906 3 Ci
+657.891 269.874 3 Ci
+658.61 254.968 3 Ci
+659.336 262.094 3 Ci
+660.062 280.785 3 Ci
+660.788 307.883 3 Ci
+661.514 306.205 3 Ci
+662.24 322.561 3 Ci
+662.958 324 3 Ci
+663.684 319.585 3 Ci
+664.41 323.37 3 Ci
+665.136 312.139 3 Ci
+665.862 305.758 3 Ci
+666.581 313.014 3 Ci
+667.307 318.852 3 Ci
+668.032 313.212 3 Ci
+668.758 308.875 3 Ci
+669.477 268.123 3 Ci
+670.203 263.774 3 Ci
+670.929 291.536 3 Ci
+671.648 313.358 3 Ci
+672.373 295.034 3 Ci
+673.099 298.551 3 Ci
+673.825 295.235 3 Ci
+674.544 273.442 3 Ci
+675.27 270.4 3 Ci
+
+% Element "xft"
+
+0 setlinejoin
+0 setlinecap
+0 0 0 SetFgColor
+2 setlinewidth
+[ ] 0 setdash
+/DashesProc {} def
+/DashesProc {} def
+ newpath 27 6 moveto
+ 27.7187 6.05872 lineto
+DashesProc stroke
+ newpath  27.7187 6.05872 moveto
+ 28.4374 6.23485 lineto
+ 29.1562 6.5283 lineto
+ 29.8749 6.93889 lineto
+ 30.5936 7.46642 lineto
+ 31.3123 8.11058 lineto
+ 32.031 8.87104 lineto
+ 32.7497 9.74737 lineto
+ 33.4685 10.7391 lineto
+ 34.1872 11.8457 lineto
+ 34.9059 13.0665 lineto
+ 35.6246 14.4009 lineto
+ 36.3433 15.8482 lineto
+ 37.0621 17.4075 lineto
+ 37.7808 19.0781 lineto
+ 38.4995 20.8589 lineto
+ 39.2182 22.7492 lineto
+ 39.9369 24.7477 lineto
+ 40.6557 26.8535 lineto
+ 41.3744 29.0654 lineto
+ 42.0931 31.3822 lineto
+ 42.8118 33.8027 lineto
+ 43.5305 36.3255 lineto
+ 44.2492 38.9493 lineto
+ 44.968 41.6728 lineto
+ 45.6867 44.4943 lineto
+ 46.4054 47.4125 lineto
+ 47.1241 50.4257 lineto
+ 47.8428 53.5324 lineto
+ 48.5616 56.7308 lineto
+ 49.2803 60.0194 lineto
+ 49.999 63.3964 lineto
+ 50.7177 66.8599 lineto
+ 51.4364 70.4081 lineto
+ 52.1552 74.0393 lineto
+ 52.8739 77.7514 lineto
+ 53.5926 81.5425 lineto
+ 54.3113 85.4107 lineto
+ 55.03 89.3539 lineto
+ 55.7487 93.3701 lineto
+ 56.4675 97.4572 lineto
+ 57.1862 101.613 lineto
+ 57.9049 105.836 lineto
+ 58.6236 110.123 lineto
+ 59.3423 114.472 lineto
+ 60.0611 118.881 lineto
+ 60.7798 123.348 lineto
+ 61.4985 127.871 lineto
+ 62.2172 132.447 lineto
+ 62.9359 137.074 lineto
+ 63.6547 141.75 lineto
+ 64.3734 146.472 lineto
+ 65.0921 151.238 lineto
+ 65.8108 156.046 lineto
+ 66.5295 160.893 lineto
+ 67.2482 165.777 lineto
+ 67.967 170.695 lineto
+ 68.6857 175.645 lineto
+ 69.4044 180.626 lineto
+ 70.1231 185.633 lineto
+ 70.8418 190.666 lineto
+ 71.5606 195.721 lineto
+ 72.2793 200.797 lineto
+ 72.998 205.89 lineto
+ 73.7167 210.998 lineto
+ 74.4354 216.12 lineto
+ 75.1542 221.253 lineto
+ 75.8729 226.393 lineto
+ 76.5916 231.54 lineto
+ 77.3103 236.691 lineto
+ 78.029 241.843 lineto
+ 78.7477 246.994 lineto
+ 79.4665 252.142 lineto
+ 80.1852 257.284 lineto
+ 80.9039 262.419 lineto
+ 81.6226 267.544 lineto
+ 82.3413 272.657 lineto
+ 83.0601 277.755 lineto
+ 83.7788 282.838 lineto
+ 84.4975 287.902 lineto
+ 85.2162 288.186 lineto
+ 85.9349 283.165 lineto
+ 86.6537 278.169 lineto
+ 87.3724 273.2 lineto
+ 88.0911 268.258 lineto
+ 88.8098 263.348 lineto
+ 89.5285 258.469 lineto
+ 90.2472 253.625 lineto
+ 90.966 248.817 lineto
+ 91.6847 244.046 lineto
+ 92.4034 239.315 lineto
+ 93.1221 234.626 lineto
+ 93.8408 229.979 lineto
+ 94.5596 225.376 lineto
+ 95.2783 220.819 lineto
+ 95.997 216.31 lineto
+ 96.7157 211.85 lineto
+ 97.4344 207.44 lineto
+ 98.1532 203.082 lineto
+ 98.8719 198.777 lineto
+ 99.5906 194.527 lineto
+ 100.309 190.332 lineto
+ 101.028 186.195 lineto
+ 101.747 182.115 lineto
+ 102.465 178.094 lineto
+ 103.184 174.134 lineto
+ 103.903 170.234 lineto
+ 104.622 166.397 lineto
+ 105.34 162.623 lineto
+ 106.059 158.913 lineto
+ 106.778 155.268 lineto
+ 107.496 151.688 lineto
+ 108.215 148.174 lineto
+ 108.934 144.728 lineto
+ 109.653 141.349 lineto
+ 110.371 138.037 lineto
+ 111.09 134.795 lineto
+ 111.809 131.621 lineto
+ 112.528 128.518 lineto
+ 113.246 125.483 lineto
+ 113.965 122.52 lineto
+ 114.684 119.626 lineto
+ 115.402 116.803 lineto
+ 116.121 114.051 lineto
+ 116.84 111.371 lineto
+ 117.559 108.761 lineto
+ 118.277 106.222 lineto
+ 118.996 103.755 lineto
+ 119.715 101.359 lineto
+ 120.433 99.0335 lineto
+ 121.152 96.7792 lineto
+ 121.871 94.5957 lineto
+ 122.59 92.4827 lineto
+ 123.308 90.4399 lineto
+ 124.027 88.4672 lineto
+ 124.746 86.5641 lineto
+ 125.464 84.7303 lineto
+ 126.183 82.9654 lineto
+ 126.902 81.269 lineto
+ 127.621 79.6405 lineto
+ 128.339 78.0794 lineto
+ 129.058 76.5853 lineto
+ 129.777 75.1575 lineto
+ 130.495 73.7955 lineto
+ 131.214 72.4985 lineto
+ 131.933 71.2659 lineto
+ 132.652 70.097 lineto
+ 133.37 68.9911 lineto
+ 134.089 67.9474 lineto
+ 134.808 66.9652 lineto
+ 135.527 66.0436 lineto
+ 136.245 65.1818 lineto
+ 136.964 64.379 lineto
+ 137.683 63.6342 lineto
+ 138.401 62.9467 lineto
+ 139.12 62.3154 lineto
+ 139.839 61.7395 lineto
+ 140.558 61.2181 lineto
+ 141.276 60.7501 lineto
+ 141.995 60.3345 lineto
+ 142.714 59.9705 lineto
+ 143.432 59.6569 lineto
+ 144.151 59.3929 lineto
+ 144.87 59.1773 lineto
+ 145.589 59.0091 lineto
+ 146.307 58.8874 lineto
+ 147.026 58.8109 lineto
+ 147.745 58.7788 lineto
+ 148.463 58.79 lineto
+ 149.182 58.8434 lineto
+ 149.901 58.9379 lineto
+ 150.62 59.0725 lineto
+ 151.338 59.2461 lineto
+ 152.057 59.4577 lineto
+ 152.776 59.7062 lineto
+ 153.494 59.9906 lineto
+ 154.213 60.3098 lineto
+ 154.932 60.6627 lineto
+ 155.651 61.0485 lineto
+ 156.369 61.4659 lineto
+ 157.088 61.9141 lineto
+ 157.807 62.3919 lineto
+ 158.526 62.8984 lineto
+ 159.244 63.4326 lineto
+ 159.963 63.9936 lineto
+ 160.682 64.5802 lineto
+ 161.4 65.1917 lineto
+ 162.119 65.8271 lineto
+ 162.838 66.4854 lineto
+ 163.557 67.1657 lineto
+ 164.275 67.8672 lineto
+ 164.994 68.589 lineto
+ 165.713 69.3301 lineto
+ 166.431 70.0899 lineto
+ 167.15 70.8674 lineto
+ 167.869 71.6619 lineto
+ 168.588 72.4725 lineto
+ 169.306 73.2985 lineto
+ 170.025 74.1393 lineto
+ 170.744 74.994 lineto
+ 171.462 75.862 lineto
+ 172.181 76.7425 lineto
+ 172.9 77.635 lineto
+ 173.619 78.5389 lineto
+ 174.337 79.4534 lineto
+ 175.056 80.3781 lineto
+ 175.775 81.3123 lineto
+ 176.493 82.2556 lineto
+ 177.212 83.2075 lineto
+ 177.931 84.1673 lineto
+ 178.65 85.1348 lineto
+ 179.368 86.1094 lineto
+ 180.087 87.0908 lineto
+ 180.806 88.0785 lineto
+ 181.525 89.0722 lineto
+ 182.243 90.0716 lineto
+ 182.962 91.0763 lineto
+ 183.681 92.0861 lineto
+ 184.399 93.1006 lineto
+ 185.118 94.1197 lineto
+ 185.837 95.1431 lineto
+ 186.556 96.1707 lineto
+ 187.274 97.2022 lineto
+ 187.993 98.2376 lineto
+ 188.712 99.2766 lineto
+ 189.43 100.319 lineto
+ 190.149 101.365 lineto
+ 190.868 102.415 lineto
+ 191.587 103.468 lineto
+ 192.305 104.525 lineto
+ 193.024 105.584 lineto
+ 193.743 106.648 lineto
+ 194.461 107.714 lineto
+ 195.18 108.785 lineto
+ 195.899 109.859 lineto
+ 196.618 110.937 lineto
+ 197.336 112.018 lineto
+ 198.055 113.104 lineto
+ 198.774 114.193 lineto
+ 199.492 115.287 lineto
+ 200.211 116.386 lineto
+ 200.93 117.489 lineto
+ 201.649 118.597 lineto
+ 202.367 119.711 lineto
+ 203.086 120.829 lineto
+ 203.805 121.954 lineto
+ 204.524 123.084 lineto
+ 205.242 124.22 lineto
+ 205.961 125.363 lineto
+ 206.68 126.513 lineto
+ 207.398 127.669 lineto
+ 208.117 128.833 lineto
+ 208.836 130.005 lineto
+ 209.555 131.185 lineto
+ 210.273 132.373 lineto
+ 210.992 133.569 lineto
+ 211.711 134.775 lineto
+ 212.429 135.99 lineto
+ 213.148 137.214 lineto
+ 213.867 138.449 lineto
+ 214.586 139.693 lineto
+ 215.304 140.949 lineto
+ 216.023 142.216 lineto
+ 216.742 143.493 lineto
+ 217.46 144.783 lineto
+ 218.179 146.085 lineto
+ 218.898 147.399 lineto
+ 219.617 148.726 lineto
+ 220.335 150.065 lineto
+ 221.054 151.419 lineto
+ 221.773 152.785 lineto
+ 222.491 154.166 lineto
+ 223.21 155.561 lineto
+ 223.929 156.971 lineto
+ 224.648 158.395 lineto
+ 225.366 159.834 lineto
+ 226.085 161.289 lineto
+ 226.804 162.76 lineto
+ 227.523 164.246 lineto
+ 228.241 165.748 lineto
+ 228.96 167.267 lineto
+ 229.679 168.802 lineto
+ 230.397 170.354 lineto
+ 231.116 171.922 lineto
+ 231.835 173.508 lineto
+ 232.554 175.11 lineto
+ 233.272 176.73 lineto
+ 233.991 178.368 lineto
+ 234.71 180.022 lineto
+ 235.428 181.694 lineto
+ 236.147 183.384 lineto
+ 236.866 185.092 lineto
+ 237.585 186.817 lineto
+ 238.303 188.56 lineto
+ 239.022 190.32 lineto
+ 239.741 192.098 lineto
+ 240.459 193.894 lineto
+ 241.178 195.707 lineto
+ 241.897 197.538 lineto
+ 242.616 199.386 lineto
+ 243.334 201.251 lineto
+ 244.053 203.133 lineto
+ 244.772 205.032 lineto
+ 245.49 206.948 lineto
+ 246.209 208.88 lineto
+ 246.928 210.829 lineto
+ 247.647 212.793 lineto
+ 248.365 214.774 lineto
+ 249.084 216.77 lineto
+ 249.803 218.78 lineto
+ 250.522 220.806 lineto
+ 251.24 222.847 lineto
+ 251.959 224.901 lineto
+ 252.678 226.969 lineto
+ 253.396 229.051 lineto
+ 254.115 231.146 lineto
+ 254.834 233.253 lineto
+ 255.553 235.372 lineto
+ 256.271 237.502 lineto
+ 256.99 239.644 lineto
+ 257.709 241.797 lineto
+ 258.427 243.959 lineto
+ 259.146 246.131 lineto
+ 259.865 248.312 lineto
+ 260.584 250.502 lineto
+ 261.302 252.699 lineto
+ 262.021 254.903 lineto
+ 262.74 257.114 lineto
+ 263.458 259.331 lineto
+ 264.177 261.553 lineto
+ 264.896 263.78 lineto
+ 265.615 266.011 lineto
+ 266.333 268.246 lineto
+ 267.052 270.482 lineto
+ 267.771 272.721 lineto
+ 268.489 274.961 lineto
+ 269.208 277.201 lineto
+ 269.927 279.441 lineto
+ 270.646 281.68 lineto
+ 271.364 283.918 lineto
+ 272.083 286.153 lineto
+ 272.802 288.384 lineto
+ 273.521 290.52 lineto
+ 274.239 288.297 lineto
+ 274.958 286.08 lineto
+ 275.677 283.87 lineto
+ 276.395 281.666 lineto
+ 277.114 279.471 lineto
+ 277.833 277.285 lineto
+ 278.552 275.108 lineto
+ 279.27 272.941 lineto
+ 279.989 270.786 lineto
+ 280.708 268.642 lineto
+ 281.426 266.512 lineto
+ 282.145 264.394 lineto
+ 282.864 262.292 lineto
+ 283.583 260.204 lineto
+ 284.301 258.133 lineto
+ 285.02 256.078 lineto
+ 285.739 254.04 lineto
+ 286.457 252.021 lineto
+ 287.176 250.021 lineto
+ 287.895 248.04 lineto
+ 288.614 246.081 lineto
+ 289.332 244.142 lineto
+ 290.051 242.225 lineto
+ 290.77 240.331 lineto
+ 291.488 238.461 lineto
+ 292.207 236.615 lineto
+ 292.926 234.793 lineto
+ 293.645 232.997 lineto
+ 294.363 231.227 lineto
+ 295.082 229.484 lineto
+ 295.801 227.769 lineto
+ 296.52 226.081 lineto
+ 297.238 224.422 lineto
+ 297.957 222.793 lineto
+ 298.676 221.193 lineto
+ 299.394 219.624 lineto
+ 300.113 218.085 lineto
+ 300.832 216.579 lineto
+ 301.551 215.104 lineto
+ 302.269 213.661 lineto
+ 302.988 212.252 lineto
+ 303.707 210.876 lineto
+ 304.425 209.534 lineto
+ 305.144 208.226 lineto
+ 305.863 206.953 lineto
+ 306.582 205.715 lineto
+ 307.3 204.513 lineto
+ 308.019 203.346 lineto
+ 308.738 202.215 lineto
+ 309.456 201.121 lineto
+ 310.175 200.063 lineto
+ 310.894 199.042 lineto
+ 311.613 198.059 lineto
+ 312.331 197.113 lineto
+ 313.05 196.204 lineto
+ 313.769 195.333 lineto
+ 314.487 194.5 lineto
+ 315.206 193.705 lineto
+ 315.925 192.948 lineto
+ 316.644 192.23 lineto
+ 317.362 191.549 lineto
+ 318.081 190.907 lineto
+ 318.8 190.303 lineto
+ 319.519 189.738 lineto
+ 320.237 189.211 lineto
+ 320.956 188.722 lineto
+ 321.675 188.271 lineto
+ 322.393 187.859 lineto
+ 323.112 187.484 lineto
+ 323.831 187.147 lineto
+ 324.55 186.848 lineto
+ 325.268 186.586 lineto
+ 325.987 186.362 lineto
+ 326.706 186.175 lineto
+ 327.424 186.025 lineto
+ 328.143 185.911 lineto
+ 328.862 185.834 lineto
+ 329.581 185.792 lineto
+ 330.299 185.787 lineto
+ 331.018 185.817 lineto
+ 331.737 185.882 lineto
+ 332.455 185.982 lineto
+ 333.174 186.116 lineto
+ 333.893 186.284 lineto
+ 334.612 186.485 lineto
+ 335.33 186.72 lineto
+ 336.049 186.987 lineto
+ 336.768 187.286 lineto
+ 337.486 187.617 lineto
+ 338.205 187.979 lineto
+ 338.924 188.372 lineto
+ 339.643 188.795 lineto
+ 340.361 189.248 lineto
+ 341.08 189.73 lineto
+ 341.799 190.24 lineto
+ 342.518 190.779 lineto
+ 343.236 191.345 lineto
+ 343.955 191.937 lineto
+ 344.674 192.556 lineto
+ 345.392 193.2 lineto
+ 346.111 193.87 lineto
+ 346.83 194.564 lineto
+ 347.549 195.281 lineto
+ 348.267 196.022 lineto
+ 348.986 196.785 lineto
+ 349.705 197.57 lineto
+ 350.423 198.376 lineto
+ 351.142 199.202 lineto
+ 351.861 200.049 lineto
+ 352.58 200.914 lineto
+ 353.298 201.798 lineto
+ 354.017 202.7 lineto
+ 354.736 203.619 lineto
+ 355.454 204.554 lineto
+ 356.173 205.505 lineto
+ 356.892 206.471 lineto
+ 357.611 207.452 lineto
+ 358.329 208.446 lineto
+ 359.048 209.453 lineto
+ 359.767 210.473 lineto
+ 360.485 211.504 lineto
+ 361.204 212.547 lineto
+ 361.923 213.6 lineto
+ 362.642 214.662 lineto
+ 363.36 215.734 lineto
+ 364.079 216.813 lineto
+ 364.798 217.901 lineto
+ 365.517 218.996 lineto
+ 366.235 220.097 lineto
+ 366.954 221.203 lineto
+ 367.673 222.315 lineto
+ 368.391 223.432 lineto
+ 369.11 224.552 lineto
+ 369.829 225.676 lineto
+ 370.548 226.803 lineto
+ 371.266 227.932 lineto
+ 371.985 229.062 lineto
+ 372.704 230.193 lineto
+ 373.422 231.325 lineto
+ 374.141 232.457 lineto
+ 374.86 233.588 lineto
+ 375.579 234.717 lineto
+ 376.297 235.846 lineto
+ 377.016 236.972 lineto
+ 377.735 238.095 lineto
+ 378.453 239.215 lineto
+ 379.172 240.331 lineto
+ 379.891 241.444 lineto
+ 380.61 242.552 lineto
+ 381.328 243.655 lineto
+ 382.047 244.752 lineto
+ 382.766 245.844 lineto
+ 383.484 246.93 lineto
+ 384.203 248.009 lineto
+ 384.922 249.081 lineto
+ 385.641 250.146 lineto
+ 386.359 251.203 lineto
+ 387.078 252.252 lineto
+ 387.797 253.293 lineto
+ 388.516 254.325 lineto
+ 389.234 255.349 lineto
+ 389.953 256.363 lineto
+ 390.672 257.368 lineto
+ 391.39 258.364 lineto
+ 392.109 259.349 lineto
+ 392.828 260.325 lineto
+ 393.547 261.29 lineto
+ 394.265 262.244 lineto
+ 394.984 263.188 lineto
+ 395.703 264.122 lineto
+ 396.421 265.044 lineto
+ 397.14 265.955 lineto
+ 397.859 266.855 lineto
+ 398.578 267.743 lineto
+ 399.296 268.62 lineto
+ 400.015 269.486 lineto
+ 400.734 270.34 lineto
+ 401.452 271.182 lineto
+ 402.171 272.012 lineto
+ 402.89 272.831 lineto
+ 403.609 273.638 lineto
+ 404.327 274.433 lineto
+ 405.046 275.216 lineto
+ 405.765 275.987 lineto
+ 406.483 276.747 lineto
+ 407.202 277.494 lineto
+ 407.921 278.23 lineto
+ 408.64 278.954 lineto
+ 409.358 279.666 lineto
+ 410.077 280.367 lineto
+ 410.796 281.056 lineto
+ 411.515 281.734 lineto
+ 412.233 282.4 lineto
+ 412.952 283.055 lineto
+ 413.671 283.699 lineto
+ 414.389 284.331 lineto
+ 415.108 284.953 lineto
+ 415.827 285.564 lineto
+ 416.546 286.164 lineto
+ 417.264 286.753 lineto
+ 417.983 287.332 lineto
+ 418.702 287.9 lineto
+ 419.42 288.458 lineto
+ 420.139 289.006 lineto
+ 420.858 289.545 lineto
+ 421.577 290.073 lineto
+ 422.295 290.539 lineto
+ 423.014 290.03 lineto
+ 423.733 289.529 lineto
+ 424.451 289.038 lineto
+ 425.17 288.556 lineto
+ 425.889 288.082 lineto
+ 426.608 287.617 lineto
+ 427.326 287.161 lineto
+ 428.045 286.712 lineto
+ 428.764 286.272 lineto
+ 429.482 285.839 lineto
+ 430.201 285.414 lineto
+ 430.92 284.997 lineto
+ 431.639 284.586 lineto
+ 432.357 284.183 lineto
+ 433.076 283.787 lineto
+ 433.795 283.398 lineto
+ 434.514 283.015 lineto
+ 435.232 282.639 lineto
+ 435.951 282.269 lineto
+ 436.67 281.905 lineto
+ 437.388 281.546 lineto
+ 438.107 281.194 lineto
+ 438.826 280.847 lineto
+ 439.545 280.506 lineto
+ 440.263 280.17 lineto
+ 440.982 279.839 lineto
+ 441.701 279.513 lineto
+ 442.419 279.192 lineto
+ 443.138 278.876 lineto
+ 443.857 278.564 lineto
+ 444.576 278.256 lineto
+ 445.294 277.953 lineto
+ 446.013 277.654 lineto
+ 446.732 277.36 lineto
+ 447.45 277.069 lineto
+ 448.169 276.782 lineto
+ 448.888 276.499 lineto
+ 449.607 276.219 lineto
+ 450.325 275.943 lineto
+ 451.044 275.671 lineto
+ 451.763 275.402 lineto
+ 452.481 275.136 lineto
+ 453.2 274.874 lineto
+ 453.919 274.615 lineto
+ 454.638 274.358 lineto
+ 455.356 274.106 lineto
+ 456.075 273.856 lineto
+ 456.794 273.609 lineto
+ 457.513 273.365 lineto
+ 458.231 273.124 lineto
+ 458.95 272.886 lineto
+ 459.669 272.651 lineto
+ 460.387 272.419 lineto
+ 461.106 272.19 lineto
+ 461.825 271.963 lineto
+ 462.544 271.74 lineto
+ 463.262 271.519 lineto
+ 463.981 271.302 lineto
+ 464.7 271.087 lineto
+ 465.418 270.875 lineto
+ 466.137 270.666 lineto
+ 466.856 270.46 lineto
+ 467.575 270.257 lineto
+ 468.293 270.058 lineto
+ 469.012 269.861 lineto
+ 469.731 269.668 lineto
+ 470.449 269.478 lineto
+ 471.168 269.291 lineto
+ 471.887 269.107 lineto
+ 472.606 268.927 lineto
+ 473.324 268.75 lineto
+ 474.043 268.577 lineto
+ 474.762 268.408 lineto
+ 475.48 268.242 lineto
+ 476.199 268.08 lineto
+ 476.918 267.921 lineto
+ 477.637 267.767 lineto
+ 478.355 267.617 lineto
+ 479.074 267.47 lineto
+ 479.793 267.328 lineto
+ 480.512 267.19 lineto
+ 481.23 267.057 lineto
+ 481.949 266.928 lineto
+ 482.668 266.803 lineto
+ 483.386 266.683 lineto
+ 484.105 266.568 lineto
+ 484.824 266.458 lineto
+ 485.543 266.352 lineto
+ 486.261 266.252 lineto
+ 486.98 266.156 lineto
+ 487.699 266.066 lineto
+ 488.417 265.981 lineto
+ 489.136 265.902 lineto
+ 489.855 265.827 lineto
+ 490.574 265.759 lineto
+ 491.292 265.696 lineto
+ 492.011 265.638 lineto
+ 492.73 265.587 lineto
+ 493.448 265.541 lineto
+ 494.167 265.501 lineto
+ 494.886 265.467 lineto
+ 495.605 265.44 lineto
+ 496.323 265.418 lineto
+ 497.042 265.403 lineto
+ 497.761 265.394 lineto
+ 498.479 265.391 lineto
+ 499.198 265.394 lineto
+ 499.917 265.404 lineto
+ 500.636 265.421 lineto
+ 501.354 265.444 lineto
+ 502.073 265.474 lineto
+ 502.792 265.51 lineto
+ 503.511 265.553 lineto
+ 504.229 265.602 lineto
+ 504.948 265.659 lineto
+ 505.667 265.722 lineto
+ 506.385 265.791 lineto
+ 507.104 265.868 lineto
+ 507.823 265.951 lineto
+ 508.542 266.041 lineto
+ 509.26 266.138 lineto
+ 509.979 266.241 lineto
+ 510.698 266.352 lineto
+ 511.416 266.469 lineto
+ 512.135 266.592 lineto
+ 512.854 266.723 lineto
+ 513.573 266.86 lineto
+ 514.291 267.003 lineto
+ 515.01 267.154 lineto
+ 515.729 267.31 lineto
+ 516.447 267.473 lineto
+ 517.166 267.643 lineto
+ 517.885 267.819 lineto
+ 518.604 268.001 lineto
+ 519.322 268.189 lineto
+ 520.041 268.384 lineto
+ 520.76 268.584 lineto
+ 521.478 268.791 lineto
+ 522.197 269.003 lineto
+ 522.916 269.221 lineto
+ 523.635 269.445 lineto
+ 524.353 269.675 lineto
+ 525.072 269.909 lineto
+ 525.791 270.15 lineto
+ 526.51 270.395 lineto
+ 527.228 270.646 lineto
+ 527.947 270.901 lineto
+ 528.666 271.162 lineto
+ 529.384 271.427 lineto
+ 530.103 271.696 lineto
+ 530.822 271.971 lineto
+ 531.541 272.249 lineto
+ 532.259 272.532 lineto
+ 532.978 272.818 lineto
+ 533.697 273.109 lineto
+ 534.415 273.403 lineto
+ 535.134 273.701 lineto
+ 535.853 274.002 lineto
+ 536.572 274.306 lineto
+ 537.29 274.614 lineto
+ 538.009 274.924 lineto
+ 538.728 275.237 lineto
+ 539.446 275.552 lineto
+ 540.165 275.87 lineto
+ 540.884 276.19 lineto
+ 541.603 276.512 lineto
+ 542.321 276.836 lineto
+ 543.04 277.162 lineto
+ 543.759 277.489 lineto
+ 544.477 277.817 lineto
+ 545.196 278.147 lineto
+ 545.915 278.477 lineto
+ 546.634 278.809 lineto
+ 547.352 279.14 lineto
+ 548.071 279.473 lineto
+ 548.79 279.805 lineto
+ 549.509 280.137 lineto
+ 550.227 280.47 lineto
+ 550.946 280.802 lineto
+ 551.665 281.134 lineto
+ 552.383 281.464 lineto
+ 553.102 281.795 lineto
+ 553.821 282.124 lineto
+ 554.54 282.452 lineto
+ 555.258 282.778 lineto
+ 555.977 283.103 lineto
+ 556.696 283.427 lineto
+ 557.414 283.748 lineto
+ 558.133 284.068 lineto
+ 558.852 284.385 lineto
+ 559.571 284.701 lineto
+ 560.289 285.013 lineto
+ 561.008 285.324 lineto
+ 561.727 285.631 lineto
+ 562.445 285.936 lineto
+ 563.164 286.237 lineto
+ 563.883 286.536 lineto
+ 564.602 286.831 lineto
+ 565.32 287.122 lineto
+ 566.039 287.411 lineto
+ 566.758 287.695 lineto
+ 567.476 287.976 lineto
+ 568.195 288.253 lineto
+ 568.914 288.526 lineto
+ 569.633 288.795 lineto
+ 570.351 289.059 lineto
+ 571.07 289.32 lineto
+ 571.789 289.576 lineto
+ 572.508 289.828 lineto
+ 573.226 290.075 lineto
+ 573.945 290.317 lineto
+ 574.664 290.555 lineto
+ 575.382 290.343 lineto
+ 576.101 290.115 lineto
+ 576.82 289.891 lineto
+ 577.539 289.673 lineto
+ 578.257 289.459 lineto
+ 578.976 289.251 lineto
+ 579.695 289.047 lineto
+ 580.413 288.848 lineto
+ 581.132 288.655 lineto
+ 581.851 288.467 lineto
+ 582.57 288.284 lineto
+ 583.288 288.106 lineto
+ 584.007 287.933 lineto
+ 584.726 287.765 lineto
+ 585.444 287.603 lineto
+ 586.163 287.445 lineto
+ 586.882 287.293 lineto
+ 587.601 287.146 lineto
+ 588.319 287.004 lineto
+ 589.038 286.868 lineto
+ 589.757 286.736 lineto
+ 590.475 286.609 lineto
+ 591.194 286.488 lineto
+ 591.913 286.371 lineto
+ 592.632 286.26 lineto
+ 593.35 286.153 lineto
+ 594.069 286.051 lineto
+ 594.788 285.954 lineto
+ 595.507 285.862 lineto
+ 596.225 285.774 lineto
+ 596.944 285.692 lineto
+ 597.663 285.613 lineto
+ 598.381 285.539 lineto
+ 599.1 285.47 lineto
+ 599.819 285.405 lineto
+ 600.538 285.345 lineto
+ 601.256 285.288 lineto
+ 601.975 285.236 lineto
+ 602.694 285.188 lineto
+ 603.412 285.144 lineto
+ 604.131 285.103 lineto
+ 604.85 285.067 lineto
+ 605.569 285.034 lineto
+ 606.287 285.005 lineto
+ 607.006 284.979 lineto
+ 607.725 284.957 lineto
+ 608.443 284.938 lineto
+ 609.162 284.923 lineto
+ 609.881 284.911 lineto
+ 610.6 284.901 lineto
+ 611.318 284.895 lineto
+ 612.037 284.892 lineto
+ 612.756 284.891 lineto
+ 613.474 284.893 lineto
+ 614.193 284.898 lineto
+ 614.912 284.905 lineto
+ 615.631 284.914 lineto
+ 616.349 284.926 lineto
+ 617.068 284.94 lineto
+ 617.787 284.956 lineto
+ 618.506 284.974 lineto
+ 619.224 284.994 lineto
+ 619.943 285.016 lineto
+ 620.662 285.039 lineto
+ 621.38 285.064 lineto
+ 622.099 285.091 lineto
+ 622.818 285.119 lineto
+ 623.537 285.148 lineto
+ 624.255 285.179 lineto
+ 624.974 285.211 lineto
+ 625.693 285.243 lineto
+ 626.411 285.277 lineto
+ 627.13 285.312 lineto
+ 627.849 285.348 lineto
+ 628.568 285.384 lineto
+ 629.286 285.422 lineto
+ 630.005 285.459 lineto
+ 630.724 285.498 lineto
+ 631.442 285.536 lineto
+ 632.161 285.576 lineto
+ 632.88 285.615 lineto
+ 633.599 285.655 lineto
+ 634.317 285.695 lineto
+ 635.036 285.736 lineto
+ 635.755 285.776 lineto
+ 636.473 285.817 lineto
+ 637.192 285.857 lineto
+ 637.911 285.898 lineto
+ 638.63 285.938 lineto
+ 639.348 285.978 lineto
+ 640.067 286.018 lineto
+ 640.786 286.059 lineto
+ 641.505 286.098 lineto
+ 642.223 286.138 lineto
+ 642.942 286.177 lineto
+ 643.661 286.216 lineto
+ 644.379 286.255 lineto
+ 645.098 286.293 lineto
+ 645.817 286.331 lineto
+ 646.536 286.369 lineto
+ 647.254 286.406 lineto
+ 647.973 286.443 lineto
+ 648.692 286.479 lineto
+ 649.41 286.515 lineto
+ 650.129 286.551 lineto
+ 650.848 286.586 lineto
+ 651.567 286.62 lineto
+ 652.285 286.655 lineto
+ 653.004 286.689 lineto
+ 653.723 286.722 lineto
+ 654.441 286.755 lineto
+ 655.16 286.788 lineto
+ 655.879 286.821 lineto
+ 656.598 286.853 lineto
+ 657.316 286.884 lineto
+ 658.035 286.916 lineto
+ 658.754 286.947 lineto
+ 659.472 286.978 lineto
+ 660.191 287.008 lineto
+ 660.91 287.039 lineto
+ 661.629 287.069 lineto
+ 662.347 287.099 lineto
+ 663.066 287.129 lineto
+ 663.785 287.158 lineto
+ 664.504 287.188 lineto
+ 665.222 287.218 lineto
+ 665.941 287.247 lineto
+ 666.66 287.277 lineto
+ 667.378 287.306 lineto
+ 668.097 287.336 lineto
+ 668.816 287.365 lineto
+ 669.535 287.395 lineto
+ 670.253 287.425 lineto
+ 670.972 287.455 lineto
+ 671.691 287.486 lineto
+ 672.409 287.516 lineto
+ 673.128 287.547 lineto
+ 673.847 287.578 lineto
+ 674.566 287.61 lineto
+ 675.284 287.642 lineto
+ 676.003 287.674 lineto
+ 676.722 287.707 lineto
+ 677.44 287.74 lineto
+ 678.159 287.774 lineto
+ 678.878 287.808 lineto
+ 679.597 287.843 lineto
+ 680.315 287.878 lineto
+ 681.034 287.914 lineto
+ 681.753 287.951 lineto
+ 682.471 287.988 lineto
+ 683.19 288.026 lineto
+ 683.909 288.065 lineto
+ 684.628 288.104 lineto
+ 685.346 288.144 lineto
+ 686.065 288.184 lineto
+ 686.784 288.226 lineto
+ 687.503 288.268 lineto
+ 688.221 288.311 lineto
+ 688.94 288.354 lineto
+ 689.659 288.399 lineto
+ 690.377 288.444 lineto
+ 691.096 288.49 lineto
+ 691.815 288.536 lineto
+ 692.534 288.584 lineto
+ 693.252 288.632 lineto
+ 693.971 288.681 lineto
+ 694.69 288.73 lineto
+ 695.408 288.781 lineto
+ 696.127 288.832 lineto
+ 696.846 288.884 lineto
+ 697.565 288.936 lineto
+ 698.283 288.989 lineto
+ 699.002 289.043 lineto
+ 699.721 289.098 lineto
+ 700.439 289.153 lineto
+ 701.158 289.208 lineto
+ 701.877 289.264 lineto
+ 702.596 289.321 lineto
+ 703.314 289.378 lineto
+ 704.033 289.436 lineto
+ 704.752 289.494 lineto
+ 705.47 289.553 lineto
+ 706.189 289.611 lineto
+ 706.908 289.671 lineto
+ 707.627 289.73 lineto
+ 708.345 289.79 lineto
+ 709.064 289.849 lineto
+ 709.783 289.909 lineto
+ 710.502 289.969 lineto
+ 711.22 290.029 lineto
+ 711.939 290.09 lineto
+ 712.658 290.15 lineto
+ 713.376 290.21 lineto
+ 714.095 290.269 lineto
+ 714.814 290.329 lineto
+ 715.533 290.388 lineto
+ 716.251 290.447 lineto
+ 716.97 290.506 lineto
+ 717.689 290.564 lineto
+ 718.407 290.51 lineto
+ 719.126 290.453 lineto
+ 719.845 290.396 lineto
+ 720.564 290.34 lineto
+ 721.282 290.285 lineto
+ 722.001 290.231 lineto
+ 722.72 290.177 lineto
+ 723.438 290.124 lineto
+ 724.157 290.073 lineto
+ 724.876 290.022 lineto
+ 725.595 289.972 lineto
+ 726.313 289.924 lineto
+ 727.032 289.876 lineto
+ 727.751 289.83 lineto
+ 728.469 289.785 lineto
+ 729.188 289.742 lineto
+ 729.907 289.699 lineto
+ 730.626 289.659 lineto
+ 731.344 289.619 lineto
+ 732.063 289.582 lineto
+ 732.782 289.546 lineto
+ 733.501 289.511 lineto
+ 734.219 289.478 lineto
+ 734.938 289.447 lineto
+ 735.657 289.418 lineto
+ 736.375 289.39 lineto
+ 737.094 289.364 lineto
+ 737.813 289.34 lineto
+ 738.532 289.318 lineto
+ 739.25 289.298 lineto
+ 739.969 289.28 lineto
+ 740.688 289.264 lineto
+ 741.406 289.249 lineto
+ 742.125 289.237 lineto
+ 742.844 289.227 lineto
+ 743.563 289.219 lineto
+ 744.281 289.213 lineto
+ 745 289.209 lineto
+DashesProc stroke
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  0 0 0 SetBgColor
+  Fill
+  0 0 0 SetFgColor
+  stroke
+} def
+
+27 6 1 Ci
+27.7187 6.05872 1 Ci
+28.4374 6.23485 1 Ci
+29.1562 6.5283 1 Ci
+29.8749 6.93889 1 Ci
+30.5936 7.46642 1 Ci
+31.3123 8.11058 1 Ci
+32.031 8.87104 1 Ci
+32.7497 9.74737 1 Ci
+33.4685 10.7391 1 Ci
+34.1872 11.8457 1 Ci
+34.9059 13.0665 1 Ci
+35.6246 14.4009 1 Ci
+36.3433 15.8482 1 Ci
+37.0621 17.4075 1 Ci
+37.7808 19.0781 1 Ci
+38.4995 20.8589 1 Ci
+39.2182 22.7492 1 Ci
+39.9369 24.7477 1 Ci
+40.6557 26.8535 1 Ci
+41.3744 29.0654 1 Ci
+42.0931 31.3822 1 Ci
+42.8118 33.8027 1 Ci
+43.5305 36.3255 1 Ci
+44.2492 38.9493 1 Ci
+44.968 41.6728 1 Ci
+45.6867 44.4943 1 Ci
+46.4054 47.4125 1 Ci
+47.1241 50.4257 1 Ci
+47.8428 53.5324 1 Ci
+48.5616 56.7308 1 Ci
+49.2803 60.0194 1 Ci
+49.999 63.3964 1 Ci
+50.7177 66.8599 1 Ci
+51.4364 70.4081 1 Ci
+52.1552 74.0393 1 Ci
+52.8739 77.7514 1 Ci
+53.5926 81.5425 1 Ci
+54.3113 85.4107 1 Ci
+55.03 89.3539 1 Ci
+55.7487 93.3701 1 Ci
+56.4675 97.4572 1 Ci
+57.1862 101.613 1 Ci
+57.9049 105.836 1 Ci
+58.6236 110.123 1 Ci
+59.3423 114.472 1 Ci
+60.0611 118.881 1 Ci
+60.7798 123.348 1 Ci
+61.4985 127.871 1 Ci
+62.2172 132.447 1 Ci
+62.9359 137.074 1 Ci
+63.6547 141.75 1 Ci
+64.3734 146.472 1 Ci
+65.0921 151.238 1 Ci
+65.8108 156.046 1 Ci
+66.5295 160.893 1 Ci
+67.2482 165.777 1 Ci
+67.967 170.695 1 Ci
+68.6857 175.645 1 Ci
+69.4044 180.626 1 Ci
+70.1231 185.633 1 Ci
+70.8418 190.666 1 Ci
+71.5606 195.721 1 Ci
+72.2793 200.797 1 Ci
+72.998 205.89 1 Ci
+73.7167 210.998 1 Ci
+74.4354 216.12 1 Ci
+75.1542 221.253 1 Ci
+75.8729 226.393 1 Ci
+76.5916 231.54 1 Ci
+77.3103 236.691 1 Ci
+78.029 241.843 1 Ci
+78.7477 246.994 1 Ci
+79.4665 252.142 1 Ci
+80.1852 257.284 1 Ci
+80.9039 262.419 1 Ci
+81.6226 267.544 1 Ci
+82.3413 272.657 1 Ci
+83.0601 277.755 1 Ci
+83.7788 282.838 1 Ci
+84.4975 287.902 1 Ci
+85.2162 288.186 1 Ci
+85.9349 283.165 1 Ci
+86.6537 278.169 1 Ci
+87.3724 273.2 1 Ci
+88.0911 268.258 1 Ci
+88.8098 263.348 1 Ci
+89.5285 258.469 1 Ci
+90.2472 253.625 1 Ci
+90.966 248.817 1 Ci
+91.6847 244.046 1 Ci
+92.4034 239.315 1 Ci
+93.1221 234.626 1 Ci
+93.8408 229.979 1 Ci
+94.5596 225.376 1 Ci
+95.2783 220.819 1 Ci
+95.997 216.31 1 Ci
+96.7157 211.85 1 Ci
+97.4344 207.44 1 Ci
+98.1532 203.082 1 Ci
+98.8719 198.777 1 Ci
+99.5906 194.527 1 Ci
+100.309 190.332 1 Ci
+101.028 186.195 1 Ci
+101.747 182.115 1 Ci
+102.465 178.094 1 Ci
+103.184 174.134 1 Ci
+103.903 170.234 1 Ci
+104.622 166.397 1 Ci
+105.34 162.623 1 Ci
+106.059 158.913 1 Ci
+106.778 155.268 1 Ci
+107.496 151.688 1 Ci
+108.215 148.174 1 Ci
+108.934 144.728 1 Ci
+109.653 141.349 1 Ci
+110.371 138.037 1 Ci
+111.09 134.795 1 Ci
+111.809 131.621 1 Ci
+112.528 128.518 1 Ci
+113.246 125.483 1 Ci
+113.965 122.52 1 Ci
+114.684 119.626 1 Ci
+115.402 116.803 1 Ci
+116.121 114.051 1 Ci
+116.84 111.371 1 Ci
+117.559 108.761 1 Ci
+118.277 106.222 1 Ci
+118.996 103.755 1 Ci
+119.715 101.359 1 Ci
+120.433 99.0335 1 Ci
+121.152 96.7792 1 Ci
+121.871 94.5957 1 Ci
+122.59 92.4827 1 Ci
+123.308 90.4399 1 Ci
+124.027 88.4672 1 Ci
+124.746 86.5641 1 Ci
+125.464 84.7303 1 Ci
+126.183 82.9654 1 Ci
+126.902 81.269 1 Ci
+127.621 79.6405 1 Ci
+128.339 78.0794 1 Ci
+129.058 76.5853 1 Ci
+129.777 75.1575 1 Ci
+130.495 73.7955 1 Ci
+131.214 72.4985 1 Ci
+131.933 71.2659 1 Ci
+132.652 70.097 1 Ci
+133.37 68.9911 1 Ci
+134.089 67.9474 1 Ci
+134.808 66.9652 1 Ci
+135.527 66.0436 1 Ci
+136.245 65.1818 1 Ci
+136.964 64.379 1 Ci
+137.683 63.6342 1 Ci
+138.401 62.9467 1 Ci
+139.12 62.3154 1 Ci
+139.839 61.7395 1 Ci
+140.558 61.2181 1 Ci
+141.276 60.7501 1 Ci
+141.995 60.3345 1 Ci
+142.714 59.9705 1 Ci
+143.432 59.6569 1 Ci
+144.151 59.3929 1 Ci
+144.87 59.1773 1 Ci
+145.589 59.0091 1 Ci
+146.307 58.8874 1 Ci
+147.026 58.8109 1 Ci
+147.745 58.7788 1 Ci
+148.463 58.79 1 Ci
+149.182 58.8434 1 Ci
+149.901 58.9379 1 Ci
+150.62 59.0725 1 Ci
+151.338 59.2461 1 Ci
+152.057 59.4577 1 Ci
+152.776 59.7062 1 Ci
+153.494 59.9906 1 Ci
+154.213 60.3098 1 Ci
+154.932 60.6627 1 Ci
+155.651 61.0485 1 Ci
+156.369 61.4659 1 Ci
+157.088 61.9141 1 Ci
+157.807 62.3919 1 Ci
+158.526 62.8984 1 Ci
+159.244 63.4326 1 Ci
+159.963 63.9936 1 Ci
+160.682 64.5802 1 Ci
+161.4 65.1917 1 Ci
+162.119 65.8271 1 Ci
+162.838 66.4854 1 Ci
+163.557 67.1657 1 Ci
+164.275 67.8672 1 Ci
+164.994 68.589 1 Ci
+165.713 69.3301 1 Ci
+166.431 70.0899 1 Ci
+167.15 70.8674 1 Ci
+167.869 71.6619 1 Ci
+168.588 72.4725 1 Ci
+169.306 73.2985 1 Ci
+170.025 74.1393 1 Ci
+170.744 74.994 1 Ci
+171.462 75.862 1 Ci
+172.181 76.7425 1 Ci
+172.9 77.635 1 Ci
+173.619 78.5389 1 Ci
+174.337 79.4534 1 Ci
+175.056 80.3781 1 Ci
+175.775 81.3123 1 Ci
+176.493 82.2556 1 Ci
+177.212 83.2075 1 Ci
+177.931 84.1673 1 Ci
+178.65 85.1348 1 Ci
+179.368 86.1094 1 Ci
+180.087 87.0908 1 Ci
+180.806 88.0785 1 Ci
+181.525 89.0722 1 Ci
+182.243 90.0716 1 Ci
+182.962 91.0763 1 Ci
+183.681 92.0861 1 Ci
+184.399 93.1006 1 Ci
+185.118 94.1197 1 Ci
+185.837 95.1431 1 Ci
+186.556 96.1707 1 Ci
+187.274 97.2022 1 Ci
+187.993 98.2376 1 Ci
+188.712 99.2766 1 Ci
+189.43 100.319 1 Ci
+190.149 101.365 1 Ci
+190.868 102.415 1 Ci
+191.587 103.468 1 Ci
+192.305 104.525 1 Ci
+193.024 105.584 1 Ci
+193.743 106.648 1 Ci
+194.461 107.714 1 Ci
+195.18 108.785 1 Ci
+195.899 109.859 1 Ci
+196.618 110.937 1 Ci
+197.336 112.018 1 Ci
+198.055 113.104 1 Ci
+198.774 114.193 1 Ci
+199.492 115.287 1 Ci
+200.211 116.386 1 Ci
+200.93 117.489 1 Ci
+201.649 118.597 1 Ci
+202.367 119.711 1 Ci
+203.086 120.829 1 Ci
+203.805 121.954 1 Ci
+204.524 123.084 1 Ci
+205.242 124.22 1 Ci
+205.961 125.363 1 Ci
+206.68 126.513 1 Ci
+207.398 127.669 1 Ci
+208.117 128.833 1 Ci
+208.836 130.005 1 Ci
+209.555 131.185 1 Ci
+210.273 132.373 1 Ci
+210.992 133.569 1 Ci
+211.711 134.775 1 Ci
+212.429 135.99 1 Ci
+213.148 137.214 1 Ci
+213.867 138.449 1 Ci
+214.586 139.693 1 Ci
+215.304 140.949 1 Ci
+216.023 142.216 1 Ci
+216.742 143.493 1 Ci
+217.46 144.783 1 Ci
+218.179 146.085 1 Ci
+218.898 147.399 1 Ci
+219.617 148.726 1 Ci
+220.335 150.065 1 Ci
+221.054 151.419 1 Ci
+221.773 152.785 1 Ci
+222.491 154.166 1 Ci
+223.21 155.561 1 Ci
+223.929 156.971 1 Ci
+224.648 158.395 1 Ci
+225.366 159.834 1 Ci
+226.085 161.289 1 Ci
+226.804 162.76 1 Ci
+227.523 164.246 1 Ci
+228.241 165.748 1 Ci
+228.96 167.267 1 Ci
+229.679 168.802 1 Ci
+230.397 170.354 1 Ci
+231.116 171.922 1 Ci
+231.835 173.508 1 Ci
+232.554 175.11 1 Ci
+233.272 176.73 1 Ci
+233.991 178.368 1 Ci
+234.71 180.022 1 Ci
+235.428 181.694 1 Ci
+236.147 183.384 1 Ci
+236.866 185.092 1 Ci
+237.585 186.817 1 Ci
+238.303 188.56 1 Ci
+239.022 190.32 1 Ci
+239.741 192.098 1 Ci
+240.459 193.894 1 Ci
+241.178 195.707 1 Ci
+241.897 197.538 1 Ci
+242.616 199.386 1 Ci
+243.334 201.251 1 Ci
+244.053 203.133 1 Ci
+244.772 205.032 1 Ci
+245.49 206.948 1 Ci
+246.209 208.88 1 Ci
+246.928 210.829 1 Ci
+247.647 212.793 1 Ci
+248.365 214.774 1 Ci
+249.084 216.77 1 Ci
+249.803 218.78 1 Ci
+250.522 220.806 1 Ci
+251.24 222.847 1 Ci
+251.959 224.901 1 Ci
+252.678 226.969 1 Ci
+253.396 229.051 1 Ci
+254.115 231.146 1 Ci
+254.834 233.253 1 Ci
+255.553 235.372 1 Ci
+256.271 237.502 1 Ci
+256.99 239.644 1 Ci
+257.709 241.797 1 Ci
+258.427 243.959 1 Ci
+259.146 246.131 1 Ci
+259.865 248.312 1 Ci
+260.584 250.502 1 Ci
+261.302 252.699 1 Ci
+262.021 254.903 1 Ci
+262.74 257.114 1 Ci
+263.458 259.331 1 Ci
+264.177 261.553 1 Ci
+264.896 263.78 1 Ci
+265.615 266.011 1 Ci
+266.333 268.246 1 Ci
+267.052 270.482 1 Ci
+267.771 272.721 1 Ci
+268.489 274.961 1 Ci
+269.208 277.201 1 Ci
+269.927 279.441 1 Ci
+270.646 281.68 1 Ci
+271.364 283.918 1 Ci
+272.083 286.153 1 Ci
+272.802 288.384 1 Ci
+273.521 290.52 1 Ci
+274.239 288.297 1 Ci
+274.958 286.08 1 Ci
+275.677 283.87 1 Ci
+276.395 281.666 1 Ci
+277.114 279.471 1 Ci
+277.833 277.285 1 Ci
+278.552 275.108 1 Ci
+279.27 272.941 1 Ci
+279.989 270.786 1 Ci
+280.708 268.642 1 Ci
+281.426 266.512 1 Ci
+282.145 264.394 1 Ci
+282.864 262.292 1 Ci
+283.583 260.204 1 Ci
+284.301 258.133 1 Ci
+285.02 256.078 1 Ci
+285.739 254.04 1 Ci
+286.457 252.021 1 Ci
+287.176 250.021 1 Ci
+287.895 248.04 1 Ci
+288.614 246.081 1 Ci
+289.332 244.142 1 Ci
+290.051 242.225 1 Ci
+290.77 240.331 1 Ci
+291.488 238.461 1 Ci
+292.207 236.615 1 Ci
+292.926 234.793 1 Ci
+293.645 232.997 1 Ci
+294.363 231.227 1 Ci
+295.082 229.484 1 Ci
+295.801 227.769 1 Ci
+296.52 226.081 1 Ci
+297.238 224.422 1 Ci
+297.957 222.793 1 Ci
+298.676 221.193 1 Ci
+299.394 219.624 1 Ci
+300.113 218.085 1 Ci
+300.832 216.579 1 Ci
+301.551 215.104 1 Ci
+302.269 213.661 1 Ci
+302.988 212.252 1 Ci
+303.707 210.876 1 Ci
+304.425 209.534 1 Ci
+305.144 208.226 1 Ci
+305.863 206.953 1 Ci
+306.582 205.715 1 Ci
+307.3 204.513 1 Ci
+308.019 203.346 1 Ci
+308.738 202.215 1 Ci
+309.456 201.121 1 Ci
+310.175 200.063 1 Ci
+310.894 199.042 1 Ci
+311.613 198.059 1 Ci
+312.331 197.113 1 Ci
+313.05 196.204 1 Ci
+313.769 195.333 1 Ci
+314.487 194.5 1 Ci
+315.206 193.705 1 Ci
+315.925 192.948 1 Ci
+316.644 192.23 1 Ci
+317.362 191.549 1 Ci
+318.081 190.907 1 Ci
+318.8 190.303 1 Ci
+319.519 189.738 1 Ci
+320.237 189.211 1 Ci
+320.956 188.722 1 Ci
+321.675 188.271 1 Ci
+322.393 187.859 1 Ci
+323.112 187.484 1 Ci
+323.831 187.147 1 Ci
+324.55 186.848 1 Ci
+325.268 186.586 1 Ci
+325.987 186.362 1 Ci
+326.706 186.175 1 Ci
+327.424 186.025 1 Ci
+328.143 185.911 1 Ci
+328.862 185.834 1 Ci
+329.581 185.792 1 Ci
+330.299 185.787 1 Ci
+331.018 185.817 1 Ci
+331.737 185.882 1 Ci
+332.455 185.982 1 Ci
+333.174 186.116 1 Ci
+333.893 186.284 1 Ci
+334.612 186.485 1 Ci
+335.33 186.72 1 Ci
+336.049 186.987 1 Ci
+336.768 187.286 1 Ci
+337.486 187.617 1 Ci
+338.205 187.979 1 Ci
+338.924 188.372 1 Ci
+339.643 188.795 1 Ci
+340.361 189.248 1 Ci
+341.08 189.73 1 Ci
+341.799 190.24 1 Ci
+342.518 190.779 1 Ci
+343.236 191.345 1 Ci
+343.955 191.937 1 Ci
+344.674 192.556 1 Ci
+345.392 193.2 1 Ci
+346.111 193.87 1 Ci
+346.83 194.564 1 Ci
+347.549 195.281 1 Ci
+348.267 196.022 1 Ci
+348.986 196.785 1 Ci
+349.705 197.57 1 Ci
+350.423 198.376 1 Ci
+351.142 199.202 1 Ci
+351.861 200.049 1 Ci
+352.58 200.914 1 Ci
+353.298 201.798 1 Ci
+354.017 202.7 1 Ci
+354.736 203.619 1 Ci
+355.454 204.554 1 Ci
+356.173 205.505 1 Ci
+356.892 206.471 1 Ci
+357.611 207.452 1 Ci
+358.329 208.446 1 Ci
+359.048 209.453 1 Ci
+359.767 210.473 1 Ci
+360.485 211.504 1 Ci
+361.204 212.547 1 Ci
+361.923 213.6 1 Ci
+362.642 214.662 1 Ci
+363.36 215.734 1 Ci
+364.079 216.813 1 Ci
+364.798 217.901 1 Ci
+365.517 218.996 1 Ci
+366.235 220.097 1 Ci
+366.954 221.203 1 Ci
+367.673 222.315 1 Ci
+368.391 223.432 1 Ci
+369.11 224.552 1 Ci
+369.829 225.676 1 Ci
+370.548 226.803 1 Ci
+371.266 227.932 1 Ci
+371.985 229.062 1 Ci
+372.704 230.193 1 Ci
+373.422 231.325 1 Ci
+374.141 232.457 1 Ci
+374.86 233.588 1 Ci
+375.579 234.717 1 Ci
+376.297 235.846 1 Ci
+377.016 236.972 1 Ci
+377.735 238.095 1 Ci
+378.453 239.215 1 Ci
+379.172 240.331 1 Ci
+379.891 241.444 1 Ci
+380.61 242.552 1 Ci
+381.328 243.655 1 Ci
+382.047 244.752 1 Ci
+382.766 245.844 1 Ci
+383.484 246.93 1 Ci
+384.203 248.009 1 Ci
+384.922 249.081 1 Ci
+385.641 250.146 1 Ci
+386.359 251.203 1 Ci
+387.078 252.252 1 Ci
+387.797 253.293 1 Ci
+388.516 254.325 1 Ci
+389.234 255.349 1 Ci
+389.953 256.363 1 Ci
+390.672 257.368 1 Ci
+391.39 258.364 1 Ci
+392.109 259.349 1 Ci
+392.828 260.325 1 Ci
+393.547 261.29 1 Ci
+394.265 262.244 1 Ci
+394.984 263.188 1 Ci
+395.703 264.122 1 Ci
+396.421 265.044 1 Ci
+397.14 265.955 1 Ci
+397.859 266.855 1 Ci
+398.578 267.743 1 Ci
+399.296 268.62 1 Ci
+400.015 269.486 1 Ci
+400.734 270.34 1 Ci
+401.452 271.182 1 Ci
+402.171 272.012 1 Ci
+402.89 272.831 1 Ci
+403.609 273.638 1 Ci
+404.327 274.433 1 Ci
+405.046 275.216 1 Ci
+405.765 275.987 1 Ci
+406.483 276.747 1 Ci
+407.202 277.494 1 Ci
+407.921 278.23 1 Ci
+408.64 278.954 1 Ci
+409.358 279.666 1 Ci
+410.077 280.367 1 Ci
+410.796 281.056 1 Ci
+411.515 281.734 1 Ci
+412.233 282.4 1 Ci
+412.952 283.055 1 Ci
+413.671 283.699 1 Ci
+414.389 284.331 1 Ci
+415.108 284.953 1 Ci
+415.827 285.564 1 Ci
+416.546 286.164 1 Ci
+417.264 286.753 1 Ci
+417.983 287.332 1 Ci
+418.702 287.9 1 Ci
+419.42 288.458 1 Ci
+420.139 289.006 1 Ci
+420.858 289.545 1 Ci
+421.577 290.073 1 Ci
+422.295 290.539 1 Ci
+423.014 290.03 1 Ci
+423.733 289.529 1 Ci
+424.451 289.038 1 Ci
+425.17 288.556 1 Ci
+425.889 288.082 1 Ci
+426.608 287.617 1 Ci
+427.326 287.161 1 Ci
+428.045 286.712 1 Ci
+428.764 286.272 1 Ci
+429.482 285.839 1 Ci
+430.201 285.414 1 Ci
+430.92 284.997 1 Ci
+431.639 284.586 1 Ci
+432.357 284.183 1 Ci
+433.076 283.787 1 Ci
+433.795 283.398 1 Ci
+434.514 283.015 1 Ci
+435.232 282.639 1 Ci
+435.951 282.269 1 Ci
+436.67 281.905 1 Ci
+437.388 281.546 1 Ci
+438.107 281.194 1 Ci
+438.826 280.847 1 Ci
+439.545 280.506 1 Ci
+440.263 280.17 1 Ci
+440.982 279.839 1 Ci
+441.701 279.513 1 Ci
+442.419 279.192 1 Ci
+443.138 278.876 1 Ci
+443.857 278.564 1 Ci
+444.576 278.256 1 Ci
+445.294 277.953 1 Ci
+446.013 277.654 1 Ci
+446.732 277.36 1 Ci
+447.45 277.069 1 Ci
+448.169 276.782 1 Ci
+448.888 276.499 1 Ci
+449.607 276.219 1 Ci
+450.325 275.943 1 Ci
+451.044 275.671 1 Ci
+451.763 275.402 1 Ci
+452.481 275.136 1 Ci
+453.2 274.874 1 Ci
+453.919 274.615 1 Ci
+454.638 274.358 1 Ci
+455.356 274.106 1 Ci
+456.075 273.856 1 Ci
+456.794 273.609 1 Ci
+457.513 273.365 1 Ci
+458.231 273.124 1 Ci
+458.95 272.886 1 Ci
+459.669 272.651 1 Ci
+460.387 272.419 1 Ci
+461.106 272.19 1 Ci
+461.825 271.963 1 Ci
+462.544 271.74 1 Ci
+463.262 271.519 1 Ci
+463.981 271.302 1 Ci
+464.7 271.087 1 Ci
+465.418 270.875 1 Ci
+466.137 270.666 1 Ci
+466.856 270.46 1 Ci
+467.575 270.257 1 Ci
+468.293 270.058 1 Ci
+469.012 269.861 1 Ci
+469.731 269.668 1 Ci
+470.449 269.478 1 Ci
+471.168 269.291 1 Ci
+471.887 269.107 1 Ci
+472.606 268.927 1 Ci
+473.324 268.75 1 Ci
+474.043 268.577 1 Ci
+474.762 268.408 1 Ci
+475.48 268.242 1 Ci
+476.199 268.08 1 Ci
+476.918 267.921 1 Ci
+477.637 267.767 1 Ci
+478.355 267.617 1 Ci
+479.074 267.47 1 Ci
+479.793 267.328 1 Ci
+480.512 267.19 1 Ci
+481.23 267.057 1 Ci
+481.949 266.928 1 Ci
+482.668 266.803 1 Ci
+483.386 266.683 1 Ci
+484.105 266.568 1 Ci
+484.824 266.458 1 Ci
+485.543 266.352 1 Ci
+486.261 266.252 1 Ci
+486.98 266.156 1 Ci
+487.699 266.066 1 Ci
+488.417 265.981 1 Ci
+489.136 265.902 1 Ci
+489.855 265.827 1 Ci
+490.574 265.759 1 Ci
+491.292 265.696 1 Ci
+492.011 265.638 1 Ci
+492.73 265.587 1 Ci
+493.448 265.541 1 Ci
+494.167 265.501 1 Ci
+494.886 265.467 1 Ci
+495.605 265.44 1 Ci
+496.323 265.418 1 Ci
+497.042 265.403 1 Ci
+497.761 265.394 1 Ci
+498.479 265.391 1 Ci
+499.198 265.394 1 Ci
+499.917 265.404 1 Ci
+500.636 265.421 1 Ci
+501.354 265.444 1 Ci
+502.073 265.474 1 Ci
+502.792 265.51 1 Ci
+503.511 265.553 1 Ci
+504.229 265.602 1 Ci
+504.948 265.659 1 Ci
+505.667 265.722 1 Ci
+506.385 265.791 1 Ci
+507.104 265.868 1 Ci
+507.823 265.951 1 Ci
+508.542 266.041 1 Ci
+509.26 266.138 1 Ci
+509.979 266.241 1 Ci
+510.698 266.352 1 Ci
+511.416 266.469 1 Ci
+512.135 266.592 1 Ci
+512.854 266.723 1 Ci
+513.573 266.86 1 Ci
+514.291 267.003 1 Ci
+515.01 267.154 1 Ci
+515.729 267.31 1 Ci
+516.447 267.473 1 Ci
+517.166 267.643 1 Ci
+517.885 267.819 1 Ci
+518.604 268.001 1 Ci
+519.322 268.189 1 Ci
+520.041 268.384 1 Ci
+520.76 268.584 1 Ci
+521.478 268.791 1 Ci
+522.197 269.003 1 Ci
+522.916 269.221 1 Ci
+523.635 269.445 1 Ci
+524.353 269.675 1 Ci
+525.072 269.909 1 Ci
+525.791 270.15 1 Ci
+526.51 270.395 1 Ci
+527.228 270.646 1 Ci
+527.947 270.901 1 Ci
+528.666 271.162 1 Ci
+529.384 271.427 1 Ci
+530.103 271.696 1 Ci
+530.822 271.971 1 Ci
+531.541 272.249 1 Ci
+532.259 272.532 1 Ci
+532.978 272.818 1 Ci
+533.697 273.109 1 Ci
+534.415 273.403 1 Ci
+535.134 273.701 1 Ci
+535.853 274.002 1 Ci
+536.572 274.306 1 Ci
+537.29 274.614 1 Ci
+538.009 274.924 1 Ci
+538.728 275.237 1 Ci
+539.446 275.552 1 Ci
+540.165 275.87 1 Ci
+540.884 276.19 1 Ci
+541.603 276.512 1 Ci
+542.321 276.836 1 Ci
+543.04 277.162 1 Ci
+543.759 277.489 1 Ci
+544.477 277.817 1 Ci
+545.196 278.147 1 Ci
+545.915 278.477 1 Ci
+546.634 278.809 1 Ci
+547.352 279.14 1 Ci
+548.071 279.473 1 Ci
+548.79 279.805 1 Ci
+549.509 280.137 1 Ci
+550.227 280.47 1 Ci
+550.946 280.802 1 Ci
+551.665 281.134 1 Ci
+552.383 281.464 1 Ci
+553.102 281.795 1 Ci
+553.821 282.124 1 Ci
+554.54 282.452 1 Ci
+555.258 282.778 1 Ci
+555.977 283.103 1 Ci
+556.696 283.427 1 Ci
+557.414 283.748 1 Ci
+558.133 284.068 1 Ci
+558.852 284.385 1 Ci
+559.571 284.701 1 Ci
+560.289 285.013 1 Ci
+561.008 285.324 1 Ci
+561.727 285.631 1 Ci
+562.445 285.936 1 Ci
+563.164 286.237 1 Ci
+563.883 286.536 1 Ci
+564.602 286.831 1 Ci
+565.32 287.122 1 Ci
+566.039 287.411 1 Ci
+566.758 287.695 1 Ci
+567.476 287.976 1 Ci
+568.195 288.253 1 Ci
+568.914 288.526 1 Ci
+569.633 288.795 1 Ci
+570.351 289.059 1 Ci
+571.07 289.32 1 Ci
+571.789 289.576 1 Ci
+572.508 289.828 1 Ci
+573.226 290.075 1 Ci
+573.945 290.317 1 Ci
+574.664 290.555 1 Ci
+575.382 290.343 1 Ci
+576.101 290.115 1 Ci
+576.82 289.891 1 Ci
+577.539 289.673 1 Ci
+578.257 289.459 1 Ci
+578.976 289.251 1 Ci
+579.695 289.047 1 Ci
+580.413 288.848 1 Ci
+581.132 288.655 1 Ci
+581.851 288.467 1 Ci
+582.57 288.284 1 Ci
+583.288 288.106 1 Ci
+584.007 287.933 1 Ci
+584.726 287.765 1 Ci
+585.444 287.603 1 Ci
+586.163 287.445 1 Ci
+586.882 287.293 1 Ci
+587.601 287.146 1 Ci
+588.319 287.004 1 Ci
+589.038 286.868 1 Ci
+589.757 286.736 1 Ci
+590.475 286.609 1 Ci
+591.194 286.488 1 Ci
+591.913 286.371 1 Ci
+592.632 286.26 1 Ci
+593.35 286.153 1 Ci
+594.069 286.051 1 Ci
+594.788 285.954 1 Ci
+595.507 285.862 1 Ci
+596.225 285.774 1 Ci
+596.944 285.692 1 Ci
+597.663 285.613 1 Ci
+598.381 285.539 1 Ci
+599.1 285.47 1 Ci
+599.819 285.405 1 Ci
+600.538 285.345 1 Ci
+601.256 285.288 1 Ci
+601.975 285.236 1 Ci
+602.694 285.188 1 Ci
+603.412 285.144 1 Ci
+604.131 285.103 1 Ci
+604.85 285.067 1 Ci
+605.569 285.034 1 Ci
+606.287 285.005 1 Ci
+607.006 284.979 1 Ci
+607.725 284.957 1 Ci
+608.443 284.938 1 Ci
+609.162 284.923 1 Ci
+609.881 284.911 1 Ci
+610.6 284.901 1 Ci
+611.318 284.895 1 Ci
+612.037 284.892 1 Ci
+612.756 284.891 1 Ci
+613.474 284.893 1 Ci
+614.193 284.898 1 Ci
+614.912 284.905 1 Ci
+615.631 284.914 1 Ci
+616.349 284.926 1 Ci
+617.068 284.94 1 Ci
+617.787 284.956 1 Ci
+618.506 284.974 1 Ci
+619.224 284.994 1 Ci
+619.943 285.016 1 Ci
+620.662 285.039 1 Ci
+621.38 285.064 1 Ci
+622.099 285.091 1 Ci
+622.818 285.119 1 Ci
+623.537 285.148 1 Ci
+624.255 285.179 1 Ci
+624.974 285.211 1 Ci
+625.693 285.243 1 Ci
+626.411 285.277 1 Ci
+627.13 285.312 1 Ci
+627.849 285.348 1 Ci
+628.568 285.384 1 Ci
+629.286 285.422 1 Ci
+630.005 285.459 1 Ci
+630.724 285.498 1 Ci
+631.442 285.536 1 Ci
+632.161 285.576 1 Ci
+632.88 285.615 1 Ci
+633.599 285.655 1 Ci
+634.317 285.695 1 Ci
+635.036 285.736 1 Ci
+635.755 285.776 1 Ci
+636.473 285.817 1 Ci
+637.192 285.857 1 Ci
+637.911 285.898 1 Ci
+638.63 285.938 1 Ci
+639.348 285.978 1 Ci
+640.067 286.018 1 Ci
+640.786 286.059 1 Ci
+641.505 286.098 1 Ci
+642.223 286.138 1 Ci
+642.942 286.177 1 Ci
+643.661 286.216 1 Ci
+644.379 286.255 1 Ci
+645.098 286.293 1 Ci
+645.817 286.331 1 Ci
+646.536 286.369 1 Ci
+647.254 286.406 1 Ci
+647.973 286.443 1 Ci
+648.692 286.479 1 Ci
+649.41 286.515 1 Ci
+650.129 286.551 1 Ci
+650.848 286.586 1 Ci
+651.567 286.62 1 Ci
+652.285 286.655 1 Ci
+653.004 286.689 1 Ci
+653.723 286.722 1 Ci
+654.441 286.755 1 Ci
+655.16 286.788 1 Ci
+655.879 286.821 1 Ci
+656.598 286.853 1 Ci
+657.316 286.884 1 Ci
+658.035 286.916 1 Ci
+658.754 286.947 1 Ci
+659.472 286.978 1 Ci
+660.191 287.008 1 Ci
+660.91 287.039 1 Ci
+661.629 287.069 1 Ci
+662.347 287.099 1 Ci
+663.066 287.129 1 Ci
+663.785 287.158 1 Ci
+664.504 287.188 1 Ci
+665.222 287.218 1 Ci
+665.941 287.247 1 Ci
+666.66 287.277 1 Ci
+667.378 287.306 1 Ci
+668.097 287.336 1 Ci
+668.816 287.365 1 Ci
+669.535 287.395 1 Ci
+670.253 287.425 1 Ci
+670.972 287.455 1 Ci
+671.691 287.486 1 Ci
+672.409 287.516 1 Ci
+673.128 287.547 1 Ci
+673.847 287.578 1 Ci
+674.566 287.61 1 Ci
+675.284 287.642 1 Ci
+676.003 287.674 1 Ci
+676.722 287.707 1 Ci
+677.44 287.74 1 Ci
+678.159 287.774 1 Ci
+678.878 287.808 1 Ci
+679.597 287.843 1 Ci
+680.315 287.878 1 Ci
+681.034 287.914 1 Ci
+681.753 287.951 1 Ci
+682.471 287.988 1 Ci
+683.19 288.026 1 Ci
+683.909 288.065 1 Ci
+684.628 288.104 1 Ci
+685.346 288.144 1 Ci
+686.065 288.184 1 Ci
+686.784 288.226 1 Ci
+687.503 288.268 1 Ci
+688.221 288.311 1 Ci
+688.94 288.354 1 Ci
+689.659 288.399 1 Ci
+690.377 288.444 1 Ci
+691.096 288.49 1 Ci
+691.815 288.536 1 Ci
+692.534 288.584 1 Ci
+693.252 288.632 1 Ci
+693.971 288.681 1 Ci
+694.69 288.73 1 Ci
+695.408 288.781 1 Ci
+696.127 288.832 1 Ci
+696.846 288.884 1 Ci
+697.565 288.936 1 Ci
+698.283 288.989 1 Ci
+699.002 289.043 1 Ci
+699.721 289.098 1 Ci
+700.439 289.153 1 Ci
+701.158 289.208 1 Ci
+701.877 289.264 1 Ci
+702.596 289.321 1 Ci
+703.314 289.378 1 Ci
+704.033 289.436 1 Ci
+704.752 289.494 1 Ci
+705.47 289.553 1 Ci
+706.189 289.611 1 Ci
+706.908 289.671 1 Ci
+707.627 289.73 1 Ci
+708.345 289.79 1 Ci
+709.064 289.849 1 Ci
+709.783 289.909 1 Ci
+710.502 289.969 1 Ci
+711.22 290.029 1 Ci
+711.939 290.09 1 Ci
+712.658 290.15 1 Ci
+713.376 290.21 1 Ci
+714.095 290.269 1 Ci
+714.814 290.329 1 Ci
+715.533 290.388 1 Ci
+716.251 290.447 1 Ci
+716.97 290.506 1 Ci
+717.689 290.564 1 Ci
+718.407 290.51 1 Ci
+719.126 290.453 1 Ci
+719.845 290.396 1 Ci
+720.564 290.34 1 Ci
+721.282 290.285 1 Ci
+722.001 290.231 1 Ci
+722.72 290.177 1 Ci
+723.438 290.124 1 Ci
+724.157 290.073 1 Ci
+724.876 290.022 1 Ci
+725.595 289.972 1 Ci
+726.313 289.924 1 Ci
+727.032 289.876 1 Ci
+727.751 289.83 1 Ci
+728.469 289.785 1 Ci
+729.188 289.742 1 Ci
+729.907 289.699 1 Ci
+730.626 289.659 1 Ci
+731.344 289.619 1 Ci
+732.063 289.582 1 Ci
+732.782 289.546 1 Ci
+733.501 289.511 1 Ci
+734.219 289.478 1 Ci
+734.938 289.447 1 Ci
+735.657 289.418 1 Ci
+736.375 289.39 1 Ci
+737.094 289.364 1 Ci
+737.813 289.34 1 Ci
+738.532 289.318 1 Ci
+739.25 289.298 1 Ci
+739.969 289.28 1 Ci
+740.688 289.264 1 Ci
+741.406 289.249 1 Ci
+742.125 289.237 1 Ci
+742.844 289.227 1 Ci
+743.563 289.219 1 Ci
+744.281 289.213 1 Ci
+745 289.209 1 Ci
+
+% Unset clipping
+grestore
+
+0.831373 0.815686 0.784314 SetBgColor
+0 0 806 6 Box fill
+
+0 6 27 318 Box fill
+
+745 6 61 318 Box fill
+
+0 324 806 29 Box fill
+
+1 1 1 SetBgColor
+750 39 51 2 Box fill
+
+799 7 2 34 Box fill
+
+0.501961 0.501961 0.501961 SetBgColor
+newpath 750 41 moveto
+750 7 lineto
+801 7 lineto
+799 9 lineto
+752 9 lineto
+752 39 lineto
+750 41 lineto
+750 41  lineto closepath Fill
+0 setlinejoin
+0 setlinecap
+0 0 0 SetFgColor
+4 setlinewidth
+[ ] 0 setdash
+/DashesProc {} def
+763 16 14 Li
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  0 0 0 SetBgColor
+  Fill
+  0 0 0 SetFgColor
+  stroke
+} def
+
+763 16 7 Ci
+22 9 0 785 16.5 BeginText
+6 /Helvetica SetFont
+0 0 0 SetFgColor
+(fourier) 22 0 7 DrawAdjText
+EndText
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  1 0 0 SetBgColor
+  Fill
+  1 0 0 SetFgColor
+  stroke
+} def
+
+763 31 7 Ci
+20 9 0 784 31.5 BeginText
+6 /Helvetica SetFont
+0 0 0 SetFgColor
+(pc072) 20 0 7 DrawAdjText
+EndText
+10 12 0 27 342 BeginText
+8 /Helvetica SetFont
+0 0 0 SetFgColor
+(0) 6 2 10 DrawAdjText
+EndText
+19 12 0 170.744 342 BeginText
+8 /Helvetica SetFont
+0 0 0 SetFgColor
+(0.2) 15 2 10 DrawAdjText
+EndText
+19 12 0 314.487 342 BeginText
+8 /Helvetica SetFont
+0 0 0 SetFgColor
+(0.4) 15 2 10 DrawAdjText
+EndText
+19 12 0 458.231 342 BeginText
+8 /Helvetica SetFont
+0 0 0 SetFgColor
+(0.6) 15 2 10 DrawAdjText
+EndText
+19 12 0 601.975 342 BeginText
+8 /Helvetica SetFont
+0 0 0 SetFgColor
+(0.8) 15 2 10 DrawAdjText
+EndText
+0 setlinejoin
+0 setlinecap
+0 0 0 SetFgColor
+1 setlinewidth
+[ ] 0 setdash
+/DashesProc {} def
+27 326 moveto
+ 745 326 lineto
+DashesProc stroke
+55.7487 326 moveto
+ 55.7487 331 lineto
+DashesProc stroke
+84.4975 326 moveto
+ 84.4975 331 lineto
+DashesProc stroke
+113.246 326 moveto
+ 113.246 331 lineto
+DashesProc stroke
+141.995 326 moveto
+ 141.995 331 lineto
+DashesProc stroke
+27 326 moveto
+ 27 334 lineto
+DashesProc stroke
+199.492 326 moveto
+ 199.492 331 lineto
+DashesProc stroke
+228.241 326 moveto
+ 228.241 331 lineto
+DashesProc stroke
+256.99 326 moveto
+ 256.99 331 lineto
+DashesProc stroke
+285.739 326 moveto
+ 285.739 331 lineto
+DashesProc stroke
+170.744 326 moveto
+ 170.744 334 lineto
+DashesProc stroke
+343.236 326 moveto
+ 343.236 331 lineto
+DashesProc stroke
+371.985 326 moveto
+ 371.985 331 lineto
+DashesProc stroke
+400.734 326 moveto
+ 400.734 331 lineto
+DashesProc stroke
+429.482 326 moveto
+ 429.482 331 lineto
+DashesProc stroke
+314.487 326 moveto
+ 314.487 334 lineto
+DashesProc stroke
+486.98 326 moveto
+ 486.98 331 lineto
+DashesProc stroke
+515.729 326 moveto
+ 515.729 331 lineto
+DashesProc stroke
+544.477 326 moveto
+ 544.477 331 lineto
+DashesProc stroke
+573.226 326 moveto
+ 573.226 331 lineto
+DashesProc stroke
+458.231 326 moveto
+ 458.231 334 lineto
+DashesProc stroke
+630.724 326 moveto
+ 630.724 331 lineto
+DashesProc stroke
+659.472 326 moveto
+ 659.472 331 lineto
+DashesProc stroke
+688.221 326 moveto
+ 688.221 331 lineto
+DashesProc stroke
+716.97 326 moveto
+ 716.97 331 lineto
+DashesProc stroke
+601.975 326 moveto
+ 601.975 334 lineto
+DashesProc stroke
+10 12 0 10 290.566 BeginText
+8 /Helvetica SetFont
+0 0 0 SetFgColor
+(0) 6 2 10 DrawAdjText
+EndText
+10 12 0 10 139.166 BeginText
+8 /Helvetica SetFont
+0 0 0 SetFgColor
+(1) 6 2 10 DrawAdjText
+EndText
+0 setlinejoin
+0 setlinecap
+0 0 0 SetFgColor
+1 setlinewidth
+[ ] 0 setdash
+/DashesProc {} def
+25 324 moveto
+ 25 6 lineto
+DashesProc stroke
+25 320.846 moveto
+ 20 320.846 lineto
+DashesProc stroke
+25 260.286 moveto
+ 20 260.286 lineto
+DashesProc stroke
+25 230.006 moveto
+ 20 230.006 lineto
+DashesProc stroke
+25 199.726 moveto
+ 20 199.726 lineto
+DashesProc stroke
+25 169.446 moveto
+ 20 169.446 lineto
+DashesProc stroke
+25 290.566 moveto
+ 17 290.566 lineto
+DashesProc stroke
+25 108.886 moveto
+ 20 108.886 lineto
+DashesProc stroke
+25 78.606 moveto
+ 20 78.606 lineto
+DashesProc stroke
+25 48.326 moveto
+ 20 48.326 lineto
+DashesProc stroke
+25 18.0461 moveto
+ 20 18.0461 lineto
+DashesProc stroke
+25 139.166 moveto
+ 17 139.166 lineto
+DashesProc stroke
+showpage
+%Trailer
+grestore
+end
+%EOF
