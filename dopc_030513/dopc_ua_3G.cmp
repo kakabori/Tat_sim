@@ -1,0 +1,17 @@
+#################################################################################
+## any comments can go here, as long as they start with ## (double pound)
+## lines starting with # (single pound) execute Tcl commands (e.g. set ...)
+##
+## model definition starts with component name, number of atoms per group,
+## and the list of all atoms
+#################################################################################
+##
+## DOPC for unite atom is defined as follows:
+##
+CholCH3 3	T1 T2 T3
+PCN     8	N4 M5 M6 O7 P8 O9 O10 O11
+CG      9	M12 B13 O14 C15 O16 M34 O35 C36 O37
+CH2     1	M17 M18 M19 M20 M21 M22 M23 M26 M27 M28 M29 M30 M31 M32 M38 M39 M40 M41 M42 M43 M44 M47 M48 M49 M50 M51 M52 M53
+CH      1	B24 B25 B45 B46
+CH3     1	T33 T54
+WATER   3	HW1 OW HW2

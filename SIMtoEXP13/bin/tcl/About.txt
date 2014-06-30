@@ -1,0 +1,14 @@
+
+_____________________________________________________________________________________________
+
+
+************************ SIMulation to EXPeriment comparison ********************************
+								(C) Norbert.Kucerka@nrc.gc.ca
+
+_____________________________________________________________________________________________
+
+
+Program 'SIMtoEXP' (originally 'VolProb') is for converting SIMulated data to
+scattering form factors and comparing those to experimental data.
+It also calculates the Volume Probability Distributions
+according to Horia's paper [Petrache et al. BJ 72, 2237-2242 (1997)].

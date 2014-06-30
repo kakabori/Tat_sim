@@ -1,0 +1,2531 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 72 310 540 484
+%%Pages: 0
+%%Creator: (BLT 2.4 Graph)
+%%CreationDate: (Sun May 19 15:36:18 2013)
+%%Title: (out.ps)
+%%DocumentData: Clean7Bit
+%%Orientation: Portrait
+%%DocumentNeededResources: font Helvetica Courier
+%%EndComments
+
+
+% including file "C:/Documents and Settings/unkokusei.LAPTOP.000/My Documents/Dropbox/Tat/SIMtoEXP12NK/lib/blt2.4/bltGraph.pro"
+
+%%BeginProlog
+%
+% PostScript prolog file of the BLT graph widget.
+%
+% Copyright 1989-1992 Regents of the University of California.
+% Permission to use, copy, modify, and distribute this
+% software and its documentation for any purpose and without
+% fee is hereby granted, provided that the above copyright
+% notice appear in all copies.  The University of California
+% makes no representations about the suitability of this
+% software for any purpose.  It is provided "as is" without
+% express or implied warranty.
+%
+% Copyright 1991-1997 Bell Labs Innovations for Lucent Technologies.
+%
+% Permission to use, copy, modify, and distribute this software and its
+% documentation for any purpose and without fee is hereby granted, provided
+% that the above copyright notice appear in all copies and that both that the
+% copyright notice and warranty disclaimer appear in supporting documentation,
+% and that the names of Lucent Technologies any of their entities not be used
+% in advertising or publicity pertaining to distribution of the software
+% without specific, written prior permission.
+%
+% Lucent Technologies disclaims all warranties with regard to this software,
+% including all implied warranties of merchantability and fitness.  In no event
+% shall Lucent Technologies be liable for any special, indirect or
+% consequential damages or any damages whatsoever resulting from loss of use,
+% data or profits, whether in an action of contract, negligence or other
+% tortuous action, arising out of or in connection with the use or performance
+% of this software.
+%
+
+200 dict begin
+
+/BaseRatio 1.3467736870885982 def	% Ratio triangle base / symbol size
+/BgColorProc 0 def			% Background color routine (symbols)
+/DrawSymbolProc 0 def			% Routine to draw symbol outline/fill
+/StippleProc 0 def			% Stipple routine (bar segments)
+/DashesProc 0 def			% Dashes routine (line segments)
+  
+% Define the array ISOLatin1Encoding (which specifies how characters are 
+% encoded for ISO-8859-1 fonts), if it isn't already present (Postscript 
+% level 2 is supposed to define it, but level 1 doesn't). 
+ 
+systemdict /ISOLatin1Encoding known not { 
+  /ISOLatin1Encoding [ 
+    /space /space /space /space /space /space /space /space 
+    /space /space /space /space /space /space /space /space 
+    /space /space /space /space /space /space /space /space 
+    /space /space /space /space /space /space /space /space 
+    /space /exclam /quotedbl /numbersign /dollar /percent /ampersand 
+    /quoteright 
+    /parenleft /parenright /asterisk /plus /comma /minus /period /slash 
+    /zero /one /two /three /four /five /six /seven 
+    /eight /nine /colon /semicolon /less /equal /greater /question 
+    /at /A /B /C /D /E /F /G 
+    /H /I /J /K /L /M /N /O 
+    /P /Q /R /S /T /U /V /W 
+    /X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore 
+    /quoteleft /a /b /c /d /e /f /g 
+    /h /i /j /k /l /m /n /o 
+    /p /q /r /s /t /u /v /w 
+    /x /y /z /braceleft /bar /braceright /asciitilde /space 
+    /space /space /space /space /space /space /space /space 
+    /space /space /space /space /space /space /space /space 
+    /dotlessi /grave /acute /circumflex /tilde /macron /breve /dotaccent 
+    /dieresis /space /ring /cedilla /space /hungarumlaut /ogonek /caron 
+    /space /exclamdown /cent /sterling /currency /yen /brokenbar /section 
+    /dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen 
+    /registered /macron 
+    /degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph 
+    /periodcentered 
+    /cedillar /onesuperior /ordmasculine /guillemotright /onequarter 
+    /onehalf /threequarters /questiondown 
+    /Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla 
+    /Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex 
+    /Idieresis 
+    /Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply 
+    /Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn 
+    /germandbls 
+    /agrave /aacute /acircumflex /atilde /adieresis /aring /ae /ccedilla 
+    /egrave /eacute /ecircumflex /edieresis /igrave /iacute /icircumflex 
+    /idieresis 
+    /eth /ntilde /ograve /oacute /ocircumflex /otilde /odieresis /divide 
+    /oslash /ugrave /uacute /ucircumflex /udieresis /yacute /thorn 
+    /ydieresis 
+  ] def 
+} if 
+
+% font ISOEncode font 
+% This procedure changes the encoding of a font from the default 
+% Postscript encoding to ISOLatin1.  It is typically invoked just 
+% before invoking "setfont".  The body of this procedure comes from 
+% Section 5.6.1 of the Postscript book. 
+
+/ISOEncode { 
+  dup length dict
+  begin 
+    {1 index /FID ne {def} {pop pop} ifelse} forall 
+    /Encoding ISOLatin1Encoding def 
+    currentdict 
+  end 
+
+  % I'm not sure why it's necessary to use "definefont" on this new 
+  % font, but it seems to be important; just use the name "Temporary" 
+  % for the font. 
+
+  /Temporary exch definefont 
+} bind def 
+
+/Stroke {
+  gsave
+    stroke
+  grestore
+} def
+
+/Fill {
+  gsave
+    fill
+  grestore
+} def
+
+/SetFont { 	
+  % Stack: pointSize fontName
+  findfont exch scalefont ISOEncode setfont
+} def
+
+/Box {
+  % Stack: x y width height
+  newpath
+  exch 4 2 roll moveto
+  dup 0 rlineto
+  exch 0 exch rlineto
+  neg 0 rlineto
+  closepath
+} def
+
+/SetFgColor {
+  % Stack: red green blue
+  CL 0 eq { 
+    pop pop pop 0 0 0 
+  } if
+  setrgbcolor
+  CL 1 eq { 
+    currentgray setgray 
+  } if
+} def
+
+/SetBgColor {
+  % Stack: red green blue
+  CL 0 eq { 
+    pop pop pop 1 1 1 
+  } if
+  setrgbcolor
+  CL 1 eq { 
+    currentgray setgray 
+  } if
+} def
+
+% The next two definitions are taken from "$tk_library/prolog.ps"
+
+% desiredSize EvenPixels closestSize
+%
+% The procedure below is used for stippling.  Given the optimal size
+% of a dot in a stipple pattern in the current user coordinate system,
+% compute the closest size that is an exact multiple of the device's
+% pixel size.  This allows stipple patterns to be displayed without
+% aliasing effects.
+
+/EvenPixels {
+  % Compute exact number of device pixels per stipple dot.
+  dup 0 matrix currentmatrix dtransform
+  dup mul exch dup mul add sqrt
+
+  % Round to an integer, make sure the number is at least 1, and compute
+  % user coord distance corresponding to this.
+  dup round dup 1 lt {pop 1} if
+  exch div mul
+} bind def
+
+% width height string filled StippleFill --
+%
+% Given a path and other graphics information already set up, this
+% procedure will fill the current path in a stippled fashion.  "String"
+% contains a proper image description of the stipple pattern and
+% "width" and "height" give its dimensions.  If "filled" is true then
+% it means that the area to be stippled is gotten by filling the
+% current path (e.g. the interior of a polygon); if it's false, the
+% area is gotten by stroking the current path (e.g. a wide line).
+% Each stipple dot is assumed to be about one unit across in the
+% current user coordinate system.
+
+% width height string StippleFill --
+%
+% Given a path already set up and a clipping region generated from
+% it, this procedure will fill the clipping region with a stipple
+% pattern.  "String" contains a proper image description of the
+% stipple pattern and "width" and "height" give its dimensions.  Each
+% stipple dot is assumed to be about one unit across in the current
+% user coordinate system.  This procedure trashes the graphics state.
+
+/StippleFill {
+    % The following code is needed to work around a NeWSprint bug.
+
+    /tmpstip 1 index def
+
+    % Change the scaling so that one user unit in user coordinates
+    % corresponds to the size of one stipple dot.
+    1 EvenPixels dup scale
+
+    % Compute the bounding box occupied by the path (which is now
+    % the clipping region), and round the lower coordinates down
+    % to the nearest starting point for the stipple pattern.  Be
+    % careful about negative numbers, since the rounding works
+    % differently on them.
+
+    pathbbox
+    4 2 roll
+    5 index div dup 0 lt {1 sub} if cvi 5 index mul 4 1 roll
+    6 index div dup 0 lt {1 sub} if cvi 6 index mul 3 2 roll
+
+    % Stack now: width height string y1 y2 x1 x2
+    % Below is a doubly-nested for loop to iterate across this area
+    % in units of the stipple pattern size, going up columns then
+    % across rows, blasting out a stipple-pattern-sized rectangle at
+    % each position
+
+    6 index exch {
+	2 index 5 index 3 index {
+	    % Stack now: width height string y1 y2 x y
+
+	    gsave
+	    1 index exch translate
+	    5 index 5 index true matrix tmpstip imagemask
+	    grestore
+	} for
+	pop
+    } for
+    pop pop pop pop pop
+} bind def
+
+
+/LS {	% Stack: x1 y1 x2 y2
+  newpath 4 2 roll moveto lineto stroke
+} def
+
+/EndText {
+  %Stack :
+  grestore
+} def
+
+/BeginText {
+  %Stack :  w h theta centerX centerY
+  gsave
+    % Translate the origin to the center of bounding box and rotate
+    translate neg rotate
+    % Translate back to the origin of the text region
+    -0.5 mul exch -0.5 mul exch translate
+} def
+
+/DrawAdjText {
+  %Stack : str strWidth x y
+  moveto				% Go to the text position
+  exch dup dup 4 2 roll
+
+  % Adjust character widths to get desired overall string width
+  % adjust X = (desired width - real width)/#chars
+
+  stringwidth pop sub exch
+  length div
+  0 3 -1 roll
+
+  % Flip back the scale so that the string is not drawn in reverse
+
+  gsave
+    1 -1 scale
+    ashow
+  grestore
+} def
+
+/DrawBitmap {
+  % Stack: ?bgColorProc? boolean centerX centerY width height theta imageStr
+  gsave
+    6 -2 roll translate			% Translate to center of bounding box
+    4 1 roll neg rotate			% Rotate by theta
+    
+    % Find upperleft corner of bounding box
+    
+    2 copy -.5 mul exch -.5 mul exch translate
+    2 copy scale			% Make pixel unit scale
+    newpath
+    0 0 moveto 0 1 lineto 1 1 lineto 1 0 lineto
+    closepath
+    
+    % Fill rectangle with background color
+    
+    4 -1 roll { 
+      gsave 
+	4 -1 roll exec fill 
+      grestore 
+    } if
+    
+    % Paint the image string into the unit rectangle
+    
+    2 copy true 3 -1 roll 0 0 5 -1 roll 0 0 6 array astore 5 -1 roll
+    imagemask
+  grestore
+} def
+
+% Symbols:
+
+% Skinny-cross
+/Sc {
+  % Stack: x y symbolSize
+  gsave
+    3 -2 roll translate 45 rotate
+    0 0 3 -1 roll Sp
+  grestore
+} def
+
+% Skinny-plus
+/Sp {
+  % Stack: x y symbolSize
+  gsave
+    3 -2 roll translate
+    2 idiv
+    dup 2 copy
+    newpath neg 0 moveto 0 lineto
+    DrawSymbolProc
+    newpath neg 0 exch moveto 0 exch lineto
+    DrawSymbolProc
+  grestore
+} def
+
+% Cross
+/Cr {
+  % Stack: x y symbolSize
+  gsave
+    3 -2 roll translate 45 rotate
+    0 0 3 -1 roll Pl
+  grestore
+} def
+
+% Plus
+/Pl {
+  % Stack: x y symbolSize
+  gsave
+    3 -2 roll translate
+    dup 2 idiv
+    exch 6 idiv
+
+    %
+    %          2   3		The plus/cross symbol is a
+    %				closed polygon of 12 points.
+    %      0   1   4    5	The diagram to the left
+    %           x,y		represents the positions of
+    %     11  10   7    6	the points which are computed
+    %				below.
+    %          9   8
+    %
+
+    newpath
+    2 copy exch neg exch neg moveto dup neg dup lineto
+    2 copy neg exch neg lineto 2 copy exch neg lineto
+    dup dup neg lineto 2 copy neg lineto 2 copy lineto
+    dup dup lineto 2 copy exch lineto 2 copy neg exch lineto
+    dup dup neg exch lineto exch neg exch lineto
+    closepath
+    DrawSymbolProc
+  grestore
+} def
+
+% Circle
+/Ci {
+  % Stack: x y symbolSize
+  gsave
+    3 copy pop
+    moveto newpath
+    2 div 0 360 arc
+    closepath DrawSymbolProc
+  grestore
+} def
+
+% Square
+/Sq {
+  % Stack: x y symbolSize
+  gsave
+    dup dup 2 div dup
+    6 -1 roll exch sub exch
+    5 -1 roll exch sub 4 -2 roll Box
+    DrawSymbolProc
+  grestore
+} def
+
+% Line
+/Li {
+  % Stack: x y symbolSize
+  gsave
+    3 1 roll exch 3 -1 roll 2 div 3 copy
+    newpath
+    sub exch moveto add exch lineto
+    stroke
+  grestore
+} def
+
+% Diamond
+/Di {
+  % Stack: x y symbolSize
+  gsave
+    3 1 roll translate 45 rotate 0 0 3 -1 roll Sq
+  grestore
+} def
+    
+% Triangle
+/Tr {
+  % Stack: x y symbolSize
+  gsave
+    3 -2 roll translate
+    BaseRatio mul 0.5 mul		% Calculate 1/2 base
+    dup 0 exch 30 cos mul		% h1 = height above center point
+    neg					% b2 0 -h1
+    newpath moveto			% point 1;  b2
+    dup 30 sin 30 cos div mul		% h2 = height below center point
+    2 copy lineto			% point 2;  b2 h2
+    exch neg exch lineto		% 
+    closepath
+    DrawSymbolProc
+  grestore
+} def
+
+% Arrow
+/Ar {
+  % Stack: x y symbolSize
+  gsave
+    3 -2 roll translate
+    BaseRatio mul 0.5 mul		% Calculate 1/2 base
+    dup 0 exch 30 cos mul		% h1 = height above center point
+					% b2 0 h1
+    newpath moveto			% point 1;  b2
+    dup 30 sin 30 cos div mul		% h2 = height below center point
+    neg					% -h2 b2
+    2 copy lineto			% point 2;  b2 h2
+    exch neg exch lineto		% 
+    closepath
+    DrawSymbolProc
+  grestore
+} def
+
+% Bitmap
+/Bm {
+  % Stack: x y symbolSize
+  gsave
+    3 1 roll translate pop DrawSymbolProc
+  grestore
+} def
+
+%%EndProlog
+
+%%BeginSetup
+gsave					% Save the graphics state
+
+% Default line/text style parameters
+
+1 setlinewidth				% width
+1 setlinejoin				% join
+0 setlinecap				% cap
+[] 0 setdash				% dashes
+
+/CL 0 def				% Set color level mode
+0 0 0 setrgbcolor			% color
+
+% Transform coordinate system to use X11 coordinates
+
+% 1. Flip y-axis over by reversing the scale,
+% 2. Translate the origin to the other side of the page,
+%    making the origin the upper left corner
+0.750738 -0.751181 scale
+0 -1055 translate
+
+% User defined page layout
+
+% Set color level
+/CL 2 def
+
+% Set origin
+96 411 translate
+
+
+% Setting graph scale factor
+ 0.439972 0.439972 scale
+
+%%EndSetup
+
+12 /Helvetica SetFont
+34 6 1310 490 Box
+
+1 1 1 SetBgColor
+Fill
+gsave clip
+
+
+% Element "ed7"
+
+0 setlinejoin
+0 setlinecap
+0.533333 1 0 SetFgColor
+2 setlinewidth
+[ ] 0 setdash
+/DashesProc {} def
+/DashesProc {} def
+ newpath 34 495 moveto
+ 47.7789 495 lineto
+DashesProc stroke
+ newpath  47.7789 495 moveto
+ 61.5579 495 lineto
+ 75.3368 495 lineto
+ 89.1158 495 lineto
+ 102.895 495 lineto
+ 116.674 495 lineto
+ 130.453 495 lineto
+ 144.232 495 lineto
+ 158.011 495 lineto
+ 171.789 495 lineto
+ 185.568 495 lineto
+ 199.347 495 lineto
+ 213.126 495 lineto
+ 226.905 495 lineto
+ 240.684 495 lineto
+ 254.463 495 lineto
+ 268.242 495 lineto
+ 282.021 495 lineto
+ 295.8 495 lineto
+ 309.579 494.999 lineto
+ 323.358 494.966 lineto
+ 337.137 494.87 lineto
+ 350.916 494.626 lineto
+ 364.695 494.181 lineto
+ 378.474 493.434 lineto
+ 392.253 492.361 lineto
+ 406.032 490.824 lineto
+ 419.811 489.104 lineto
+ 433.589 487.401 lineto
+ 447.368 485.429 lineto
+ 461.147 483.64 lineto
+ 474.926 482.538 lineto
+ 488.705 482.436 lineto
+ 502.484 483.279 lineto
+ 516.263 484.494 lineto
+ 530.042 486.238 lineto
+ 543.821 487.998 lineto
+ 557.6 489.51 lineto
+ 571.379 490.758 lineto
+ 585.158 492.053 lineto
+ 598.937 493.295 lineto
+ 612.716 494.175 lineto
+ 626.495 494.69 lineto
+ 640.274 494.893 lineto
+ 654.053 494.997 lineto
+ 667.832 495 lineto
+ 681.611 495 lineto
+ 695.389 495 lineto
+ 709.168 495 lineto
+ 722.947 494.996 lineto
+ 736.726 494.95 lineto
+ 750.505 494.745 lineto
+ 764.284 494.374 lineto
+ 778.063 493.715 lineto
+ 791.842 492.752 lineto
+ 805.621 491.266 lineto
+ 819.4 488.913 lineto
+ 833.179 485.639 lineto
+ 846.958 481.374 lineto
+ 860.737 476.431 lineto
+ 874.516 471.201 lineto
+ 888.295 466.173 lineto
+ 902.074 462.772 lineto
+ 915.853 461.024 lineto
+ 929.632 461.304 lineto
+ 943.411 463.17 lineto
+ 957.189 466.035 lineto
+ 970.968 470.059 lineto
+ 984.747 474.197 lineto
+ 998.526 478.382 lineto
+ 1012.31 482.343 lineto
+ 1026.08 485.899 lineto
+ 1039.86 488.598 lineto
+ 1053.64 490.757 lineto
+ 1067.42 492.363 lineto
+ 1081.2 493.429 lineto
+ 1094.98 494.074 lineto
+ 1108.76 494.492 lineto
+ 1122.54 494.66 lineto
+ 1136.32 494.812 lineto
+ 1150.09 494.881 lineto
+ 1163.87 494.943 lineto
+ 1177.65 494.968 lineto
+ 1191.43 494.988 lineto
+ 1205.21 494.999 lineto
+ 1218.99 495 lineto
+ 1232.77 495 lineto
+ 1246.55 495 lineto
+ 1260.33 495 lineto
+ 1274.11 495 lineto
+ 1287.88 495 lineto
+ 1301.66 495 lineto
+ 1315.44 495 lineto
+ 1329.22 495 lineto
+ 1343 495 lineto
+DashesProc stroke
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  0.533333 1 0 SetBgColor
+  Fill
+  0.533333 1 0 SetFgColor
+  stroke
+} def
+
+34 495 1 Ci
+47.7789 495 1 Ci
+61.5579 495 1 Ci
+75.3368 495 1 Ci
+89.1158 495 1 Ci
+102.895 495 1 Ci
+116.674 495 1 Ci
+130.453 495 1 Ci
+144.232 495 1 Ci
+158.011 495 1 Ci
+171.789 495 1 Ci
+185.568 495 1 Ci
+199.347 495 1 Ci
+213.126 495 1 Ci
+226.905 495 1 Ci
+240.684 495 1 Ci
+254.463 495 1 Ci
+268.242 495 1 Ci
+282.021 495 1 Ci
+295.8 495 1 Ci
+309.579 494.999 1 Ci
+323.358 494.966 1 Ci
+337.137 494.87 1 Ci
+350.916 494.626 1 Ci
+364.695 494.181 1 Ci
+378.474 493.434 1 Ci
+392.253 492.361 1 Ci
+406.032 490.824 1 Ci
+419.811 489.104 1 Ci
+433.589 487.401 1 Ci
+447.368 485.429 1 Ci
+461.147 483.64 1 Ci
+474.926 482.538 1 Ci
+488.705 482.436 1 Ci
+502.484 483.279 1 Ci
+516.263 484.494 1 Ci
+530.042 486.238 1 Ci
+543.821 487.998 1 Ci
+557.6 489.51 1 Ci
+571.379 490.758 1 Ci
+585.158 492.053 1 Ci
+598.937 493.295 1 Ci
+612.716 494.175 1 Ci
+626.495 494.69 1 Ci
+640.274 494.893 1 Ci
+654.053 494.997 1 Ci
+667.832 495 1 Ci
+681.611 495 1 Ci
+695.389 495 1 Ci
+709.168 495 1 Ci
+722.947 494.996 1 Ci
+736.726 494.95 1 Ci
+750.505 494.745 1 Ci
+764.284 494.374 1 Ci
+778.063 493.715 1 Ci
+791.842 492.752 1 Ci
+805.621 491.266 1 Ci
+819.4 488.913 1 Ci
+833.179 485.639 1 Ci
+846.958 481.374 1 Ci
+860.737 476.431 1 Ci
+874.516 471.201 1 Ci
+888.295 466.173 1 Ci
+902.074 462.772 1 Ci
+915.853 461.024 1 Ci
+929.632 461.304 1 Ci
+943.411 463.17 1 Ci
+957.189 466.035 1 Ci
+970.968 470.059 1 Ci
+984.747 474.197 1 Ci
+998.526 478.382 1 Ci
+1012.31 482.343 1 Ci
+1026.08 485.899 1 Ci
+1039.86 488.598 1 Ci
+1053.64 490.757 1 Ci
+1067.42 492.363 1 Ci
+1081.2 493.429 1 Ci
+1094.98 494.074 1 Ci
+1108.76 494.492 1 Ci
+1122.54 494.66 1 Ci
+1136.32 494.812 1 Ci
+1150.09 494.881 1 Ci
+1163.87 494.943 1 Ci
+1177.65 494.968 1 Ci
+1191.43 494.988 1 Ci
+1205.21 494.999 1 Ci
+1218.99 495 1 Ci
+1232.77 495 1 Ci
+1246.55 495 1 Ci
+1260.33 495 1 Ci
+1274.11 495 1 Ci
+1287.88 495 1 Ci
+1301.66 495 1 Ci
+1315.44 495 1 Ci
+1329.22 495 1 Ci
+1343 495 1 Ci
+
+% Element "ed6"
+
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  1 0.533333 0 SetBgColor
+  Fill
+  1 0.533333 0 SetFgColor
+  stroke
+} def
+
+34 122.872 1 Ci
+47.7789 122.635 1 Ci
+61.5579 122.565 1 Ci
+75.3368 122.561 1 Ci
+89.1158 122.512 1 Ci
+102.895 122.683 1 Ci
+116.674 122.732 1 Ci
+130.453 122.578 1 Ci
+144.232 122.547 1 Ci
+158.011 122.946 1 Ci
+171.789 123.28 1 Ci
+185.568 123.772 1 Ci
+199.347 124.986 1 Ci
+213.126 127.277 1 Ci
+226.905 130.423 1 Ci
+240.684 135.928 1 Ci
+254.463 142.877 1 Ci
+268.242 151.973 1 Ci
+282.021 164.593 1 Ci
+295.8 179.716 1 Ci
+309.579 197.908 1 Ci
+323.358 217.867 1 Ci
+337.137 240.312 1 Ci
+350.916 264.254 1 Ci
+364.695 288.94 1 Ci
+378.474 314.319 1 Ci
+392.253 338.693 1 Ci
+406.032 362.962 1 Ci
+419.811 385.532 1 Ci
+433.589 406.024 1 Ci
+447.368 424.661 1 Ci
+461.147 440.405 1 Ci
+474.926 453.495 1 Ci
+488.705 463.971 1 Ci
+502.484 472.166 1 Ci
+516.263 478.567 1 Ci
+530.042 483.341 1 Ci
+543.821 487 1 Ci
+557.6 489.502 1 Ci
+571.379 491.345 1 Ci
+585.158 492.621 1 Ci
+598.937 493.485 1 Ci
+612.716 494.052 1 Ci
+626.495 494.367 1 Ci
+640.274 494.505 1 Ci
+654.053 494.594 1 Ci
+667.832 494.648 1 Ci
+681.611 494.674 1 Ci
+695.389 494.662 1 Ci
+709.168 494.662 1 Ci
+722.947 494.647 1 Ci
+736.726 494.563 1 Ci
+750.505 494.356 1 Ci
+764.284 494.07 1 Ci
+778.063 493.594 1 Ci
+791.842 492.895 1 Ci
+805.621 491.919 1 Ci
+819.4 490.446 1 Ci
+833.179 488.332 1 Ci
+846.958 485.238 1 Ci
+860.737 480.978 1 Ci
+874.516 475.011 1 Ci
+888.295 467.17 1 Ci
+902.074 456.984 1 Ci
+915.853 444.131 1 Ci
+929.632 429.312 1 Ci
+943.411 411.561 1 Ci
+957.189 391.819 1 Ci
+970.968 369.616 1 Ci
+984.747 346.257 1 Ci
+998.526 321.635 1 Ci
+1012.31 296.178 1 Ci
+1026.08 271.279 1 Ci
+1039.86 246.552 1 Ci
+1053.64 223.835 1 Ci
+1067.42 203.067 1 Ci
+1081.2 184.794 1 Ci
+1094.98 169.789 1 Ci
+1108.76 157.271 1 Ci
+1122.54 147.213 1 Ci
+1136.32 139.19 1 Ci
+1150.09 133.405 1 Ci
+1163.87 129.154 1 Ci
+1177.65 126.718 1 Ci
+1191.43 124.813 1 Ci
+1205.21 123.57 1 Ci
+1218.99 122.871 1 Ci
+1232.77 122.632 1 Ci
+1246.55 122.547 1 Ci
+1260.33 122.075 1 Ci
+1274.11 122.497 1 Ci
+1287.88 122.714 1 Ci
+1301.66 121.999 1 Ci
+1315.44 122.572 1 Ci
+1329.22 122.836 1 Ci
+1343 122.767 1 Ci
+
+% Element "ed5"
+
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  0.533333 0.533333 0 SetBgColor
+  Fill
+  0.533333 0.533333 0 SetFgColor
+  stroke
+} def
+
+34 495 1 Ci
+47.7789 495 1 Ci
+61.5579 495 1 Ci
+75.3368 495 1 Ci
+89.1158 495 1 Ci
+102.895 495 1 Ci
+116.674 495 1 Ci
+130.453 495 1 Ci
+144.232 495 1 Ci
+158.011 495 1 Ci
+171.789 495 1 Ci
+185.568 495 1 Ci
+199.347 495 1 Ci
+213.126 495 1 Ci
+226.905 495 1 Ci
+240.684 495 1 Ci
+254.463 495 1 Ci
+268.242 494.977 1 Ci
+282.021 494.977 1 Ci
+295.8 494.954 1 Ci
+309.579 494.919 1 Ci
+323.358 494.896 1 Ci
+337.137 494.814 1 Ci
+350.916 494.733 1 Ci
+364.695 494.629 1 Ci
+378.474 494.454 1 Ci
+392.253 494.187 1 Ci
+406.032 493.886 1 Ci
+419.811 493.503 1 Ci
+433.589 493.015 1 Ci
+447.368 492.47 1 Ci
+461.147 491.75 1 Ci
+474.926 491.019 1 Ci
+488.705 490.079 1 Ci
+502.484 488.941 1 Ci
+516.263 487.467 1 Ci
+530.042 485.656 1 Ci
+543.821 483.3 1 Ci
+557.6 480.444 1 Ci
+571.379 477.044 1 Ci
+585.158 472.958 1 Ci
+598.937 468.245 1 Ci
+612.716 463.591 1 Ci
+626.495 458.832 1 Ci
+640.274 454.433 1 Ci
+654.053 451.043 1 Ci
+667.832 448.803 1 Ci
+681.611 447.874 1 Ci
+695.389 448.548 1 Ci
+709.168 450.475 1 Ci
+722.947 453.04 1 Ci
+736.726 456.8 1 Ci
+750.505 461.014 1 Ci
+764.284 465.355 1 Ci
+778.063 469.603 1 Ci
+791.842 473.561 1 Ci
+805.621 477.113 1 Ci
+819.4 480.212 1 Ci
+833.179 482.975 1 Ci
+846.958 485.18 1 Ci
+860.737 486.979 1 Ci
+874.516 488.558 1 Ci
+888.295 489.835 1 Ci
+902.074 490.74 1 Ci
+915.853 491.576 1 Ci
+929.632 492.214 1 Ci
+943.411 492.795 1 Ci
+957.189 493.305 1 Ci
+970.968 493.677 1 Ci
+984.747 494.013 1 Ci
+998.526 494.315 1 Ci
+1012.31 494.501 1 Ci
+1026.08 494.663 1 Ci
+1039.86 494.768 1 Ci
+1053.64 494.849 1 Ci
+1067.42 494.907 1 Ci
+1081.2 494.942 1 Ci
+1094.98 494.965 1 Ci
+1108.76 494.977 1 Ci
+1122.54 494.988 1 Ci
+1136.32 495 1 Ci
+1150.09 495 1 Ci
+1163.87 495 1 Ci
+1177.65 495 1 Ci
+1191.43 495 1 Ci
+1205.21 495 1 Ci
+1218.99 495 1 Ci
+1232.77 495 1 Ci
+1246.55 495 1 Ci
+1260.33 495 1 Ci
+1274.11 495 1 Ci
+1287.88 495 1 Ci
+1301.66 495 1 Ci
+1315.44 495 1 Ci
+1329.22 495 1 Ci
+1343 495 1 Ci
+
+% Element "ed4"
+
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  1 0 1 SetBgColor
+  Fill
+  1 0 1 SetFgColor
+  stroke
+} def
+
+34 495 1 Ci
+47.7789 495 1 Ci
+61.5579 495 1 Ci
+75.3368 495 1 Ci
+89.1158 495 1 Ci
+102.895 495 1 Ci
+116.674 495 1 Ci
+130.453 495 1 Ci
+144.232 495 1 Ci
+158.011 495 1 Ci
+171.789 495 1 Ci
+185.568 495 1 Ci
+199.347 495 1 Ci
+213.126 495 1 Ci
+226.905 495 1 Ci
+240.684 495 1 Ci
+254.463 495 1 Ci
+268.242 495 1 Ci
+282.021 494.973 1 Ci
+295.8 494.964 1 Ci
+309.579 494.937 1 Ci
+323.358 494.865 1 Ci
+337.137 494.747 1 Ci
+350.916 494.558 1 Ci
+364.695 494.251 1 Ci
+378.474 493.754 1 Ci
+392.253 492.924 1 Ci
+406.032 491.66 1 Ci
+419.811 489.899 1 Ci
+433.589 487.453 1 Ci
+447.368 484.203 1 Ci
+461.147 480.14 1 Ci
+474.926 475.256 1 Ci
+488.705 469.722 1 Ci
+502.484 463.953 1 Ci
+516.263 458.464 1 Ci
+530.042 453.707 1 Ci
+543.821 450.213 1 Ci
+557.6 448.443 1 Ci
+571.379 448.759 1 Ci
+585.158 450.61 1 Ci
+598.937 454.05 1 Ci
+612.716 458.365 1 Ci
+626.495 463.393 1 Ci
+640.274 467.618 1 Ci
+654.053 471.049 1 Ci
+667.832 473.414 1 Ci
+681.611 474.29 1 Ci
+695.389 473.559 1 Ci
+709.168 471.419 1 Ci
+722.947 467.808 1 Ci
+736.726 463.628 1 Ci
+750.505 459.141 1 Ci
+764.284 454.97 1 Ci
+778.063 451.648 1 Ci
+791.842 449.806 1 Ci
+805.621 449.599 1 Ci
+819.4 450.745 1 Ci
+833.179 453.553 1 Ci
+846.958 457.236 1 Ci
+860.737 461.606 1 Ci
+874.516 466.364 1 Ci
+888.295 471.338 1 Ci
+902.074 476.032 1 Ci
+915.853 480.303 1 Ci
+929.632 483.842 1 Ci
+943.411 486.703 1 Ci
+957.189 489.087 1 Ci
+970.968 490.856 1 Ci
+984.747 492.201 1 Ci
+998.526 493.176 1 Ci
+1012.31 493.799 1 Ci
+1026.08 494.278 1 Ci
+1039.86 494.567 1 Ci
+1053.64 494.738 1 Ci
+1067.42 494.856 1 Ci
+1081.2 494.919 1 Ci
+1094.98 494.955 1 Ci
+1108.76 494.991 1 Ci
+1122.54 495 1 Ci
+1136.32 495 1 Ci
+1150.09 495 1 Ci
+1163.87 495 1 Ci
+1177.65 495 1 Ci
+1191.43 495 1 Ci
+1205.21 495 1 Ci
+1218.99 495 1 Ci
+1232.77 495 1 Ci
+1246.55 495 1 Ci
+1260.33 495 1 Ci
+1274.11 495 1 Ci
+1287.88 495 1 Ci
+1301.66 495 1 Ci
+1315.44 495 1 Ci
+1329.22 495 1 Ci
+1343 495 1 Ci
+
+% Element "ed3"
+
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  0 1 1 SetBgColor
+  Fill
+  0 1 1 SetFgColor
+  stroke
+} def
+
+34 495 1 Ci
+47.7789 495 1 Ci
+61.5579 495 1 Ci
+75.3368 495 1 Ci
+89.1158 495 1 Ci
+102.895 495 1 Ci
+116.674 495 1 Ci
+130.453 495 1 Ci
+144.232 495 1 Ci
+158.011 495 1 Ci
+171.789 495 1 Ci
+185.568 495 1 Ci
+199.347 495 1 Ci
+213.126 494.979 1 Ci
+226.905 494.969 1 Ci
+240.684 494.907 1 Ci
+254.463 494.814 1 Ci
+268.242 494.567 1 Ci
+282.021 494.04 1 Ci
+295.8 493.102 1 Ci
+309.579 491.533 1 Ci
+323.358 488.799 1 Ci
+337.137 484.455 1 Ci
+350.916 477.893 1 Ci
+364.695 468.298 1 Ci
+378.474 455.329 1 Ci
+392.253 438.357 1 Ci
+406.032 417.113 1 Ci
+419.811 393.238 1 Ci
+433.589 366.474 1 Ci
+447.368 339.452 1 Ci
+461.147 313.834 1 Ci
+474.926 290.619 1 Ci
+488.705 271.831 1 Ci
+502.484 256.582 1 Ci
+516.263 245.552 1 Ci
+530.042 238.144 1 Ci
+543.821 234.904 1 Ci
+557.6 233.326 1 Ci
+571.379 233.842 1 Ci
+585.158 235.823 1 Ci
+598.937 239.279 1 Ci
+612.716 243.468 1 Ci
+626.495 249.256 1 Ci
+640.274 254.652 1 Ci
+654.053 258.47 1 Ci
+667.832 261.451 1 Ci
+681.611 262.875 1 Ci
+695.389 262.287 1 Ci
+709.168 260.647 1 Ci
+722.947 257.242 1 Ci
+736.726 252.805 1 Ci
+750.505 248.513 1 Ci
+764.284 243.231 1 Ci
+778.063 238.206 1 Ci
+791.842 233.254 1 Ci
+805.621 230.055 1 Ci
+819.4 229.601 1 Ci
+833.179 230.85 1 Ci
+846.958 236.452 1 Ci
+860.737 245.831 1 Ci
+874.516 259.532 1 Ci
+888.295 277.877 1 Ci
+902.074 299.224 1 Ci
+915.853 322.913 1 Ci
+929.632 348.202 1 Ci
+943.411 373.211 1 Ci
+957.189 396.818 1 Ci
+970.968 418.681 1 Ci
+984.747 437.026 1 Ci
+998.526 452.832 1 Ci
+1012.31 465.337 1 Ci
+1026.08 475.025 1 Ci
+1039.86 482.165 1 Ci
+1053.64 487.128 1 Ci
+1067.42 490.264 1 Ci
+1081.2 492.307 1 Ci
+1094.98 493.514 1 Ci
+1108.76 494.267 1 Ci
+1122.54 494.608 1 Ci
+1136.32 494.814 1 Ci
+1150.09 494.928 1 Ci
+1163.87 494.959 1 Ci
+1177.65 494.99 1 Ci
+1191.43 495 1 Ci
+1205.21 495 1 Ci
+1218.99 495 1 Ci
+1232.77 495 1 Ci
+1246.55 495 1 Ci
+1260.33 495 1 Ci
+1274.11 495 1 Ci
+1287.88 495 1 Ci
+1301.66 495 1 Ci
+1315.44 495 1 Ci
+1329.22 495 1 Ci
+1343 495 1 Ci
+
+% Element "ed2"
+
+0 setlinejoin
+0 setlinecap
+0 0 1 SetFgColor
+2 setlinewidth
+[ ] 0 setdash
+/DashesProc {} def
+/DashesProc {} def
+ newpath 34 495 moveto
+ 47.7789 495 lineto
+DashesProc stroke
+ newpath  47.7789 495 moveto
+ 61.5579 495 lineto
+ 75.3368 495 lineto
+ 89.1158 495 lineto
+ 102.895 495 lineto
+ 116.674 495 lineto
+ 130.453 495 lineto
+ 144.232 495 lineto
+ 158.011 495 lineto
+ 171.789 495 lineto
+ 185.568 494.99 lineto
+ 199.347 494.932 lineto
+ 213.126 494.871 lineto
+ 226.905 494.714 lineto
+ 240.684 494.368 lineto
+ 254.463 493.62 lineto
+ 268.242 492.179 lineto
+ 282.021 489.665 lineto
+ 295.8 485.452 lineto
+ 309.579 479.021 lineto
+ 323.358 469.839 lineto
+ 337.137 457.741 lineto
+ 350.916 442.815 lineto
+ 364.695 425.859 lineto
+ 378.474 408.384 lineto
+ 392.253 392.147 lineto
+ 406.032 380.214 lineto
+ 419.811 373.739 lineto
+ 433.589 373.633 lineto
+ 447.368 378.971 lineto
+ 461.147 388.692 lineto
+ 474.926 400.966 lineto
+ 488.705 414.807 lineto
+ 502.484 428.831 lineto
+ 516.263 442.04 lineto
+ 530.042 453.588 lineto
+ 543.821 464.096 lineto
+ 557.6 473.183 lineto
+ 571.379 480.267 lineto
+ 585.158 485.864 lineto
+ 598.937 489.881 lineto
+ 612.716 492.388 lineto
+ 626.495 493.812 lineto
+ 640.274 494.507 lineto
+ 654.053 494.816 lineto
+ 667.832 494.933 lineto
+ 681.611 494.982 lineto
+ 695.389 494.982 lineto
+ 709.168 494.961 lineto
+ 722.947 494.871 lineto
+ 736.726 494.576 lineto
+ 750.505 493.924 lineto
+ 764.284 492.582 lineto
+ 778.063 490.304 lineto
+ 791.842 486.777 lineto
+ 805.621 481.581 lineto
+ 819.4 474.4 lineto
+ 833.179 464.766 lineto
+ 846.958 452.682 lineto
+ 860.737 438.323 lineto
+ 874.516 422.4 lineto
+ 888.295 405.661 lineto
+ 902.074 390.933 lineto
+ 915.853 379.764 lineto
+ 929.632 374.01 lineto
+ 943.411 374.278 lineto
+ 957.189 380.057 lineto
+ 970.968 389.995 lineto
+ 984.747 403.043 lineto
+ 998.526 417.35 lineto
+ 1012.31 432 lineto
+ 1026.08 445.847 lineto
+ 1039.86 458.307 lineto
+ 1053.64 468.903 lineto
+ 1067.42 477.433 lineto
+ 1081.2 483.955 lineto
+ 1094.98 488.483 lineto
+ 1108.76 491.385 lineto
+ 1122.54 493.16 lineto
+ 1136.32 494.074 lineto
+ 1150.09 494.528 lineto
+ 1163.87 494.767 lineto
+ 1177.65 494.884 lineto
+ 1191.43 494.939 lineto
+ 1205.21 494.99 lineto
+ 1218.99 494.99 lineto
+ 1232.77 495 lineto
+ 1246.55 495 lineto
+ 1260.33 495 lineto
+ 1274.11 495 lineto
+ 1287.88 495 lineto
+ 1301.66 495 lineto
+ 1315.44 495 lineto
+ 1329.22 495 lineto
+ 1343 495 lineto
+DashesProc stroke
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  0 0 1 SetBgColor
+  Fill
+  0 0 1 SetFgColor
+  stroke
+} def
+
+34 495 1 Ci
+47.7789 495 1 Ci
+61.5579 495 1 Ci
+75.3368 495 1 Ci
+89.1158 495 1 Ci
+102.895 495 1 Ci
+116.674 495 1 Ci
+130.453 495 1 Ci
+144.232 495 1 Ci
+158.011 495 1 Ci
+171.789 495 1 Ci
+185.568 494.99 1 Ci
+199.347 494.932 1 Ci
+213.126 494.871 1 Ci
+226.905 494.714 1 Ci
+240.684 494.368 1 Ci
+254.463 493.62 1 Ci
+268.242 492.179 1 Ci
+282.021 489.665 1 Ci
+295.8 485.452 1 Ci
+309.579 479.021 1 Ci
+323.358 469.839 1 Ci
+337.137 457.741 1 Ci
+350.916 442.815 1 Ci
+364.695 425.859 1 Ci
+378.474 408.384 1 Ci
+392.253 392.147 1 Ci
+406.032 380.214 1 Ci
+419.811 373.739 1 Ci
+433.589 373.633 1 Ci
+447.368 378.971 1 Ci
+461.147 388.692 1 Ci
+474.926 400.966 1 Ci
+488.705 414.807 1 Ci
+502.484 428.831 1 Ci
+516.263 442.04 1 Ci
+530.042 453.588 1 Ci
+543.821 464.096 1 Ci
+557.6 473.183 1 Ci
+571.379 480.267 1 Ci
+585.158 485.864 1 Ci
+598.937 489.881 1 Ci
+612.716 492.388 1 Ci
+626.495 493.812 1 Ci
+640.274 494.507 1 Ci
+654.053 494.816 1 Ci
+667.832 494.933 1 Ci
+681.611 494.982 1 Ci
+695.389 494.982 1 Ci
+709.168 494.961 1 Ci
+722.947 494.871 1 Ci
+736.726 494.576 1 Ci
+750.505 493.924 1 Ci
+764.284 492.582 1 Ci
+778.063 490.304 1 Ci
+791.842 486.777 1 Ci
+805.621 481.581 1 Ci
+819.4 474.4 1 Ci
+833.179 464.766 1 Ci
+846.958 452.682 1 Ci
+860.737 438.323 1 Ci
+874.516 422.4 1 Ci
+888.295 405.661 1 Ci
+902.074 390.933 1 Ci
+915.853 379.764 1 Ci
+929.632 374.01 1 Ci
+943.411 374.278 1 Ci
+957.189 380.057 1 Ci
+970.968 389.995 1 Ci
+984.747 403.043 1 Ci
+998.526 417.35 1 Ci
+1012.31 432 1 Ci
+1026.08 445.847 1 Ci
+1039.86 458.307 1 Ci
+1053.64 468.903 1 Ci
+1067.42 477.433 1 Ci
+1081.2 483.955 1 Ci
+1094.98 488.483 1 Ci
+1108.76 491.385 1 Ci
+1122.54 493.16 1 Ci
+1136.32 494.074 1 Ci
+1150.09 494.528 1 Ci
+1163.87 494.767 1 Ci
+1177.65 494.884 1 Ci
+1191.43 494.939 1 Ci
+1205.21 494.99 1 Ci
+1218.99 494.99 1 Ci
+1232.77 495 1 Ci
+1246.55 495 1 Ci
+1260.33 495 1 Ci
+1274.11 495 1 Ci
+1287.88 495 1 Ci
+1301.66 495 1 Ci
+1315.44 495 1 Ci
+1329.22 495 1 Ci
+1343 495 1 Ci
+
+% Element "ed1"
+
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  0 1 0 SetBgColor
+  Fill
+  0 1 0 SetFgColor
+  stroke
+} def
+
+34 495 1 Ci
+47.7789 495 1 Ci
+61.5579 495 1 Ci
+75.3368 495 1 Ci
+89.1158 495 1 Ci
+102.895 495 1 Ci
+116.674 494.991 1 Ci
+130.453 494.972 1 Ci
+144.232 494.892 1 Ci
+158.011 494.774 1 Ci
+171.789 494.537 1 Ci
+185.568 494.013 1 Ci
+199.347 493.029 1 Ci
+213.126 491.199 1 Ci
+226.905 488.045 1 Ci
+240.684 482.935 1 Ci
+254.463 475.148 1 Ci
+268.242 464.681 1 Ci
+282.021 451.028 1 Ci
+295.8 434.736 1 Ci
+309.579 416.957 1 Ci
+323.358 399.624 1 Ci
+337.137 384.252 1 Ci
+350.916 372.915 1 Ci
+364.695 367.431 1 Ci
+378.474 368.621 1 Ci
+392.253 375.458 1 Ci
+406.032 386.126 1 Ci
+419.811 399.513 1 Ci
+433.589 413.837 1 Ci
+447.368 428.891 1 Ci
+461.147 443.45 1 Ci
+474.926 456.468 1 Ci
+488.705 467.422 1 Ci
+502.484 476.519 1 Ci
+516.263 483.435 1 Ci
+530.042 488.223 1 Ci
+543.821 491.455 1 Ci
+557.6 493.345 1 Ci
+571.379 494.279 1 Ci
+585.158 494.71 1 Ci
+598.937 494.87 1 Ci
+612.716 494.941 1 Ci
+626.495 494.981 1 Ci
+640.274 495 1 Ci
+654.053 495 1 Ci
+667.832 495 1 Ci
+681.611 495 1 Ci
+695.389 495 1 Ci
+709.168 495 1 Ci
+722.947 495 1 Ci
+736.726 495 1 Ci
+750.505 494.991 1 Ci
+764.284 494.952 1 Ci
+778.063 494.823 1 Ci
+791.842 494.547 1 Ci
+805.621 493.988 1 Ci
+819.4 492.94 1 Ci
+833.179 491.139 1 Ci
+846.958 488.586 1 Ci
+860.737 484.823 1 Ci
+874.516 479.068 1 Ci
+888.295 470.807 1 Ci
+902.074 459.342 1 Ci
+915.853 444.926 1 Ci
+929.632 428.138 1 Ci
+943.411 409.712 1 Ci
+957.189 392.358 1 Ci
+970.968 378.344 1 Ci
+984.747 369.288 1 Ci
+998.526 366.896 1 Ci
+1012.31 370.469 1 Ci
+1026.08 379.282 1 Ci
+1039.86 391.857 1 Ci
+1053.64 406.509 1 Ci
+1067.42 422.188 1 Ci
+1081.2 437.176 1 Ci
+1094.98 450.578 1 Ci
+1108.76 462.665 1 Ci
+1122.54 472.481 1 Ci
+1136.32 480.089 1 Ci
+1150.09 485.616 1 Ci
+1163.87 489.51 1 Ci
+1177.65 491.896 1 Ci
+1191.43 493.323 1 Ci
+1205.21 494.135 1 Ci
+1218.99 494.568 1 Ci
+1232.77 494.755 1 Ci
+1246.55 494.883 1 Ci
+1260.33 494.951 1 Ci
+1274.11 494.981 1 Ci
+1287.88 494.991 1 Ci
+1301.66 495 1 Ci
+1315.44 495 1 Ci
+1329.22 495 1 Ci
+1343 495 1 Ci
+
+% Element "ed0"
+
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  1 0 0 SetBgColor
+  Fill
+  1 0 0 SetFgColor
+  stroke
+} def
+
+34 495 1 Ci
+47.7789 495 1 Ci
+61.5579 495 1 Ci
+75.3368 495 1 Ci
+89.1158 495 1 Ci
+102.895 494.977 1 Ci
+116.674 494.965 1 Ci
+130.453 494.907 1 Ci
+144.232 494.791 1 Ci
+158.011 494.582 1 Ci
+171.789 494.199 1 Ci
+185.568 493.584 1 Ci
+199.347 492.574 1 Ci
+213.126 491.03 1 Ci
+226.905 488.86 1 Ci
+240.684 486.016 1 Ci
+254.463 482.313 1 Ci
+268.242 478.03 1 Ci
+282.021 473.329 1 Ci
+295.8 468.141 1 Ci
+309.579 463.208 1 Ci
+323.358 458.6 1 Ci
+337.137 454.908 1 Ci
+350.916 452.401 1 Ci
+364.695 451.043 1 Ci
+378.474 451.705 1 Ci
+392.253 453.748 1 Ci
+406.032 457.288 1 Ci
+419.811 461.606 1 Ci
+433.589 466.527 1 Ci
+447.368 471.542 1 Ci
+461.147 476.312 1 Ci
+474.926 480.758 1 Ci
+488.705 484.484 1 Ci
+502.484 487.525 1 Ci
+516.263 489.997 1 Ci
+530.042 491.831 1 Ci
+543.821 493.096 1 Ci
+557.6 493.921 1 Ci
+571.379 494.408 1 Ci
+585.158 494.71 1 Ci
+598.937 494.861 1 Ci
+612.716 494.93 1 Ci
+626.495 494.965 1 Ci
+640.274 494.965 1 Ci
+654.053 495 1 Ci
+667.832 495 1 Ci
+681.611 495 1 Ci
+695.389 495 1 Ci
+709.168 495 1 Ci
+722.947 495 1 Ci
+736.726 494.977 1 Ci
+750.505 494.93 1 Ci
+764.284 494.826 1 Ci
+778.063 494.64 1 Ci
+791.842 494.327 1 Ci
+805.621 493.979 1 Ci
+819.4 493.584 1 Ci
+833.179 493.12 1 Ci
+846.958 492.319 1 Ci
+860.737 491.274 1 Ci
+874.516 489.51 1 Ci
+888.295 487.107 1 Ci
+902.074 484.089 1 Ci
+915.853 480.305 1 Ci
+929.632 475.581 1 Ci
+943.411 470.393 1 Ci
+957.189 464.972 1 Ci
+970.968 459.772 1 Ci
+984.747 455.234 1 Ci
+998.526 452.042 1 Ci
+1012.31 450.475 1 Ci
+1026.08 450.707 1 Ci
+1039.86 452.877 1 Ci
+1053.64 456.255 1 Ci
+1067.42 460.561 1 Ci
+1081.2 465.529 1 Ci
+1094.98 470.636 1 Ci
+1108.76 475.674 1 Ci
+1122.54 480.27 1 Ci
+1136.32 484.008 1 Ci
+1150.09 487.153 1 Ci
+1163.87 489.545 1 Ci
+1177.65 491.332 1 Ci
+1191.43 492.702 1 Ci
+1205.21 493.63 1 Ci
+1218.99 494.222 1 Ci
+1232.77 494.582 1 Ci
+1246.55 494.803 1 Ci
+1260.33 494.896 1 Ci
+1274.11 494.942 1 Ci
+1287.88 494.977 1 Ci
+1301.66 495 1 Ci
+1315.44 495 1 Ci
+1329.22 495 1 Ci
+1343 495 1 Ci
+
+% Element "ed10"
+
+0 setlinejoin
+0 setlinecap
+0 0 0 SetFgColor
+2 setlinewidth
+[ ] 0 setdash
+/DashesProc {} def
+/DashesProc {} def
+ newpath 34 122.872 moveto
+ 47.7789 122.635 lineto
+DashesProc stroke
+ newpath  47.7789 122.635 moveto
+ 61.5579 122.565 lineto
+ 75.3368 122.561 lineto
+ 89.1158 122.512 lineto
+ 102.895 122.659 lineto
+ 116.674 122.688 lineto
+ 130.453 122.457 lineto
+ 144.232 122.23 lineto
+ 158.011 122.302 lineto
+ 171.789 122.016 lineto
+ 185.568 121.359 lineto
+ 199.347 120.521 lineto
+ 213.126 119.357 lineto
+ 226.905 117.011 lineto
+ 240.684 114.154 lineto
+ 254.463 108.772 lineto
+ 268.242 101.407 lineto
+ 282.021 92.6044 lineto
+ 295.8 81.0642 lineto
+ 309.579 68.4806 lineto
+ 323.358 54.4565 lineto
+ 337.137 41.1004 lineto
+ 350.916 29.1952 lineto
+ 364.695 19.6321 lineto
+ 378.474 15.0008 lineto
+ 392.253 12.8741 lineto
+ 406.032 15.073 lineto
+ 419.811 21.1333 lineto
+ 433.589 29.3641 lineto
+ 447.368 40.6193 lineto
+ 461.147 53.2222 lineto
+ 474.926 66.1179 lineto
+ 488.705 79.7513 lineto
+ 502.484 92.7953 lineto
+ 516.263 105.016 lineto
+ 530.042 115.727 lineto
+ 543.821 127.063 lineto
+ 557.6 136.675 lineto
+ 571.379 145.701 lineto
+ 585.158 154.347 lineto
+ 598.937 162.965 lineto
+ 612.716 170.91 lineto
+ 626.495 179.297 lineto
+ 640.274 185.573 lineto
+ 654.053 189.969 lineto
+ 667.832 193.25 lineto
+ 681.611 194.695 lineto
+ 695.389 194.038 lineto
+ 709.168 192.164 lineto
+ 722.947 187.603 lineto
+ 736.726 182.299 lineto
+ 750.505 176.615 lineto
+ 764.284 169.361 lineto
+ 778.063 161.535 lineto
+ 791.842 152.92 lineto
+ 805.621 144.499 lineto
+ 819.4 135.841 lineto
+ 833.179 125.373 lineto
+ 846.958 114.069 lineto
+ 860.737 101.245 lineto
+ 874.516 86.6447 lineto
+ 888.295 70.9672 lineto
+ 902.074 55.1168 lineto
+ 915.853 39.9422 lineto
+ 929.632 27.6024 lineto
+ 943.411 16.8231 lineto
+ 957.189 9.45123 lineto
+ 970.968 6 lineto
+ 984.747 6.25923 lineto
+ 998.526 11.6282 lineto
+ 1012.31 20.1015 lineto
+ 1026.08 31.9796 lineto
+ 1039.86 44.6896 lineto
+ 1053.64 57.9735 lineto
+ 1067.42 70.6383 lineto
+ 1081.2 82.0521 lineto
+ 1094.98 91.9944 lineto
+ 1108.76 100.722 lineto
+ 1122.54 107.379 lineto
+ 1136.32 111.986 lineto
+ 1150.09 115.512 lineto
+ 1163.87 117.877 lineto
+ 1177.65 119.787 lineto
+ 1191.43 120.766 lineto
+ 1205.21 121.323 lineto
+ 1218.99 121.651 lineto
+ 1232.77 121.97 lineto
+ 1246.55 122.233 lineto
+ 1260.33 121.922 lineto
+ 1274.11 122.42 lineto
+ 1287.88 122.681 lineto
+ 1301.66 121.999 lineto
+ 1315.44 122.572 lineto
+ 1329.22 122.836 lineto
+ 1343 122.767 lineto
+DashesProc stroke
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  0 0 0 SetBgColor
+  Fill
+  0 0 0 SetFgColor
+  stroke
+} def
+
+34 122.872 1 Ci
+47.7789 122.635 1 Ci
+61.5579 122.565 1 Ci
+75.3368 122.561 1 Ci
+89.1158 122.512 1 Ci
+102.895 122.659 1 Ci
+116.674 122.688 1 Ci
+130.453 122.457 1 Ci
+144.232 122.23 1 Ci
+158.011 122.302 1 Ci
+171.789 122.016 1 Ci
+185.568 121.359 1 Ci
+199.347 120.521 1 Ci
+213.126 119.357 1 Ci
+226.905 117.011 1 Ci
+240.684 114.154 1 Ci
+254.463 108.772 1 Ci
+268.242 101.407 1 Ci
+282.021 92.6044 1 Ci
+295.8 81.0642 1 Ci
+309.579 68.4806 1 Ci
+323.358 54.4565 1 Ci
+337.137 41.1004 1 Ci
+350.916 29.1952 1 Ci
+364.695 19.6321 1 Ci
+378.474 15.0008 1 Ci
+392.253 12.8741 1 Ci
+406.032 15.073 1 Ci
+419.811 21.1333 1 Ci
+433.589 29.3641 1 Ci
+447.368 40.6193 1 Ci
+461.147 53.2222 1 Ci
+474.926 66.1179 1 Ci
+488.705 79.7513 1 Ci
+502.484 92.7953 1 Ci
+516.263 105.016 1 Ci
+530.042 115.727 1 Ci
+543.821 127.063 1 Ci
+557.6 136.675 1 Ci
+571.379 145.701 1 Ci
+585.158 154.347 1 Ci
+598.937 162.965 1 Ci
+612.716 170.91 1 Ci
+626.495 179.297 1 Ci
+640.274 185.573 1 Ci
+654.053 189.969 1 Ci
+667.832 193.25 1 Ci
+681.611 194.695 1 Ci
+695.389 194.038 1 Ci
+709.168 192.164 1 Ci
+722.947 187.603 1 Ci
+736.726 182.299 1 Ci
+750.505 176.615 1 Ci
+764.284 169.361 1 Ci
+778.063 161.535 1 Ci
+791.842 152.92 1 Ci
+805.621 144.499 1 Ci
+819.4 135.841 1 Ci
+833.179 125.373 1 Ci
+846.958 114.069 1 Ci
+860.737 101.245 1 Ci
+874.516 86.6447 1 Ci
+888.295 70.9672 1 Ci
+902.074 55.1168 1 Ci
+915.853 39.9422 1 Ci
+929.632 27.6024 1 Ci
+943.411 16.8231 1 Ci
+957.189 9.45123 1 Ci
+970.968 6 1 Ci
+984.747 6.25923 1 Ci
+998.526 11.6282 1 Ci
+1012.31 20.1015 1 Ci
+1026.08 31.9796 1 Ci
+1039.86 44.6896 1 Ci
+1053.64 57.9735 1 Ci
+1067.42 70.6383 1 Ci
+1081.2 82.0521 1 Ci
+1094.98 91.9944 1 Ci
+1108.76 100.722 1 Ci
+1122.54 107.379 1 Ci
+1136.32 111.986 1 Ci
+1150.09 115.512 1 Ci
+1163.87 117.877 1 Ci
+1177.65 119.787 1 Ci
+1191.43 120.766 1 Ci
+1205.21 121.323 1 Ci
+1218.99 121.651 1 Ci
+1232.77 121.97 1 Ci
+1246.55 122.233 1 Ci
+1260.33 121.922 1 Ci
+1274.11 122.42 1 Ci
+1287.88 122.681 1 Ci
+1301.66 121.999 1 Ci
+1315.44 122.572 1 Ci
+1329.22 122.836 1 Ci
+1343 122.767 1 Ci
+
+% Marker "left_edge" is a LineMarker marker
+0 setlinejoin
+0 setlinecap
+0 0 1 SetFgColor
+1 setlinewidth
+[ ] 0 setdash
+/DashesProc {} def
+/DashesProc {} def
+34 495 moveto
+ 34 6 lineto
+DashesProc stroke
+
+% Marker "right_edge" is a LineMarker marker
+0 setlinejoin
+0 setlinecap
+0 0 1 SetFgColor
+1 setlinewidth
+[ ] 0 setdash
+/DashesProc {} def
+/DashesProc {} def
+1343 495 moveto
+ 1343 6 lineto
+DashesProc stroke
+
+% Unset clipping
+grestore
+
+0.92549 0.913725 0.847059 SetBgColor
+0 0 1416 6 Box fill
+
+0 6 34 489 Box fill
+
+1343 6 73 489 Box fill
+
+0 495 1416 32 Box fill
+
+1 1 1 SetBgColor
+1348 153 63 2 Box fill
+
+1409 7 2 148 Box fill
+
+0.67451 0.658824 0.6 SetBgColor
+newpath 1348 155 moveto
+1348 7 lineto
+1411 7 lineto
+1409 9 lineto
+1350 9 lineto
+1350 153 lineto
+1348 155 lineto
+1348 155  lineto closepath Fill
+0 setlinejoin
+0 setlinecap
+0 0 0 SetFgColor
+4 setlinewidth
+[ ] 0 setdash
+/DashesProc {} def
+1362 17 16 Li
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  0 0 0 SetBgColor
+  Fill
+  0 0 0 SetFgColor
+  stroke
+} def
+
+1362 17 8 Ci
+14 10 0 1381 17 BeginText
+6 /Helvetica SetFont
+0 0 0 SetFgColor
+(total) 14 0 8 DrawAdjText
+EndText
+0.639216 0.639216 0.639216 SetBgColor
+1350 25 59 16 Box fill
+
+0.639216 0.639216 0.639216 SetBgColor
+1350 39 59 2 Box fill
+
+1407 25 2 16 Box fill
+
+newpath 1350 41 moveto
+1350 25 lineto
+1409 25 lineto
+1407 27 lineto
+1352 27 lineto
+1352 39 lineto
+1350 41 lineto
+1350 41  lineto closepath Fill
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  1 0 0 SetBgColor
+  Fill
+  1 0 0 SetFgColor
+  stroke
+} def
+
+1362 33 8 Ci
+32 10 0 1390 33 BeginText
+6 /Helvetica SetFont
+0 0 0 SetFgColor
+(CholCH3) 32 0 8 DrawAdjText
+EndText
+0.639216 0.639216 0.639216 SetBgColor
+1350 41 59 16 Box fill
+
+0.639216 0.639216 0.639216 SetBgColor
+1350 55 59 2 Box fill
+
+1407 41 2 16 Box fill
+
+newpath 1350 57 moveto
+1350 41 lineto
+1409 41 lineto
+1407 43 lineto
+1352 43 lineto
+1352 55 lineto
+1350 57 lineto
+1350 57  lineto closepath Fill
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  0 1 0 SetBgColor
+  Fill
+  0 1 0 SetFgColor
+  stroke
+} def
+
+1362 49 8 Ci
+17 10 0 1382.5 49 BeginText
+6 /Helvetica SetFont
+0 0 0 SetFgColor
+(PCN) 17 0 8 DrawAdjText
+EndText
+0 setlinejoin
+0 setlinecap
+0 0 1 SetFgColor
+4 setlinewidth
+[ ] 0 setdash
+/DashesProc {} def
+1362 65 16 Li
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  0 0 1 SetBgColor
+  Fill
+  0 0 1 SetFgColor
+  stroke
+} def
+
+1362 65 8 Ci
+12 10 0 1380 65 BeginText
+6 /Helvetica SetFont
+0 0 0 SetFgColor
+(CG) 12 0 8 DrawAdjText
+EndText
+0.639216 0.639216 0.639216 SetBgColor
+1350 73 59 16 Box fill
+
+0.639216 0.639216 0.639216 SetBgColor
+1350 87 59 2 Box fill
+
+1407 73 2 16 Box fill
+
+newpath 1350 89 moveto
+1350 73 lineto
+1409 73 lineto
+1407 75 lineto
+1352 75 lineto
+1352 87 lineto
+1350 89 lineto
+1350 89  lineto closepath Fill
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  0 1 1 SetBgColor
+  Fill
+  0 1 1 SetFgColor
+  stroke
+} def
+
+1362 81 8 Ci
+16 10 0 1382 81 BeginText
+6 /Helvetica SetFont
+0 0 0 SetFgColor
+(CH2) 16 0 8 DrawAdjText
+EndText
+0.639216 0.639216 0.639216 SetBgColor
+1350 89 59 16 Box fill
+
+0.639216 0.639216 0.639216 SetBgColor
+1350 103 59 2 Box fill
+
+1407 89 2 16 Box fill
+
+newpath 1350 105 moveto
+1350 89 lineto
+1409 89 lineto
+1407 91 lineto
+1352 91 lineto
+1352 103 lineto
+1350 105 lineto
+1350 105  lineto closepath Fill
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  1 0 1 SetBgColor
+  Fill
+  1 0 1 SetFgColor
+  stroke
+} def
+
+1362 97 8 Ci
+12 10 0 1380 97 BeginText
+6 /Helvetica SetFont
+0 0 0 SetFgColor
+(CH) 12 0 8 DrawAdjText
+EndText
+0.639216 0.639216 0.639216 SetBgColor
+1350 105 59 16 Box fill
+
+0.639216 0.639216 0.639216 SetBgColor
+1350 119 59 2 Box fill
+
+1407 105 2 16 Box fill
+
+newpath 1350 121 moveto
+1350 105 lineto
+1409 105 lineto
+1407 107 lineto
+1352 107 lineto
+1352 119 lineto
+1350 121 lineto
+1350 121  lineto closepath Fill
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  0.533333 0.533333 0 SetBgColor
+  Fill
+  0.533333 0.533333 0 SetFgColor
+  stroke
+} def
+
+1362 113 8 Ci
+16 10 0 1382 113 BeginText
+6 /Helvetica SetFont
+0 0 0 SetFgColor
+(CH3) 16 0 8 DrawAdjText
+EndText
+0.639216 0.639216 0.639216 SetBgColor
+1350 121 59 16 Box fill
+
+0.639216 0.639216 0.639216 SetBgColor
+1350 135 59 2 Box fill
+
+1407 121 2 16 Box fill
+
+newpath 1350 137 moveto
+1350 121 lineto
+1409 121 lineto
+1407 123 lineto
+1352 123 lineto
+1352 135 lineto
+1350 137 lineto
+1350 137  lineto closepath Fill
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  1 0.533333 0 SetBgColor
+  Fill
+  1 0.533333 0 SetFgColor
+  stroke
+} def
+
+1362 129 8 Ci
+28 10 0 1388 129 BeginText
+6 /Helvetica SetFont
+0 0 0 SetFgColor
+(WATER) 28 0 8 DrawAdjText
+EndText
+0 setlinejoin
+0 setlinecap
+0.533333 1 0 SetFgColor
+4 setlinewidth
+[ ] 0 setdash
+/DashesProc {} def
+1362 145 16 Li
+1 setlinewidth
+[ ] 0 setdash
+
+/DrawSymbolProc {
+  0.533333 1 0 SetBgColor
+  Fill
+  0.533333 1 0 SetFgColor
+  stroke
+} def
+
+1362 145 8 Ci
+15 10 0 1381.5 145 BeginText
+6 /Helvetica SetFont
+0 0 0 SetFgColor
+(TAT) 15 0 8 DrawAdjText
+EndText
+17 15 0 85.6711 514.5 BeginText
+8 /ArialNarrow SetFont
+0 0 0 SetFgColor
+(-35) 13 2 12 DrawAdjText
+EndText
+17 15 0 171.789 514.5 BeginText
+8 /ArialNarrow SetFont
+0 0 0 SetFgColor
+(-30) 13 2 12 DrawAdjText
+EndText
+17 15 0 257.908 514.5 BeginText
+8 /ArialNarrow SetFont
+0 0 0 SetFgColor
+(-25) 13 2 12 DrawAdjText
+EndText
+17 15 0 344.026 514.5 BeginText
+8 /ArialNarrow SetFont
+0 0 0 SetFgColor
+(-20) 13 2 12 DrawAdjText
+EndText
+17 15 0 430.145 514.5 BeginText
+8 /ArialNarrow SetFont
+0 0 0 SetFgColor
+(-15) 13 2 12 DrawAdjText
+EndText
+17 15 0 516.263 514.5 BeginText
+8 /ArialNarrow SetFont
+0 0 0 SetFgColor
+(-10) 13 2 12 DrawAdjText
+EndText
+12 15 0 602.382 514.5 BeginText
+8 /ArialNarrow SetFont
+0 0 0 SetFgColor
+(-5) 8 2 12 DrawAdjText
+EndText
+9 15 0 688.5 514.5 BeginText
+8 /ArialNarrow SetFont
+0 0 0 SetFgColor
+(0) 5 2 12 DrawAdjText
+EndText
+9 15 0 774.618 514.5 BeginText
+8 /ArialNarrow SetFont
+0 0 0 SetFgColor
+(5) 5 2 12 DrawAdjText
+EndText
+14 15 0 860.737 514.5 BeginText
+8 /ArialNarrow SetFont
+0 0 0 SetFgColor
+(10) 10 2 12 DrawAdjText
+EndText
+14 15 0 946.855 514.5 BeginText
+8 /ArialNarrow SetFont
+0 0 0 SetFgColor
+(15) 10 2 12 DrawAdjText
+EndText
+14 15 0 1032.97 514.5 BeginText
+8 /ArialNarrow SetFont
+0 0 0 SetFgColor
+(20) 10 2 12 DrawAdjText
+EndText
+14 15 0 1119.09 514.5 BeginText
+8 /ArialNarrow SetFont
+0 0 0 SetFgColor
+(25) 10 2 12 DrawAdjText
+EndText
+14 15 0 1205.21 514.5 BeginText
+8 /ArialNarrow SetFont
+0 0 0 SetFgColor
+(30) 10 2 12 DrawAdjText
+EndText
+14 15 0 1291.33 514.5 BeginText
+8 /ArialNarrow SetFont
+0 0 0 SetFgColor
+(35) 10 2 12 DrawAdjText
+EndText
+0 setlinejoin
+0 setlinecap
+0 0 0 SetFgColor
+1 setlinewidth
+[ ] 0 setdash
+/DashesProc {} def
+34 497 moveto
+ 1343 497 lineto
+DashesProc stroke
+34 497 moveto
+ 34 502 lineto
+DashesProc stroke
+51.2237 497 moveto
+ 51.2237 502 lineto
+DashesProc stroke
+68.4474 497 moveto
+ 68.4474 502 lineto
+DashesProc stroke
+102.895 497 moveto
+ 102.895 502 lineto
+DashesProc stroke
+120.118 497 moveto
+ 120.118 502 lineto
+DashesProc stroke
+137.342 497 moveto
+ 137.342 502 lineto
+DashesProc stroke
+154.566 497 moveto
+ 154.566 502 lineto
+DashesProc stroke
+85.6711 497 moveto
+ 85.6711 505 lineto
+DashesProc stroke
+189.013 497 moveto
+ 189.013 502 lineto
+DashesProc stroke
+206.237 497 moveto
+ 206.237 502 lineto
+DashesProc stroke
+223.461 497 moveto
+ 223.461 502 lineto
+DashesProc stroke
+240.684 497 moveto
+ 240.684 502 lineto
+DashesProc stroke
+171.789 497 moveto
+ 171.789 505 lineto
+DashesProc stroke
+275.132 497 moveto
+ 275.132 502 lineto
+DashesProc stroke
+292.355 497 moveto
+ 292.355 502 lineto
+DashesProc stroke
+309.579 497 moveto
+ 309.579 502 lineto
+DashesProc stroke
+326.803 497 moveto
+ 326.803 502 lineto
+DashesProc stroke
+257.908 497 moveto
+ 257.908 505 lineto
+DashesProc stroke
+361.25 497 moveto
+ 361.25 502 lineto
+DashesProc stroke
+378.474 497 moveto
+ 378.474 502 lineto
+DashesProc stroke
+395.697 497 moveto
+ 395.697 502 lineto
+DashesProc stroke
+412.921 497 moveto
+ 412.921 502 lineto
+DashesProc stroke
+344.026 497 moveto
+ 344.026 505 lineto
+DashesProc stroke
+447.368 497 moveto
+ 447.368 502 lineto
+DashesProc stroke
+464.592 497 moveto
+ 464.592 502 lineto
+DashesProc stroke
+481.816 497 moveto
+ 481.816 502 lineto
+DashesProc stroke
+499.039 497 moveto
+ 499.039 502 lineto
+DashesProc stroke
+430.145 497 moveto
+ 430.145 505 lineto
+DashesProc stroke
+533.487 497 moveto
+ 533.487 502 lineto
+DashesProc stroke
+550.711 497 moveto
+ 550.711 502 lineto
+DashesProc stroke
+567.934 497 moveto
+ 567.934 502 lineto
+DashesProc stroke
+585.158 497 moveto
+ 585.158 502 lineto
+DashesProc stroke
+516.263 497 moveto
+ 516.263 505 lineto
+DashesProc stroke
+619.605 497 moveto
+ 619.605 502 lineto
+DashesProc stroke
+636.829 497 moveto
+ 636.829 502 lineto
+DashesProc stroke
+654.053 497 moveto
+ 654.053 502 lineto
+DashesProc stroke
+671.276 497 moveto
+ 671.276 502 lineto
+DashesProc stroke
+602.382 497 moveto
+ 602.382 505 lineto
+DashesProc stroke
+705.724 497 moveto
+ 705.724 502 lineto
+DashesProc stroke
+722.947 497 moveto
+ 722.947 502 lineto
+DashesProc stroke
+740.171 497 moveto
+ 740.171 502 lineto
+DashesProc stroke
+757.395 497 moveto
+ 757.395 502 lineto
+DashesProc stroke
+688.5 497 moveto
+ 688.5 505 lineto
+DashesProc stroke
+791.842 497 moveto
+ 791.842 502 lineto
+DashesProc stroke
+809.066 497 moveto
+ 809.066 502 lineto
+DashesProc stroke
+826.289 497 moveto
+ 826.289 502 lineto
+DashesProc stroke
+843.513 497 moveto
+ 843.513 502 lineto
+DashesProc stroke
+774.618 497 moveto
+ 774.618 505 lineto
+DashesProc stroke
+877.961 497 moveto
+ 877.961 502 lineto
+DashesProc stroke
+895.184 497 moveto
+ 895.184 502 lineto
+DashesProc stroke
+912.408 497 moveto
+ 912.408 502 lineto
+DashesProc stroke
+929.632 497 moveto
+ 929.632 502 lineto
+DashesProc stroke
+860.737 497 moveto
+ 860.737 505 lineto
+DashesProc stroke
+964.079 497 moveto
+ 964.079 502 lineto
+DashesProc stroke
+981.303 497 moveto
+ 981.303 502 lineto
+DashesProc stroke
+998.526 497 moveto
+ 998.526 502 lineto
+DashesProc stroke
+1015.75 497 moveto
+ 1015.75 502 lineto
+DashesProc stroke
+946.855 497 moveto
+ 946.855 505 lineto
+DashesProc stroke
+1050.2 497 moveto
+ 1050.2 502 lineto
+DashesProc stroke
+1067.42 497 moveto
+ 1067.42 502 lineto
+DashesProc stroke
+1084.64 497 moveto
+ 1084.64 502 lineto
+DashesProc stroke
+1101.87 497 moveto
+ 1101.87 502 lineto
+DashesProc stroke
+1032.97 497 moveto
+ 1032.97 505 lineto
+DashesProc stroke
+1136.32 497 moveto
+ 1136.32 502 lineto
+DashesProc stroke
+1153.54 497 moveto
+ 1153.54 502 lineto
+DashesProc stroke
+1170.76 497 moveto
+ 1170.76 502 lineto
+DashesProc stroke
+1187.99 497 moveto
+ 1187.99 502 lineto
+DashesProc stroke
+1119.09 497 moveto
+ 1119.09 505 lineto
+DashesProc stroke
+1222.43 497 moveto
+ 1222.43 502 lineto
+DashesProc stroke
+1239.66 497 moveto
+ 1239.66 502 lineto
+DashesProc stroke
+1256.88 497 moveto
+ 1256.88 502 lineto
+DashesProc stroke
+1274.11 497 moveto
+ 1274.11 502 lineto
+DashesProc stroke
+1205.21 497 moveto
+ 1205.21 505 lineto
+DashesProc stroke
+1308.55 497 moveto
+ 1308.55 502 lineto
+DashesProc stroke
+1325.78 497 moveto
+ 1325.78 502 lineto
+DashesProc stroke
+1343 497 moveto
+ 1343 502 lineto
+DashesProc stroke
+1291.33 497 moveto
+ 1291.33 505 lineto
+DashesProc stroke
+9 15 0 17.5 495 BeginText
+8 /ArialNarrow SetFont
+0 0 0 SetFgColor
+(0) 5 2 12 DrawAdjText
+EndText
+17 15 0 13.5 366.03 BeginText
+8 /ArialNarrow SetFont
+0 0 0 SetFgColor
+(0.1) 13 2 12 DrawAdjText
+EndText
+17 15 0 13.5 237.061 BeginText
+8 /ArialNarrow SetFont
+0 0 0 SetFgColor
+(0.2) 13 2 12 DrawAdjText
+EndText
+17 15 0 13.5 108.091 BeginText
+8 /ArialNarrow SetFont
+0 0 0 SetFgColor
+(0.3) 13 2 12 DrawAdjText
+EndText
+0 setlinejoin
+0 setlinecap
+0 0 0 SetFgColor
+1 setlinewidth
+[ ] 0 setdash
+/DashesProc {} def
+32 495 moveto
+ 32 6 lineto
+DashesProc stroke
+32 469.206 moveto
+ 27 469.206 lineto
+DashesProc stroke
+32 443.412 moveto
+ 27 443.412 lineto
+DashesProc stroke
+32 417.618 moveto
+ 27 417.618 lineto
+DashesProc stroke
+32 391.824 moveto
+ 27 391.824 lineto
+DashesProc stroke
+32 495 moveto
+ 24 495 lineto
+DashesProc stroke
+32 340.236 moveto
+ 27 340.236 lineto
+DashesProc stroke
+32 314.443 moveto
+ 27 314.443 lineto
+DashesProc stroke
+32 288.649 moveto
+ 27 288.649 lineto
+DashesProc stroke
+32 262.855 moveto
+ 27 262.855 lineto
+DashesProc stroke
+32 366.03 moveto
+ 24 366.03 lineto
+DashesProc stroke
+32 211.267 moveto
+ 27 211.267 lineto
+DashesProc stroke
+32 185.473 moveto
+ 27 185.473 lineto
+DashesProc stroke
+32 159.679 moveto
+ 27 159.679 lineto
+DashesProc stroke
+32 133.885 moveto
+ 27 133.885 lineto
+DashesProc stroke
+32 237.061 moveto
+ 24 237.061 lineto
+DashesProc stroke
+32 82.2971 moveto
+ 27 82.2971 lineto
+DashesProc stroke
+32 56.5032 moveto
+ 27 56.5032 lineto
+DashesProc stroke
+32 30.7093 moveto
+ 27 30.7093 lineto
+DashesProc stroke
+32 108.091 moveto
+ 24 108.091 lineto
+DashesProc stroke
+showpage
+%Trailer
+grestore
+end
+%EOF

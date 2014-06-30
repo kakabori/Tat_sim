@@ -1,0 +1,5 @@
+fileName   Lipid/Tat    AreaPerLipid
+dopc                    69.39
+dopc-tat2  128/2        68.96
+dopc-tat4  128/4        69.00
+dopc-tat8  128/8        71.39

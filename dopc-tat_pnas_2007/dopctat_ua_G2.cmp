@@ -1,0 +1,18 @@
+#################################################################################
+## any comments can go here, as long as they start with ## (double pound)
+## lines starting with # (single pound) execute Tcl commands (e.g. set ...)
+##
+## model definition starts with component name, number of atoms per group,
+## and the list of all atoms
+#################################################################################
+##
+## DOPC/Tat for unite atom is defined in this file.
+## Note that letter 't' is added to the end of atom names in Tat for which there 
+## are name conflicts between DOPC and Tat.
+##
+PC     11   T1 T2 T3 N4 M5 M6 O7 P8 O9 O10 O11
+CG      9   M12 B13 O14 C15 O16 M34 O35 C36 O37
+CH2     1   M17 M18 M19 M20 M21 M22 M23 M26 M27 M28 M29 M30 M31 M32 M38 M39 M40 M41 M42 M43 M44 M47 M48 M49 M50 M51 M52 M53 B24 B25 B45 B46
+CH3     1   T33 T54
+WATER   3   HW1 OW HW2
+TAT   166   N1 H2 H3 H4 B5 M6t C7 C8 H9 C10 H11 C12 H13 C14 H15 C16 O17 H18 C19 O20 N21 H22 M23t C24 O25 N26 H27 B28 M29t M30t M31t N32 H33 C34 N35 H36 H37 N38 H39 H40 C41 O42 N43 H44 B45t M46 M47t M48t M49t N50 H51 H52 H53 C54 O55 N56 H57 B58 M59 M60 M61 M62 N63 H64 H65 H66 C67 O68 N69 H70 B71 M72 M73 M74 N75 H76 C77 N78 H79 H80 N81 H82 H83 C84 O85 N86 H87 B88 M89 M90 M91 N92 H93 C94 N95 H96 H97 N98 H99 H100 C101 O102 N103 H104 B105 M106 M107 C108 O109 N110 H111 H112 C113 O114 N115 H116 B117 M118 M119 M120 N121 H122 C123 N124 H125 H126 N127 H128 H129 C130 O131 N132 H133 B134 M135 M136 M137 N138 H139 C140 N141 H142 H143 N144 H145 H146 C147 O148 N149 H150 B151 M152 M153 M154 N155 H156 C157 N158 H159 H160 N161 H162 H163 C164 O165 O166 

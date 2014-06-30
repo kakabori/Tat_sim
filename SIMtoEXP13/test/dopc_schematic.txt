@@ -1,0 +1,85 @@
+               H8bh              Water D1w--Ow--D2w
+                 |                  or H1w--Ow--H2w
+           H8ch-C8h-H8ah
+                 |
+           H6ah  |    H7ah
+            |    |     |
+      H6bh-C6h--Nh--C7h-H7bh
+            |    |     |
+           H6ch  |    H7ch
+                 |
+         H5ah--C5h--H5bh
+                 |
+                 |
+         H4ah--C4h--H4bh
+                 |
+                 |
+          O3h  O2h
+             \ /
+              Ph
+             / \
+          O4h  O1h
+                 |
+                 |           
+         H3ah--C3h--H3bh
+                 |           
+                 |
+         H2ah--C2h-----------------------
+                 |             		|
+           O1c2  O2h            	H1ah--C1h--H1bh	    
+             \\ /              		|
+              C1c2                   O1c1  O1h
+               |                       \\ / 
+       H2ac2--C2c2--H2bc2               C1c1
+               |                         |
+               |                 H2ac1--C2c1--H2bc1                
+       H3ac2--C3c2--H3bc2                |
+               |                         |
+               |                 H3ac1--C3c1--H3bc1
+       H4ac2--C4c2--H4bc2                |	
+               |                         |
+               |                 H4ac1—-C4c1—-H4bc1
+       H5ac2--C5c2--H5bc2                |    
+               |                         |
+               |                 H5ac1—-C5c1-—H5bc1 
+       H6ac2--C6c2--H6bc2     	         |
+               |             	    	 | 
+               |                 H6ac1—-C6c1-—H6bc1  
+       H7ac2--C7c2--H7bc2   	         |	 
+               |              	         |
+               |                 H7ac1—-C7c1-—H7bc1 
+       H8ac2--C8c2--H8bc2     	         |
+               |              	         |
+               |                 H8ac1—-C8c1-—H8bc1
+       H9ac2--C9c2            	    	 |
+               ||             	         |
+               ||                H9ac1--C9c1
+      H10ac2--C10c2           	         ||
+               |              	         ||
+               |                H10ac1--C10c1
+     H11ac2--C11c2--H11bc2               |              
+               |                         |
+               |               H11ac1--C11c1--H11bc1         
+     H12ac2--C12c2--H12bc2               |
+               |                         |
+               |               H12ac1--C12c1--H12bc1
+     H13ac2--C13c2--H13bc2               |
+               |                         |
+               |               H13ac1--C13c1--H13bc1
+     H14ac2--C14c2--H14bc2               |
+               |                         |
+               |               H14ac1--C14c1--H14bc1         
+     H15ac2--C15c2--H15bc2               |
+               |                         |
+               |               H15ac1--C15c1--H15bc1         
+     H16ac2--C16c2--H16bc2               |
+               |                         |
+               |               H16ac1--C16c1--H16bc1         
+     H17ac2--C17c2--H17bc2               |
+               |                         |
+               |               H17ac1--C17c1--H17bc1         
+     H18ac2--C18c2--H18bc2               |
+               |                         |
+              H18cc2           H18ac1--C18c1--H18bc1
+                                         |
+                                        H18cc1
